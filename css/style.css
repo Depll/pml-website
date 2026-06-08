@@ -1,3 +1,148 @@
-h1 {
-    color: red;
+/* ==========================================
+   1. GLOBAL RESET & FONTS
+   ========================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================
+   2. NAVBAR MILANO
+   ========================================== */
+.navbar-milano {
+  width: 100%;
+  background-color: #ffffff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- LOGO --- */
+.logo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  margin-left: -50px;
+}
+
+.logo-top {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #1c2434;
+  line-height: 0.85;
+  letter-spacing: 0.7px;
+  -webkit-text-stroke: 0.5px #1c2434;
+}
+
+.logo-bottom {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  color: #a81c1c;
+  letter-spacing: 6px;
+  margin-top: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  padding-left: 6px;
+}
+
+/* --- LIEFERGEBIET --- */
+.delivery-area {
+  background: none;
+  border: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #1c2434;
+  font-size: 13.5px;
+}
+
+.pin-icon {
+  color: #a81c1c;
+  font-size: 18px;
+  margin-right: 4px;
+  /* Macht das Icon ausgefüllt ('FILL' 1) und schlank ('wght' 300) */
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 300,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.delivery-text {
+  font-weight: 500;
+  color: #000102;
+}
+
+.delivery-text strong {
+  font-weight: 800;
+  color: #000000;
+  margin-left: 3px;
+}
+
+.change-link {
+  color: #a81c1c;
+  font-size: 10.5px;
+  margin-left: 5px;
+  font-weight: 700;
+}
+
+.change-link:hover {
+  text-decoration: underline;
+}
+
+/* --- WARENKORB --- */
+.cart-box {
+  background: none;
+  border: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #000000;
+  gap: 12px;
+  margin-right: -20px;
+}
+
+.cart-icon {
+  font-size: 20px;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.cart-count {
+  font-size: 18px;
+  font-weight: 700;
 }
