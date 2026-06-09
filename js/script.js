@@ -68,6 +68,11 @@ function checkZipcode() {
   if (VALID_POSTCODES.includes(enteredCode)) {
     plzModal.classList.add("hidden");
     if (plzErrorMsg) plzErrorMsg.classList.add("hidden");
+    
+    // NEU: Schreibt die PLZ direkt beim Start oben in die Navbar
+    const navPlzDisplay = document.getElementById("nav-plz");
+    if (navPlzDisplay) navPlzDisplay.textContent = enteredCode;
+    
   } else {
     if (plzErrorMsg) plzErrorMsg.classList.remove("hidden");
     plzInputField.value = "";
@@ -90,6 +95,8 @@ if (plzChangeLink) {
     if (plzInputField) plzInputField.value = "";
   });
 }
+
+
 
 // ==========================================================================
 // 2. SMOOTH SCROLLING & KATEGORIEN-FILTER
@@ -459,6 +466,129 @@ if (impressumModal) {
       event.target === impressumModal
     ) {
       impressumModal.classList.add("hidden");
+    }
+  });
+}
+
+const cartViewStep = document.getElementById("cart-view-step");
+const addressViewStep = document.getElementById("address-view-step");
+const btnToCheckoutLocal = document.getElementById("btn-to-checkout");
+const btnBackToCart = document.getElementById("btn-back-to-cart");
+const deliveryForm = document.getElementById("delivery-form");
+const addressPlzField = document.getElementById("address-plz");
+
+// 1. Wechsel zum Adress-Formular
+if (btnToCheckoutLocal) {
+  btnToCheckoutLocal.addEventListener("click", () => {
+    if (cart.length > 0) {
+      cartViewStep.classList.add("hidden-step");
+      addressViewStep.classList.remove("hidden-step");
+      
+      // Postleitzahl automatisch aus dem PLZ-Input des ersten Modals übernehmen
+      const savedPlz = document.getElementById("plz-input")?.value.trim() || "";
+      if (addressPlzField) {
+        addressPlzField.value = savedPlz;
+      }
+    }
+  });
+}
+
+// 2. Zurück zum Warenkorb
+if (btnBackToCart) {
+  btnBackToCart.addEventListener("click", () => {
+    addressViewStep.classList.add("hidden-step");
+    cartViewStep.classList.remove("hidden-step");
+  });
+}
+
+// 3. Beim vollständigen Schließen der Sidebar den Zustand SOFORT resetten
+// 3. Beim vollständigen Schließen der Sidebar den Zustand zurücksetzen
+document.querySelectorAll(".close-cart-btn").forEach((closeBtn) => {
+  closeBtn.addEventListener("click", () => {
+    if (cartSidebar) cartSidebar.classList.add("hidden");
+    resetSidebarSteps(); 
+  });
+});
+
+if (cartSidebar) {
+  cartSidebar.addEventListener("click", (e) => {
+    if (e.target === cartSidebar) {
+      cartSidebar.classList.add("hidden");
+      resetSidebarSteps();
+    }
+  });
+}
+
+// DIE REPARIERTE FUNKTION: Nur über Klassen steuern, KEINE festen Styles!
+function resetSidebarSteps() {
+  const cartViewStep = document.getElementById("cart-view-step");
+  const addressViewStep = document.getElementById("address-view-step");
+
+  if (cartViewStep && addressViewStep) {
+    // Entferne die harten Styles wieder, die das Layout zerschossen haben
+    addressViewStep.style.display = ""; 
+    cartViewStep.style.display = "";    
+    
+    // Jetzt sauber nur noch die Klassen umschalten
+    addressViewStep.classList.add("hidden-step");
+    cartViewStep.classList.remove("hidden-step");
+  }
+}
+
+// 4. Formular-Validierung bei Klick auf "Weiter zur Zahlung"
+if (deliveryForm) {
+  deliveryForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let isFormValid = true;
+
+    // Alle Pflichtfelder im Formular prüfen
+    const requiredInputs = deliveryForm.querySelectorAll("input[required]");
+    
+    requiredInputs.forEach((input) => {
+      const formGroup = input.closest(".form-group");
+      const errorMsg = formGroup.querySelector(".form-error-msg");
+
+      if (input.value.trim() === "") {
+        formGroup.classList.add("has-error");
+        if (errorMsg) errorMsg.classList.remove("hidden");
+        isFormValid = false;
+      } else {
+        formGroup.classList.remove("has-error");
+        if (errorMsg) errorMsg.classList.add("hidden");
+      }
+    });
+
+    if (isFormValid) {
+      // Speicher Daten für den nächsten Schritt (z.B. Stripe Checkout)
+      const customerData = {
+        firstname: document.getElementById("address-firstname").value.trim(),
+        lastname: document.getElementById("address-lastname").value.trim(),
+        phone: document.getElementById("address-phone").value.trim(),
+        email: document.getElementById("address-email").value.trim(),
+        street: document.getElementById("address-street").value.trim(),
+        housenumber: document.getElementById("address-housenumber").value.trim(),
+        plz: addressPlzField.value,
+        city: document.getElementById("address-city").value.trim(),
+        comment: document.getElementById("address-comment").value.trim()
+      };
+      
+      console.log("Valide Adressdaten:", customerData);
+      
+      // HIER KANNST DU JETZT DEINE STRIPE- / PAYMENT-FUNKTION AUFRUFEN
+      alert("Weiterleitung zur Zahlung...");
+    }
+  });
+}
+
+// Live-Update: Wenn der Nutzer im Adressformular die PLZ ändert, zieht die Navbar sofort mit
+if (addressPlzField) {
+  addressPlzField.addEventListener("input", () => {
+    const navPlzDisplay = document.getElementById("nav-plz");
+    const currentCode = addressPlzField.value.trim();
+    
+    // Aktualisiert die Navbar live, sobald eine gültige 5-stellige PLZ getippt wurde
+    if (navPlzDisplay && currentCode.length === 5 && !isNaN(currentCode)) {
+      navPlzDisplay.textContent = currentCode;
     }
   });
 }

@@ -918,8 +918,10 @@ body {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  margin-top: auto;
+  padding: 15px 0 10px 0;
+  margin-bottom: 400px; /* Schiebt den Knopf 40px nach unten */
 }
-
 /* 1. Der normale, aktive Button (wenn Items da sind) */
 .btn-address-submit {
   background-color: #bc4747;
@@ -953,6 +955,7 @@ body {
   background-color: #222b31;
   padding: 20px;
   color: #ffffff;
+  margin-bottom: 300px;
 }
 
 .min-order-warning {
@@ -1383,4 +1386,118 @@ body {
   max-width: 450px;
   margin: 0 auto;
   font-style: italic;
+}
+
+
+/* --- SCHRITT-UMSCHALTUNG --- */
+.hidden-step {
+  display: none !important;
+}
+
+/* --- FORMULAR STYLING --- */
+.address-form-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.form-section-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #000000;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: #4a5568;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background-color: #ffffff;
+  outline: none;
+  font-family: inherit;
+}
+
+.form-group textarea {
+  height: 70px;
+  resize: none;
+}
+
+/* Fehlerzustand laut Screenshot */
+.form-group.has-error input {
+  border-color: #e53e3e;
+}
+
+.form-error-msg {
+  color: #e53e3e;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.form-error-msg.hidden {
+  display: none;
+}
+
+/* Button-Anordnung für den Adress-Schritt */
+.address-action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.btn-address-back {
+  flex: 1;
+  background-color: #e2e8f0;
+  color: #1a222d;
+  border: none;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-address-back:hover {
+  background-color: #cbd5e0;
+}
+
+#btn-to-payment {
+  flex: 1.3;
+}
+
+.hidden-step {
+  display: none !important;
+}
+
+/* Sorgt dafür, dass die Inhalte innerhalb des Drawers richtig fließen */
+#cart-view-step, 
+#address-view-step {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 150px); /* Platz für den Footer lassen */
+}
+
+/* Macht die Formular-Ansicht scrollbar, falls sie zu lang wird */
+#address-view-step .cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
 }

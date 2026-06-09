@@ -27,7 +27,7 @@
         <button class="delivery-area" id="delivery-trigger">
           <span class="material-symbols-outlined pin-icon">location_on</span>
           <span class="delivery-text">
-            Liefergebiet: <strong>51371</strong>
+            Liefergebiet: <strong id="nav-plz">51371</strong>
             <span class="change-link">(Ändern)</span>
           </span>
         </button>
@@ -2078,37 +2078,98 @@
 
     <div id="cart-sidebar" class="cart-overlay hidden">
       <div class="cart-drawer">
-        <div class="cart-header">
-          <h2>Dein Warenkorb</h2>
-          <span class="close-cart-btn">&times;</span>
-        </div>
-
-        <div class="cart-body">
-          <div id="cart-empty-view" class="cart-empty-section">
-            <div class="empty-msg-container">
-              <p>Dein Warenkorb ist leer.</p>
-            </div>
+        
+        <div id="cart-view-step">
+          <div class="cart-header">
+            <h2>Dein Warenkorb</h2>
+            <span class="close-cart-btn" aria-label="Warenkorb schließen">&times;</span>
           </div>
 
-          <div
-            id="cart-items-container"
-            class="cart-items-wrapper"
-            style="
-              padding: 20px;
-              display: flex;
-              flex-direction: column;
-              gap: 15px;
-            "
-          ></div>
+          <div class="cart-body">
+            <div id="cart-empty-view" class="cart-empty-section">
+              <div class="empty-msg-container">
+                <p>Dein Warenkorb ist leer.</p>
+              </div>
+            </div>
 
-          <div class="cart-action-area" style="padding: 10px 20px 20px 20px">
-            <button
-              id="btn-to-checkout"
-              class="btn-address-submit disabled"
-              disabled
-            >
-              Weiter zur Adresseingabe
-            </button>
+            <div id="cart-items-container" class="cart-items-wrapper"></div>
+
+            <div class="cart-action-area">
+              <button id="btn-to-checkout" class="btn-address-submit disabled" disabled>
+                Weiter zur Adresseingabe
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="address-view-step" class="hidden-step">
+          <div class="cart-header">
+            <h2>Lieferadresse</h2>
+            <span class="close-cart-btn" aria-label="Warenkorb schließen">&times;</span>
+          </div>
+
+          <div class="cart-body address-form-body">
+            <form id="delivery-form" novalidate>
+              
+              <div class="form-section-title">Kontaktinformationen</div>
+              
+              <div class="form-group">
+                <label for="address-firstname">Vorname</label>
+                <input type="text" id="address-firstname" required />
+                <div class="form-error-msg hidden">Vorname ist erforderlich.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="address-lastname">Nachname</label>
+                <input type="text" id="address-lastname" required />
+                <div class="form-error-msg hidden">Nachname ist erforderlich.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="address-phone">Telefon</label>
+                <input type="tel" id="address-phone" />
+              </div>
+
+              <div class="form-group">
+                <label for="address-email">E-Mail</label>
+                <input type="email" id="address-email" />
+              </div>
+
+              <div class="form-group">
+                <label for="address-comment">Kommentar zur Bestellung</label>
+                <textarea id="address-comment" placeholder="z.B. Bitte klingeln bei Müller..."></textarea>
+              </div>
+
+              <div class="form-section-title">Adresse</div>
+
+              <div class="form-group">
+                <label for="address-street">Straße</label>
+                <input type="text" id="address-street" required />
+                <div class="form-error-msg hidden">Straße ist erforderlich.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="address-housenumber">Hausnummer</label>
+                <input type="text" id="address-housenumber" required />
+                <div class="form-error-msg hidden">Hausnummer ist erforderlich.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="address-plz">Postleitzahl</label>
+                <input type="text" id="address-plz" readonly />
+              </div>
+
+              <div class="form-group">
+                <label for="address-city">Stadt / Stadtteil</label>
+                <input type="text" id="address-city" required />
+                <div class="form-error-msg hidden">Stadt / Stadtteil ist erforderlich.</div>
+              </div>
+
+              <div class="address-action-buttons">
+                <button type="button" id="btn-back-to-cart" class="btn-address-back">Zurück zum Warenkorb</button>
+                <button type="submit" id="btn-to-payment" class="btn-address-submit">Weiter zur Zahlung</button>
+              </div>
+            </form>
           </div>
         </div>
 
@@ -2130,6 +2191,7 @@
             <span id="cart-total" class="total-price-badge">0,00 EUR</span>
           </div>
         </div>
+
       </div>
     </div>
 
