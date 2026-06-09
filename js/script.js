@@ -15,6 +15,9 @@ const plzChangeLink = document.querySelector(".change-link");
 const orderBtn = document.querySelector(".btn-order");
 const searchSection = document.querySelector(".search-section");
 
+const categoryButtons = document.querySelectorAll(".category-item");
+const categoryGroups = document.querySelectorAll(".menu-category-group");
+
 // Sorgt dafür, dass das PLZ-Modal beim Laden der Seite aktiv aufploppt
 if (plzModal) {
   plzModal.classList.remove("hidden");
@@ -74,4 +77,31 @@ if (plzInputField) {
       });
     });
   }
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // 1. Klick-Effekt: Aktiven Button stylen
+      categoryButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      // 2. Filter-Logik: Text ohne Emojis holen
+      const selectedCategory = button.textContent
+        .replace(
+          /[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDC00-\uDFFF]/g,
+          "",
+        )
+        .trim();
+
+      // Durch alle Gruppen gehen und filtern
+      categoryGroups.forEach((group) => {
+        const groupCategory = group.getAttribute("data-category");
+
+        if (groupCategory === selectedCategory) {
+          group.classList.remove("hidden-group"); // Passende Gruppe zeigen
+        } else {
+          group.classList.add("hidden-group"); // Andere Gruppen verstecken
+        }
+      });
+    });
+  });
 }

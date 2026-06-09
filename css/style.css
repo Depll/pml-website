@@ -418,6 +418,10 @@ body {
   margin-bottom: 50px;
 }
 
+.menu-category-group.hidden-group {
+  display: none !important;
+}
+
 /* --- KATEGORIE BANNER (Das dunkle Band) --- */
 .category-banner {
   width: 100%;
