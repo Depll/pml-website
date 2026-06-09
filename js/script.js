@@ -353,9 +353,9 @@ function updateCartUI() {
       
       <div class="cart-item-footer">
         <div class="quantity-control">
-          <span>Menge:</span>
-          <input type="text" class="qty-input" value="1" readonly />
-        </div>
+  <span>Menge:</span>
+  <input type="number" class="qty-input cart-quantity-change" data-id="${item.id}" value="${item.quantity || 1}" min="1" style="width: 50px; text-align: center;" />
+</div>
         <span class="item-price">${item.totalPrice.toFixed(2).replace(".", ",")} EUR</span>
       </div>
     `;
@@ -383,6 +383,30 @@ function updateCartUI() {
     btn.addEventListener("click", () => {
       const idToRemove = parseInt(btn.getAttribute("data-id"));
       cart = cart.filter((item) => item.id !== idToRemove);
+      updateCartUI();
+    });
+  });
+
+  // Event-Listener für Pfeiltasten-Klicks und manuelle Mengeneingaben
+  document.querySelectorAll(".cart-quantity-change").forEach((input) => {
+    input.addEventListener("input", (event) => {
+      const idToChange = parseInt(input.getAttribute("data-id"));
+      let newQty = parseInt(event.target.value) || 1;
+
+      if (newQty < 1) newQty = 1;
+
+      // Die Menge im globalen cart-Array updaten
+      const targetItem = cart.find((item) => item.id === idToChange);
+      if (targetItem) {
+        // Falls singlePrice noch nicht existiert, alten totalPrice als Basis sichern
+        if (!targetItem.singlePrice) {
+          targetItem.singlePrice = targetItem.totalPrice;
+        }
+        targetItem.quantity = newQty;
+        targetItem.totalPrice = targetItem.singlePrice * newQty;
+      }
+
+      // UI sofort neu rendern, um alle Preise live zu aktualisieren
       updateCartUI();
     });
   });
