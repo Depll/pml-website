@@ -796,6 +796,21 @@ body {
   background-color: #6f1414;
 }
 
+.plz-error-msg {
+  color: #bc4747;
+  font-size: 17px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* Falls noch nicht global definiert, sorgt das für das Verstecken */
+.plz-error-msg.hidden {
+  display: none;
+}
+
 /* ================= SIDEBAR WARENKORB STYLES ================= */
 .cart-overlay {
   position: fixed;
