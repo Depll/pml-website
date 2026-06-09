@@ -1507,102 +1507,245 @@ body {
    ========================================================================== */
 @media (max-width: 768px) {
   
-  /* 1. Die Produkt-Karten untereinander statt nebeneinander */
+  /* 0. BUGFIX: Verhindert das lästige Links-Rechts-Scrollen auf der ganzen Seite */
+  html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 1. HEADER: Volle Platznutzung, bündig an den Rändern */
+  .navbar, header, .header-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; 
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 16px !important; 
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    background-color: #ffffff !important;
+    position: relative !important;
+    z-index: 100;
+  }
+
+  /* Logo-Bereich sicher positionieren */
+  .logo-area, .brand-logo-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    width: auto !important;
+    max-width: 45% !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Schützt die Logo-Grafik vor dem Abschneiden */
+  .logo-area img, .brand-logo-container img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
+
+  /* Falls das Logo Text ist */
+  .logo-main {
+    font-size: 18px !important; 
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    text-align: left !important;
+  }
+  
+  .logo-sub {
+    font-size: 9px !important;
+    text-align: left !important;
+  }
+
+  /* Eigene Anpassung für die Logo-Zeilen (verhindert Abschneiden links) */
+  .logo-top {
+    margin-left: 20px !important;
+    display: block !important;
+  }
+
+  .logo-bottom {
+    margin-left: 20px !important;
+    display: block !important;
+  }
+
+  /* Rechte Seite (Liefergebiet & Warenkorb) flach halten */
+  .header-right-side, .nav-right {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important; 
+    width: auto !important;
+    max-width: 55% !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Liefertext ordentlich formatieren */
+  .delivery-text {
+    font-size: 10px !important;
+    text-align: right !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Warenkorb-Button */
+  .cart-box {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background-color: #f5f5f5 !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-weight: bold !important;
+    font-size: 12px !important;
+  }
+
+  /* 2. MAIN SEITE / HERO SECTION */
+  .hero-section, .main-content { 
+    margin-top: 0 !important;
+    padding: 35px 20px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* Deine Wunsch-Abstände für die Text-Elemente im Hero-Bereich */
+  .hero-title {
+    margin-top: 100px !important;
+  }
+
+  .hero-description {
+    margin-top: 50px !important;
+  }
+
+  /* Features untereinander anordnen */
+  .hero-features, .features-container { 
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: center !important;
+    gap: 12px !important;
+    margin-top: 20px !important;
+  }
+
+  /* Die rote Pill-Anzeige "Jetzt Pizza bestellen..." */
+  .hero-section .badge, 
+  .hero-section span {
+    display: inline-block !important;
+    margin: 0 auto 15px auto !important;
+  }
+
+  /* "Jetzt bestellen" Button zentrieren */
+  .hero-section .btn-main, 
+  .hero-section button {
+    display: block !important;
+    margin: 20px auto 0 auto !important;
+    width: 85% !important;
+    max-width: 280px;
+  }
+
+  /* 3. RABATT-BANNER / PROMO-TEXTS unter der Lieferung */
+  .discount-banner, 
+  .promo-text, 
+  .rabatt-info { 
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+    margin: 8px auto 0 auto !important; 
+    text-align: center;
+    width: auto !important;
+    display: inline-block !important;
+    box-sizing: border-box;
+  }
+
+  .discount-banner img, 
+  .discount-banner svg {
+    max-height: 18px !important; 
+    width: auto !important;
+  }
+
+  /* Schriftgrößen global für mobile */
+  h1 { font-size: 22px !important; }
+  h2, .modal-main-title { font-size: 18px !important; }
+  h3 { font-size: 15px !important; }
+  p, .modal-sub-text { font-size: 13px !important; }
+
+  /* 4. PRODUKT-GRID (Einfach untereinander) */
   .products-grid, 
-  .menu-grid { /* Schau, wie deine Grid-Klasse genau heißt */
+  .menu-grid { 
     grid-template-columns: 1fr !important; 
     gap: 15px;
     padding: 10px;
   }
 
-  /* 2. Die Warenkorb-Sidebar soll den ganzen Bildschirm ausfüllen */
+  /* 5. WARENKORB SIDEBAR (DRAWER) */
   .cart-drawer {
     width: 100% !important;
     max-width: 100% !important;
   }
 
-  /* 3. Abstände in den Formularen etwas kompakter machen */
+  /* 6. FORMULARE */
   .form-group input, 
   .form-group textarea {
-    padding: 12px; /* Leichter zu tippen mit dem Finger */
-    font-size: 16px !important; /* Verhindert, dass iOS automatisch in das Feld hineinzoomt */
+    padding: 12px; 
+    font-size: 16px !important; 
+    max-width: 100% !important;
+    box-sizing: border-box;
   }
 
-  /* 4. Buttons auf volle Breite strecken, damit man sie leicht trifft */
   .btn-address-submit, 
   .btn-modal-save,
   .address-action-buttons {
     width: 100% !important;
-    flex-direction: column;
+    flex-direction: column !important;
     gap: 10px;
   }
   
   .btn-address-back {
     width: 100%;
-    order: 2; /* Schiebt den "Zurück"-Button unter den "Weiter"-Button */
+    order: 2; 
   }
 
-  /* 5. Den gesamten Header extrem kompakt machen */
-  .navbar, 
-  header, 
-  .header-container { /* Passe das an deine genaue Header-Klasse an */
-    padding: 10px 15px !important;
-    min-height: auto !important;
-    height: auto !important;
-    flex-wrap: wrap; /* Falls Elemente umbrechen müssen */
-    gap: 8px;
+  /* 7. POP-UPS (MODALS) ANPASSUNG */
+  .modal-content-card, 
+  .product-modal-card, 
+  .impressum-modal-box {
+    width: 92% !important;      
+    max-width: 95% !important;
+    margin: 10px auto !important;
+    padding: 15px !important;   
+    box-sizing: border-box !important;
+    border-radius: 8px !important;
   }
 
-  /* 6. Logos und Schriftzüge schrumpfen */
-  .logo-main, 
-  .logo-area, 
-  .brand-name { 
-    font-size: 20px !important; /* Deutlich kleiner fürs Handy */
-    line-height: 1 !important;
-  }
-  
-  .logo-sub {
-    font-size: 10px !important;
-    letter-spacing: 1px !important;
+  .checkbox-group {
+    display: flex !important;
+    flex-direction: column !important; 
+    gap: 8px !important;
   }
 
-  /* 7. Die Liefergebiet-Anzeige und andere Texte im Header verkleinern */
-  .delivery-text, 
-  .cart-box, 
-  .nav-item {
-    font-size: 13px !important;
-    padding: 6px 10px !important;
+  .checkbox-label {
+    font-size: 14px !important;
+    padding: 5px 0;
   }
 
-  /* 8. Allgemeines Verkleinern von zu großen Überschriften auf dem Handy */
-  h1 { font-size: 24px !important; }
-  h2, .modal-main-title { font-size: 20px !important; }
-  h3 { font-size: 16px !important; }
-  p, .modal-sub-text { font-size: 14px !important; }
-
-  /* 9. Den Rabatt-Banner / Rabatt-Texte radikal verkleinern */
-  .discount-banner, 
-  .promo-text, 
-  .rabatt-info { /* Tausche das gegen deine genaue Rabatt-Klasse aus */
-    font-size: 12px !important;
-    padding: 6px 10px !important;
-    margin: 5px 0 !important;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
+  .modal-action-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
   }
 
-  /* Falls es sich um ein SVG-Icon oder Bild im Header handelt */
-  .discount-banner img, 
-  .discount-banner svg {
-    max-height: 20px !important; 
-    width: auto !important;
-  }
-
-  /* 10. Radikaler Rundumschlag für alle Header-Inhalte */
-  header *, 
-  .navbar * {
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
+  .btn-modal-abort, 
+  .btn-modal-confirm {
+    width: 100% !important;
+    margin: 0 !important;
   }
 }
