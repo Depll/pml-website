@@ -1501,3 +1501,108 @@ body {
   overflow-y: auto;
   padding: 20px;
 }
+
+/* ==========================================================================
+   MOBILE OPTIMIERUNG (Für Handys und kleine Tablets)
+   ========================================================================== */
+@media (max-width: 768px) {
+  
+  /* 1. Die Produkt-Karten untereinander statt nebeneinander */
+  .products-grid, 
+  .menu-grid { /* Schau, wie deine Grid-Klasse genau heißt */
+    grid-template-columns: 1fr !important; 
+    gap: 15px;
+    padding: 10px;
+  }
+
+  /* 2. Die Warenkorb-Sidebar soll den ganzen Bildschirm ausfüllen */
+  .cart-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 3. Abstände in den Formularen etwas kompakter machen */
+  .form-group input, 
+  .form-group textarea {
+    padding: 12px; /* Leichter zu tippen mit dem Finger */
+    font-size: 16px !important; /* Verhindert, dass iOS automatisch in das Feld hineinzoomt */
+  }
+
+  /* 4. Buttons auf volle Breite strecken, damit man sie leicht trifft */
+  .btn-address-submit, 
+  .btn-modal-save,
+  .address-action-buttons {
+    width: 100% !important;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .btn-address-back {
+    width: 100%;
+    order: 2; /* Schiebt den "Zurück"-Button unter den "Weiter"-Button */
+  }
+
+  /* 5. Den gesamten Header extrem kompakt machen */
+  .navbar, 
+  header, 
+  .header-container { /* Passe das an deine genaue Header-Klasse an */
+    padding: 10px 15px !important;
+    min-height: auto !important;
+    height: auto !important;
+    flex-wrap: wrap; /* Falls Elemente umbrechen müssen */
+    gap: 8px;
+  }
+
+  /* 6. Logos und Schriftzüge schrumpfen */
+  .logo-main, 
+  .logo-area, 
+  .brand-name { 
+    font-size: 20px !important; /* Deutlich kleiner fürs Handy */
+    line-height: 1 !important;
+  }
+  
+  .logo-sub {
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* 7. Die Liefergebiet-Anzeige und andere Texte im Header verkleinern */
+  .delivery-text, 
+  .cart-box, 
+  .nav-item {
+    font-size: 13px !important;
+    padding: 6px 10px !important;
+  }
+
+  /* 8. Allgemeines Verkleinern von zu großen Überschriften auf dem Handy */
+  h1 { font-size: 24px !important; }
+  h2, .modal-main-title { font-size: 20px !important; }
+  h3 { font-size: 16px !important; }
+  p, .modal-sub-text { font-size: 14px !important; }
+
+  /* 9. Den Rabatt-Banner / Rabatt-Texte radikal verkleinern */
+  .discount-banner, 
+  .promo-text, 
+  .rabatt-info { /* Tausche das gegen deine genaue Rabatt-Klasse aus */
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    margin: 5px 0 !important;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Falls es sich um ein SVG-Icon oder Bild im Header handelt */
+  .discount-banner img, 
+  .discount-banner svg {
+    max-height: 20px !important; 
+    width: auto !important;
+  }
+
+  /* 10. Radikaler Rundumschlag für alle Header-Inhalte */
+  header *, 
+  .navbar * {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+  }
+}
