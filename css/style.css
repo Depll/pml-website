@@ -1388,7 +1388,6 @@ body {
   font-style: italic;
 }
 
-
 /* --- SCHRITT-UMSCHALTUNG --- */
 .hidden-step {
   display: none !important;
@@ -1488,7 +1487,7 @@ body {
 }
 
 /* Sorgt dafür, dass die Inhalte innerhalb des Drawers richtig fließen */
-#cart-view-step, 
+#cart-view-step,
 #address-view-step {
   display: flex;
   flex-direction: column;
@@ -1506,22 +1505,24 @@ body {
    MOBILE OPTIMIERUNG (Für Handys und kleine Tablets)
    ========================================================================== */
 @media (max-width: 768px) {
-  
   /* 0. BUGFIX: Verhindert das lästige Links-Rechts-Scrollen auf der ganzen Seite */
-  html, body {
+  html,
+  body {
     max-width: 100% !important;
     overflow-x: hidden !important;
   }
 
   /* 1. HEADER: Volle Platznutzung, bündig an den Rändern */
-  .navbar, header, .header-container {
+  .navbar,
+  header,
+  .header-container {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: space-between !important; 
+    justify-content: space-between !important;
     align-items: center !important;
     width: 100% !important;
     max-width: 100% !important;
-    padding: 12px 16px !important; 
+    padding: 12px 16px !important;
     margin: 0 !important;
     box-sizing: border-box !important;
     background-color: #ffffff !important;
@@ -1530,7 +1531,8 @@ body {
   }
 
   /* Logo-Bereich sicher positionieren */
-  .logo-area, .brand-logo-container {
+  .logo-area,
+  .brand-logo-container {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -1543,7 +1545,8 @@ body {
   }
 
   /* Schützt die Logo-Grafik vor dem Abschneiden */
-  .logo-area img, .brand-logo-container img {
+  .logo-area img,
+  .brand-logo-container img {
     max-width: 100% !important;
     height: auto !important;
     display: block !important;
@@ -1552,12 +1555,12 @@ body {
 
   /* Falls das Logo Text ist */
   .logo-main {
-    font-size: 18px !important; 
+    font-size: 18px !important;
     font-weight: 800 !important;
     line-height: 1.1 !important;
     text-align: left !important;
   }
-  
+
   .logo-sub {
     font-size: 9px !important;
     text-align: left !important;
@@ -1575,11 +1578,12 @@ body {
   }
 
   /* Rechte Seite (Liefergebiet & Warenkorb) flach halten */
-  .header-right-side, .nav-right {
+  .header-right-side,
+  .nav-right {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: flex-end !important; 
+    justify-content: flex-end !important;
     width: auto !important;
     max-width: 55% !important;
     gap: 12px !important;
@@ -1609,7 +1613,8 @@ body {
   }
 
   /* 2. MAIN SEITE / HERO SECTION */
-  .hero-section, .main-content { 
+  .hero-section,
+  .main-content {
     margin-top: 0 !important;
     padding: 35px 20px !important;
     text-align: center !important;
@@ -1628,23 +1633,24 @@ body {
   }
 
   /* Features untereinander anordnen */
-  .hero-features, .features-container { 
+  .hero-features,
+  .features-container {
     display: flex !important;
-    flex-direction: column !important; 
+    flex-direction: column !important;
     align-items: center !important;
     gap: 12px !important;
     margin-top: 20px !important;
   }
 
   /* Die rote Pill-Anzeige "Jetzt Pizza bestellen..." */
-  .hero-section .badge, 
+  .hero-section .badge,
   .hero-section span {
     display: inline-block !important;
     margin: 0 auto 15px auto !important;
   }
 
   /* "Jetzt bestellen" Button zentrieren */
-  .hero-section .btn-main, 
+  .hero-section .btn-main,
   .hero-section button {
     display: block !important;
     margin: 20px auto 0 auto !important;
@@ -1653,34 +1659,44 @@ body {
   }
 
   /* 3. RABATT-BANNER / PROMO-TEXTS unter der Lieferung */
-  .discount-banner, 
-  .promo-text, 
-  .rabatt-info { 
+  .discount-banner,
+  .promo-text,
+  .rabatt-info {
     font-size: 12px !important;
     padding: 6px 12px !important;
-    margin: 8px auto 0 auto !important; 
+    margin: 8px auto 0 auto !important;
     text-align: center;
     width: auto !important;
     display: inline-block !important;
     box-sizing: border-box;
   }
 
-  .discount-banner img, 
+  .discount-banner img,
   .discount-banner svg {
-    max-height: 18px !important; 
+    max-height: 18px !important;
     width: auto !important;
   }
 
   /* Schriftgrößen global für mobile */
-  h1 { font-size: 22px !important; }
-  h2, .modal-main-title { font-size: 18px !important; }
-  h3 { font-size: 15px !important; }
-  p, .modal-sub-text { font-size: 13px !important; }
+  h1 {
+    font-size: 22px !important;
+  }
+  h2,
+  .modal-main-title {
+    font-size: 18px !important;
+  }
+  h3 {
+    font-size: 15px !important;
+  }
+  p,
+  .modal-sub-text {
+    font-size: 13px !important;
+  }
 
   /* 4. PRODUKT-GRID (Einfach untereinander) */
-  .products-grid, 
-  .menu-grid { 
-    grid-template-columns: 1fr !important; 
+  .products-grid,
+  .menu-grid {
+    grid-template-columns: 1fr !important;
     gap: 15px;
     padding: 10px;
   }
@@ -1692,42 +1708,42 @@ body {
   }
 
   /* 6. FORMULARE */
-  .form-group input, 
+  .form-group input,
   .form-group textarea {
-    padding: 12px; 
-    font-size: 16px !important; 
+    padding: 12px;
+    font-size: 16px !important;
     max-width: 100% !important;
     box-sizing: border-box;
   }
 
-  .btn-address-submit, 
+  .btn-address-submit,
   .btn-modal-save,
   .address-action-buttons {
     width: 100% !important;
     flex-direction: column !important;
     gap: 10px;
   }
-  
+
   .btn-address-back {
     width: 100%;
-    order: 2; 
+    order: 2;
   }
 
   /* 7. POP-UPS (MODALS) ANPASSUNG */
-  .modal-content-card, 
-  .product-modal-card, 
+  .modal-content-card,
+  .product-modal-card,
   .impressum-modal-box {
-    width: 92% !important;      
+    width: 92% !important;
     max-width: 95% !important;
     margin: 10px auto !important;
-    padding: 15px !important;   
+    padding: 15px !important;
     box-sizing: border-box !important;
     border-radius: 8px !important;
   }
 
   .checkbox-group {
     display: flex !important;
-    flex-direction: column !important; 
+    flex-direction: column !important;
     gap: 8px !important;
   }
 
@@ -1743,7 +1759,7 @@ body {
     width: 100% !important;
   }
 
-  .btn-modal-abort, 
+  .btn-modal-abort,
   .btn-modal-confirm {
     width: 100% !important;
     margin: 0 !important;

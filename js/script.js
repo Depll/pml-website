@@ -68,11 +68,10 @@ function checkZipcode() {
   if (VALID_POSTCODES.includes(enteredCode)) {
     plzModal.classList.add("hidden");
     if (plzErrorMsg) plzErrorMsg.classList.add("hidden");
-    
+
     // NEU: Schreibt die PLZ direkt beim Start oben in die Navbar
     const navPlzDisplay = document.getElementById("nav-plz");
     if (navPlzDisplay) navPlzDisplay.textContent = enteredCode;
-    
   } else {
     if (plzErrorMsg) plzErrorMsg.classList.remove("hidden");
     plzInputField.value = "";
@@ -95,8 +94,6 @@ if (plzChangeLink) {
     if (plzInputField) plzInputField.value = "";
   });
 }
-
-
 
 // ==========================================================================
 // 2. SMOOTH SCROLLING & KATEGORIEN-FILTER
@@ -483,7 +480,7 @@ if (btnToCheckoutLocal) {
     if (cart.length > 0) {
       cartViewStep.classList.add("hidden-step");
       addressViewStep.classList.remove("hidden-step");
-      
+
       // Postleitzahl automatisch aus dem PLZ-Input des ersten Modals übernehmen
       const savedPlz = document.getElementById("plz-input")?.value.trim() || "";
       if (addressPlzField) {
@@ -506,7 +503,7 @@ if (btnBackToCart) {
 document.querySelectorAll(".close-cart-btn").forEach((closeBtn) => {
   closeBtn.addEventListener("click", () => {
     if (cartSidebar) cartSidebar.classList.add("hidden");
-    resetSidebarSteps(); 
+    resetSidebarSteps();
   });
 });
 
@@ -526,9 +523,9 @@ function resetSidebarSteps() {
 
   if (cartViewStep && addressViewStep) {
     // Entferne die harten Styles wieder, die das Layout zerschossen haben
-    addressViewStep.style.display = ""; 
-    cartViewStep.style.display = "";    
-    
+    addressViewStep.style.display = "";
+    cartViewStep.style.display = "";
+
     // Jetzt sauber nur noch die Klassen umschalten
     addressViewStep.classList.add("hidden-step");
     cartViewStep.classList.remove("hidden-step");
@@ -543,7 +540,7 @@ if (deliveryForm) {
 
     // Alle Pflichtfelder im Formular prüfen
     const requiredInputs = deliveryForm.querySelectorAll("input[required]");
-    
+
     requiredInputs.forEach((input) => {
       const formGroup = input.closest(".form-group");
       const errorMsg = formGroup.querySelector(".form-error-msg");
@@ -566,14 +563,16 @@ if (deliveryForm) {
         phone: document.getElementById("address-phone").value.trim(),
         email: document.getElementById("address-email").value.trim(),
         street: document.getElementById("address-street").value.trim(),
-        housenumber: document.getElementById("address-housenumber").value.trim(),
+        housenumber: document
+          .getElementById("address-housenumber")
+          .value.trim(),
         plz: addressPlzField.value,
         city: document.getElementById("address-city").value.trim(),
-        comment: document.getElementById("address-comment").value.trim()
+        comment: document.getElementById("address-comment").value.trim(),
       };
-      
+
       console.log("Valide Adressdaten:", customerData);
-      
+
       // HIER KANNST DU JETZT DEINE STRIPE- / PAYMENT-FUNKTION AUFRUFEN
       alert("Weiterleitung zur Zahlung...");
     }
@@ -585,7 +584,7 @@ if (addressPlzField) {
   addressPlzField.addEventListener("input", () => {
     const navPlzDisplay = document.getElementById("nav-plz");
     const currentCode = addressPlzField.value.trim();
-    
+
     // Aktualisiert die Navbar live, sobald eine gültige 5-stellige PLZ getippt wurde
     if (navPlzDisplay && currentCode.length === 5 && !isNaN(currentCode)) {
       navPlzDisplay.textContent = currentCode;

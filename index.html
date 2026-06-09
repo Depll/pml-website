@@ -2078,11 +2078,12 @@
 
     <div id="cart-sidebar" class="cart-overlay hidden">
       <div class="cart-drawer">
-        
         <div id="cart-view-step">
           <div class="cart-header">
             <h2>Dein Warenkorb</h2>
-            <span class="close-cart-btn" aria-label="Warenkorb schließen">&times;</span>
+            <span class="close-cart-btn" aria-label="Warenkorb schließen"
+              >&times;</span
+            >
           </div>
 
           <div class="cart-body">
@@ -2095,7 +2096,11 @@
             <div id="cart-items-container" class="cart-items-wrapper"></div>
 
             <div class="cart-action-area">
-              <button id="btn-to-checkout" class="btn-address-submit disabled" disabled>
+              <button
+                id="btn-to-checkout"
+                class="btn-address-submit disabled"
+                disabled
+              >
                 Weiter zur Adresseingabe
               </button>
             </div>
@@ -2105,24 +2110,29 @@
         <div id="address-view-step" class="hidden-step">
           <div class="cart-header">
             <h2>Lieferadresse</h2>
-            <span class="close-cart-btn" aria-label="Warenkorb schließen">&times;</span>
+            <span class="close-cart-btn" aria-label="Warenkorb schließen"
+              >&times;</span
+            >
           </div>
 
           <div class="cart-body address-form-body">
             <form id="delivery-form" novalidate>
-              
               <div class="form-section-title">Kontaktinformationen</div>
-              
+
               <div class="form-group">
                 <label for="address-firstname">Vorname</label>
                 <input type="text" id="address-firstname" required />
-                <div class="form-error-msg hidden">Vorname ist erforderlich.</div>
+                <div class="form-error-msg hidden">
+                  Vorname ist erforderlich.
+                </div>
               </div>
 
               <div class="form-group">
                 <label for="address-lastname">Nachname</label>
                 <input type="text" id="address-lastname" required />
-                <div class="form-error-msg hidden">Nachname ist erforderlich.</div>
+                <div class="form-error-msg hidden">
+                  Nachname ist erforderlich.
+                </div>
               </div>
 
               <div class="form-group">
@@ -2137,7 +2147,10 @@
 
               <div class="form-group">
                 <label for="address-comment">Kommentar zur Bestellung</label>
-                <textarea id="address-comment" placeholder="z.B. Bitte klingeln bei Müller..."></textarea>
+                <textarea
+                  id="address-comment"
+                  placeholder="z.B. Bitte klingeln bei Müller..."
+                ></textarea>
               </div>
 
               <div class="form-section-title">Adresse</div>
@@ -2145,13 +2158,17 @@
               <div class="form-group">
                 <label for="address-street">Straße</label>
                 <input type="text" id="address-street" required />
-                <div class="form-error-msg hidden">Straße ist erforderlich.</div>
+                <div class="form-error-msg hidden">
+                  Straße ist erforderlich.
+                </div>
               </div>
 
               <div class="form-group">
                 <label for="address-housenumber">Hausnummer</label>
                 <input type="text" id="address-housenumber" required />
-                <div class="form-error-msg hidden">Hausnummer ist erforderlich.</div>
+                <div class="form-error-msg hidden">
+                  Hausnummer ist erforderlich.
+                </div>
               </div>
 
               <div class="form-group">
@@ -2162,12 +2179,26 @@
               <div class="form-group">
                 <label for="address-city">Stadt / Stadtteil</label>
                 <input type="text" id="address-city" required />
-                <div class="form-error-msg hidden">Stadt / Stadtteil ist erforderlich.</div>
+                <div class="form-error-msg hidden">
+                  Stadt / Stadtteil ist erforderlich.
+                </div>
               </div>
 
               <div class="address-action-buttons">
-                <button type="button" id="btn-back-to-cart" class="btn-address-back">Zurück zum Warenkorb</button>
-                <button type="submit" id="btn-to-payment" class="btn-address-submit">Weiter zur Zahlung</button>
+                <button
+                  type="button"
+                  id="btn-back-to-cart"
+                  class="btn-address-back"
+                >
+                  Zurück zum Warenkorb
+                </button>
+                <button
+                  type="submit"
+                  id="btn-to-payment"
+                  class="btn-address-submit"
+                >
+                  Weiter zur Zahlung
+                </button>
               </div>
             </form>
           </div>
@@ -2191,7 +2222,6 @@
             <span id="cart-total" class="total-price-badge">0,00 EUR</span>
           </div>
         </div>
-
       </div>
     </div>
 
