@@ -269,4 +269,124 @@ body {
   margin-top: 2px;
 }
 
+/* ==========================================
+   4. SEARCH & CATEGORIES SECTION (1:1 FIGMA)
+   ========================================== */
+.search-section {
+  width: 100%;
+  height: 280px; /* Exakte Höhe aus Figma (1920x280) */
+  background-color: #1a222d; /* Das dunkle Anthrazit/Blau aus dem Screenshot */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.search-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+/* --- SUCHFELD (899px x 60px) --- */
+.search-box-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 899px; /* Exakte Breite aus Figma */
+  height: 60px; /* Exakte Höhe aus Figma */
+  margin-bottom: 25px;
+}
+
+.search-field-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
+  font-size: 22px;
+}
+
+.search-input {
+  width: 100%;
+  height: 100%;
+  background-color: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 30px;
+  padding: 0 20px 0 55px; /* Platz für das Lupe-Icon links */
+  color: #ffffff;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #a0aec0;
+}
+
+/* --- SCROLLBARE KATEGORIEN --- */
+.categories-scroll-wrapper {
+  width: 100%;
+  max-width: 899px; /* Bleift bündig mit dem Suchfeld */
+  overflow-x: auto; /* Aktiviert das horizontale Scrollen */
+  padding-bottom: 12px; /* Platz für die Scrollbar */
+}
+
+.categories-list {
+  display: flex;
+  gap: 12px;
+  white-space: nowrap; /* Verhindert Zeilenumbruch der Buttons */
+}
+
+.category-item {
+  background-color: #2d3748;
+  border: 2px solid transparent; /* Platzhalter für den aktiven weißen Rahmen */
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 12px; /* Perfekter Radius aus dem Figma-Ausschnitt */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.category-item:hover {
+  background-color: #3a475c;
+}
+
+/* --- DER AKTIVE ZUSTAND (Weißer Rahmen aus Figma) --- */
+.category-item.active {
+  border-color: #ffffff; /* Der dicke weiße Außenstrich */
+  background-color: #2d3748; /* Bleibt dunkel gepresst */
+}
+
+/* --- SCROLLBAR STYLING --- */
+.categories-scroll-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.categories-scroll-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.categories-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e0; /* Das helle Grau für den Balken */
+  border-radius: 10px;
+}
+
+.categories-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
