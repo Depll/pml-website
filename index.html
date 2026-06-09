@@ -2044,76 +2044,156 @@
     </footer>
 
     <div id="plz-modal" class="modal-overlay hidden">
-    <div class="modal-content-card">
-      
-      <div class="modal-logo-area">
-        <span class="logo-main">Milano</span>
-        <span class="logo-sub">PIZZERIA</span>
+      <div class="modal-content-card">
+        <div class="modal-logo-area">
+          <span class="logo-main">Milano</span>
+          <span class="logo-sub">PIZZERIA</span>
+        </div>
+
+        <h2 class="modal-main-title">Bitte geben Sie Ihre Postleitzahl ein</h2>
+        <p class="modal-sub-text">
+          Um Ihnen den bestmöglichen Service bieten zu können und zu prüfen, ob
+          wir an Ihre Adresse liefern können, benötigen wir Ihre Postleitzahl.
+        </p>
+
+        <div class="modal-input-container">
+          <input
+            type="text"
+            id="plz-input"
+            maxlength="5"
+            placeholder="Postleitzahl eingeben"
+            autocomplete="off"
+          />
+        </div>
+
+        <button id="btn-check-plz" class="btn-modal-save">Speichern</button>
       </div>
-
-      <h2 class="modal-main-title">Bitte geben Sie Ihre Postleitzahl ein</h2>
-      <p class="modal-sub-text">
-        Um Ihnen den bestmöglichen Service bieten zu können und zu prüfen, ob wir an Ihre Adresse liefern können, benötigen wir Ihre Postleitzahl.
-      </p>
-
-      <div class="modal-input-container">
-        <input type="text" id="plz-input" maxlength="5" placeholder="Postleitzahl eingeben" autocomplete="off">
-      </div>
-
-      <button id="btn-check-plz" class="btn-modal-save">Speichern</button>
-
     </div>
-  </div>
 
-  <div id="cart-sidebar" class="cart-overlay hidden">
-    <div class="cart-drawer">
-      
-      <div class="cart-header">
-        <h2>Dein Warenkorb</h2>
-        <span class="close-cart-btn">&times;</span>
-      </div>
+    <div id="cart-sidebar" class="cart-overlay hidden">
+      <div class="cart-drawer">
+        <div class="cart-header">
+          <h2>Dein Warenkorb</h2>
+          <span class="close-cart-btn">&times;</span>
+        </div>
 
-      <div class="cart-body">
-        
-        <div id="cart-empty-view" class="cart-empty-section">
-          <div class="empty-msg-container">
-            <p>Dein Warenkorb ist leer.</p>
+        <div class="cart-body">
+          <div id="cart-empty-view" class="cart-empty-section">
+            <div class="empty-msg-container">
+              <p>Dein Warenkorb ist leer.</p>
+            </div>
+
+            <div class="cart-action-area">
+              <button
+                id="btn-to-checkout"
+                class="btn-address-submit disabled"
+                disabled
+              >
+                Weiter zur Adresseingabe
+              </button>
+            </div>
           </div>
-          
-          <div class="cart-action-area">
-            <button id="btn-to-checkout" class="btn-address-submit disabled" disabled>
-              Weiter zur Adresseingabe
+
+          <div id="cart-items-container" class="cart-items-wrapper"></div>
+        </div>
+
+        <div class="cart-footer">
+          <div id="min-order-alert" class="min-order-warning">
+            Mindestbestellwert ohne Liefergebühr nicht erreicht (20,00 EUR)
+          </div>
+
+          <div class="price-summary-row">
+            <span>Zwischensumme</span>
+            <span id="cart-subtotal">0,00 EUR</span>
+          </div>
+          <div class="price-summary-row discount-row">
+            <span>Rabatt (10%)</span>
+            <span id="cart-discount">0,00 EUR</span>
+          </div>
+          <div class="price-summary-row total-row">
+            <span>Gesamtsumme</span>
+            <span id="cart-total" class="total-price-badge">0,00 EUR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="product-modal" class="modal-overlay hidden">
+      <div class="product-modal-card">
+        <span class="close-product-modal">&times;</span>
+
+        <div class="product-modal-header">
+          <h2 id="modal-product-title">Gyros Pita</h2>
+          <p id="modal-product-description">
+            Gyros, Salat und Zaziki in frischem Brot
+          </p>
+        </div>
+
+        <div class="product-modal-body">
+          <div class="options-section">
+            <h3>
+              Extra Zutaten
+              <span class="price-note">( je 1,50 EUR Aufpreis )</span>
+            </h3>
+            <div id="extra-ingredients-container" class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="extra" value="gyros" /> Gyros
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="extra" value="knoblauch" />
+                Knoblauch
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="extra" value="paprika" /> Paprika
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="extra" value="scharf" /> Scharf
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="extra" value="zwiebeln" /> Zwiebeln
+              </label>
+            </div>
+          </div>
+
+          <div class="options-section">
+            <h3>Zutaten entfernen</h3>
+            <div id="remove-ingredients-container" class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="remove" value="gyros" /> Gyros
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="remove" value="salat" /> Salat
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="remove" value="zaziki" /> Zaziki
+              </label>
+            </div>
+          </div>
+
+          <div class="options-section">
+            <h3>Anmerkungen:</h3>
+            <textarea
+              id="modal-product-notes"
+              placeholder="Geben Sie Sonderwünsche an. Ggf. fallen Extra-Kosten an."
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="product-modal-footer">
+          <div class="modal-price-display">
+            Preis: <span id="modal-current-price">7,00 EUR</span>
+          </div>
+          <div class="modal-action-buttons">
+            <button id="btn-close-product" class="btn-modal-abort">
+              Abbrechen
+            </button>
+            <button id="btn-add-to-cart" class="btn-modal-confirm">
+              In den Warenkorb
             </button>
           </div>
         </div>
-
-        <div id="cart-items-container" class="cart-items-wrapper"></div>
-
       </div>
-
-      <div class="cart-footer">
-        <div id="min-order-alert" class="min-order-warning">
-          Mindestbestellwert ohne Liefergebühr nicht erreicht (20,00 EUR)
-        </div>
-
-        <div class="price-summary-row">
-          <span>Zwischensumme</span>
-          <span id="cart-subtotal">0,00 EUR</span>
-        </div>
-        <div class="price-summary-row discount-row">
-          <span>Rabatt (10%)</span>
-          <span id="cart-discount">0,00 EUR</span>
-        </div>
-        <div class="price-summary-row total-row">
-          <span>Gesamtsumme</span>
-          <span id="cart-total" class="total-price-badge">0,00 EUR</span>
-        </div>
-      </div>
-
     </div>
-  </div>
-
-  
 
     <script src="js/script.js"></script>
   </body>
