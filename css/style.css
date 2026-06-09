@@ -680,7 +680,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Transparente Abdunkelung des Hintergrunds */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Transparente Abdunkelung des Hintergrunds */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -701,7 +706,7 @@ body {
   border-radius: 16px; /* Schön abgerundete Ecken */
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   box-sizing: border-box;
 }
 
@@ -716,7 +721,7 @@ body {
 .modal-logo-area .logo-main {
   font-size: 54px;
   font-weight: 900;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   color: #222b31;
   line-height: 1;
 }
@@ -789,4 +794,175 @@ body {
 
 .btn-modal-save:hover {
   background-color: #6f1414;
+}
+
+/* ================= SIDEBAR WARENKORB STYLES ================= */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 25000;
+}
+
+.cart-overlay.hidden {
+  display: none !important;
+}
+
+.cart-drawer {
+  background-color: #f4f6f8;
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+.cart-header {
+  background-color: #222b31;
+  color: #ffffff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close-cart-btn {
+  font-size: 28px;
+  cursor: pointer; /* Macht den Mauszeiger zum Zeigefinger */
+  transition: opacity 0.2s;
+}
+
+.close-cart-btn:hover {
+  opacity: 0.7; /* Wird beim Drüberfahren leicht heller */
+}
+
+/* BODY UND LEER-ZUSTAND */
+.cart-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-empty-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  padding: 40px 0 10px 0;
+  box-sizing: border-box;
+}
+
+.empty-msg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.empty-msg-container p {
+  color: #718096;
+  font-size: 18px;
+  margin: 0;
+}
+
+/* DYNAMISCHER CONTAINER FÜR JS ITEMS */
+.cart-items-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* BUTTON BEREICH */
+.cart-action-area {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* 1. Der normale, aktive Button (wenn Items da sind) */
+.btn-address-submit {
+  background-color: #bc4747;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-address-submit:hover {
+  background-color: #a53b3b;
+}
+
+/* 2. Der matte, deaktivierte Button (wenn leer) */
+.btn-address-submit.disabled,
+.btn-address-submit:disabled {
+  background-color: #c58585;
+  color: #ffffff;
+  font-weight: normal;
+  cursor: not-allowed;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* FOOTER UND PREISE */
+.cart-footer {
+  background-color: #222b31;
+  padding: 20px;
+  color: #ffffff;
+}
+
+.min-order-warning {
+  background-color: #fff5f5;
+  color: #bc4747;
+  border: 1px solid #fed7d7;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.price-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.discount-row {
+  color: #2f9e67;
+}
+
+.total-row {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #3d4a56;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.total-price-badge {
+  font-size: 20px;
+  text-decoration: underline;
 }

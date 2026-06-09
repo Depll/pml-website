@@ -2065,6 +2065,56 @@
     </div>
   </div>
 
+  <div id="cart-sidebar" class="cart-overlay hidden">
+    <div class="cart-drawer">
+      
+      <div class="cart-header">
+        <h2>Dein Warenkorb</h2>
+        <span class="close-cart-btn">&times;</span>
+      </div>
+
+      <div class="cart-body">
+        
+        <div id="cart-empty-view" class="cart-empty-section">
+          <div class="empty-msg-container">
+            <p>Dein Warenkorb ist leer.</p>
+          </div>
+          
+          <div class="cart-action-area">
+            <button id="btn-to-checkout" class="btn-address-submit disabled" disabled>
+              Weiter zur Adresseingabe
+            </button>
+          </div>
+        </div>
+
+        <div id="cart-items-container" class="cart-items-wrapper"></div>
+
+      </div>
+
+      <div class="cart-footer">
+        <div id="min-order-alert" class="min-order-warning">
+          Mindestbestellwert ohne Liefergebühr nicht erreicht (20,00 EUR)
+        </div>
+
+        <div class="price-summary-row">
+          <span>Zwischensumme</span>
+          <span id="cart-subtotal">0,00 EUR</span>
+        </div>
+        <div class="price-summary-row discount-row">
+          <span>Rabatt (10%)</span>
+          <span id="cart-discount">0,00 EUR</span>
+        </div>
+        <div class="price-summary-row total-row">
+          <span>Gesamtsumme</span>
+          <span id="cart-total" class="total-price-badge">0,00 EUR</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+
     <script src="js/script.js"></script>
   </body>
 </html>
