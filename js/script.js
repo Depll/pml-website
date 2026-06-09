@@ -12,6 +12,9 @@ const plzInputField = document.getElementById("plz-input");
 const plzErrorMsg = document.getElementById("plz-error");
 const plzChangeLink = document.querySelector(".change-link");
 
+const orderBtn = document.querySelector(".btn-order");
+const searchSection = document.querySelector(".search-section");
+
 // Sorgt dafür, dass das PLZ-Modal beim Laden der Seite aktiv aufploppt
 if (plzModal) {
   plzModal.classList.remove("hidden");
@@ -57,6 +60,18 @@ if (plzInputField) {
       if (plzInputField) {
         plzInputField.value = ""; // Eingabefeld leeren für die neue PLZ
       }
+    });
+  }
+
+  if (orderBtn && searchSection) {
+    orderBtn.addEventListener("click", (event) => {
+      event.preventDefault(); // Verhindert den href="#" Sprung
+
+      // Scrollt sanft zur Klasse .search-section
+      searchSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   }
 }
