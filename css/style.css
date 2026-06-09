@@ -390,3 +390,121 @@ body {
 .categories-scroll-wrapper::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
 }
+
+/* ==========================================
+   5. SPEISEKARTE SECTION (1:1 FIGMA RASTER)
+   ========================================== */
+.menu-section {
+  width: 100%;
+  background-color: #f4f5f7; /* Das ganz helle Grau aus dem Hintergrund der Speisekarte */
+  padding: 60px 0;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 1200px; /* Bündig mit Navbar und Hero */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.menu-main-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a222d;
+  margin-bottom: 30px;
+}
+
+.menu-category-group {
+  margin-bottom: 50px;
+}
+
+/* --- KATEGORIE BANNER (Das dunkle Band) --- */
+.category-banner {
+  width: 100%;
+  background-color: #1a222d; /* Gleiches Dunkelblau/Anthrazit wie die Suche */
+  color: #ffffff;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+/* --- PRODUCTS GRID (3 Spalten nebeneinander) --- */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Erzwingt genau 3 Spalten */
+  gap: 20px; /* Abstand zwischen den Blöcken */
+}
+
+/* --- SINGLE PRODUCT CARD (Exakt 394.33px x 185px aus Figma) --- */
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  height: 185px; /* Exakte feste Höhe aus Figma */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Drückt Info nach oben, Preis/Button nach unten */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.product-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 6px;
+}
+
+.product-description {
+  font-size: 12.5px;
+  color: #718096;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* --- CARD BOTTOM ROW --- */
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #edf2f7; /* Die feine Trennlinie über dem Preis */
+  padding-top: 12px;
+}
+
+.product-price {
+  font-size: 15px;
+  font-weight: 800;
+  color: #a81c1c; /* Das Milano-Rot für die Preise */
+}
+
+.btn-add-cart {
+  background: none;
+  border: none;
+  color: #a81c1c;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.btn-add-cart span {
+  font-size: 18px; /* Icon-Größe */
+}
+
+.btn-add-cart:hover {
+  color: #871414;
+}
