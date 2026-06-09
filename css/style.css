@@ -508,3 +508,167 @@ body {
 .btn-add-cart:hover {
   color: #871414;
 }
+
+/* ================= PIZZERIA MILANO FOOTER ================= */
+.milano-footer {
+  background-color: #222b31; /* Das originale dunkle Anthrazit */
+  color: #ffffff;
+  padding: 70px 20px 40px 20px;
+  font-family: "Arial", sans-serif;
+  font-size: 16px; /* Allgemein größere Schriftgröße */
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* OBERER BEREICH: LOGO & TEXT */
+.footer-top-brand {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+/* Logo-Badge deutlich größer und auffälliger */
+.milano-logo-badge {
+  background-color: #ffffff;
+  color: #222b31;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 50px; /* Mehr Padding für ein größeres Badge */
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.milano-logo-badge .logo-main {
+  font-size: 46px; /* Viel größeres Logo */
+  font-weight: 900; /* Extra fett */
+  font-family: "Georgia", serif;
+  line-height: 1;
+}
+
+.milano-logo-badge .logo-sub {
+  font-size: 14px; /* Größerer Untertext */
+  font-weight: 900; /* Extra fett */
+  letter-spacing: 5px;
+  color: #a61c1c; /* Dunkelrot */
+  margin-top: 6px;
+}
+
+/* Einleitungstext unter dem Logo komplett in Rot und dicker */
+.footer-intro {
+  max-width: 750px;
+  margin: 0 auto;
+  color: #aea5a4; /* Textfarbe auf Rot geändert */
+  font-weight: bold; /* Text fetter gemacht */
+  font-size: 18px; /* Größere Schrift für die Beschreibung */
+  line-height: 1.6;
+}
+
+/* RASTER FÜR DIE SPALTEN */
+.footer-columns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 35px;
+  margin-bottom: 50px;
+  align-items: start;
+}
+
+.footer-col h4 {
+  color: #d33722; /* Das Figma-Rot für die Überschriften */
+  font-size: 18px; /* Größere Überschriften */
+  font-weight: bold;
+  margin-bottom: 22px;
+  text-transform: none;
+}
+
+/* SPALTE 1: KONTAKT */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+.contact-icon {
+  font-size: 18px;
+  margin-top: 2px;
+}
+
+/* SPALTE 2: ÖFFNUNGSZEITEN */
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table td {
+  padding: 8px 0;
+  vertical-align: top;
+  color: #ffffff;
+}
+
+.hours-table td:last-child {
+  text-align: right;
+  color: #ffffff;
+  padding-left: 15px;
+}
+
+/* SPALTE 3: FACEBOOK */
+.fb-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #2b363f;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 6px;
+  border: 1px solid #3d4a56;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.fb-button:hover {
+  background-color: #384652;
+}
+
+/* SPALTE 4: LINKS */
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links-list a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.links-list a:hover {
+  text-decoration: underline;
+}
+
+/* TRENNLINIE & COPYRIGHT */
+.footer-divider {
+  border: 0;
+  border-top: 1px solid #2f3b45;
+  margin-bottom: 30px;
+}
+
+.footer-copyright {
+  text-align: center;
+  color: #72818d;
+  font-size: 14px;
+  margin: 0;
+}
