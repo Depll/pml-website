@@ -94,18 +94,73 @@ if (plzChangeLink) {
 // ==========================================================================
 // 2. SMOOTH SCROLLING & KATEGORIEN-FILTER
 // ==========================================================================
-if (orderBtn && searchSection) {
+// ==========================================================================
+// 1. SMOOTH SCROLLING (Bestell-Button)
+// ==========================================================================
+if (
+  typeof orderBtn !== "undefined" &&
+  typeof searchSection !== "undefined" &&
+  orderBtn &&
+  searchSection
+) {
   orderBtn.addEventListener("click", (event) => {
     event.preventDefault();
     searchSection.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
 
-categoryButtons.forEach((button) => {
+// ==========================================================================
+// 2. LIVE-SUCHE FÜR GERICHTE (Sucht im Text der Gerichte)
+// ==========================================================================
+const searchInput = document.getElementById("search-input");
+
+if (searchInput) {
+  searchInput.addEventListener("input", (event) => {
+    const searchText = event.target.value.toLowerCase().trim();
+    const localMenuGroups = document.querySelectorAll(".menu-category-group");
+
+    localMenuGroups.forEach((group) => {
+      const cardsInGroup = group.querySelectorAll(".product-card");
+      let hasVisibleProducts = false;
+
+      cardsInGroup.forEach((card) => {
+        const productTitleEl = card.querySelector(".product-title");
+
+        if (productTitleEl) {
+          const productTitle = productTitleEl.textContent.toLowerCase();
+
+          // Wenn der Text übereinstimmt, zeigen, sonst verstecken
+          if (productTitle.includes(searchText)) {
+            card.style.display = "";
+            hasVisibleProducts = true;
+          } else {
+            card.style.display = "none";
+          }
+        }
+      });
+
+      // Leere Kategorien ausblenden, ansonsten einblenden
+      if (hasVisibleProducts || searchText === "") {
+        group.classList.remove("hidden-group");
+      } else {
+        group.classList.add("hidden-group");
+      }
+    });
+  });
+}
+
+// ==========================================================================
+// 3. KATEGORIE-BUTTONS (NUR NOCH DIESE EINE LOGIK FÜR KLICKS!)
+// ==========================================================================
+document.querySelectorAll(".category-item").forEach((button) => {
   button.addEventListener("click", () => {
-    categoryButtons.forEach((btn) => btn.classList.remove("active"));
+    // 1. Klasse "active" umschalten
+    document
+      .querySelectorAll(".category-item")
+      .forEach((btn) => btn.classList.remove("active"));
     button.classList.add("active");
 
+    // 2. Button-Text für den data-category Abgleich säubern (Emojis raus)
     const selectedCategory = button.textContent
       .replace(
         /[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDC00-\uDFFF]/g,
@@ -113,9 +168,24 @@ categoryButtons.forEach((button) => {
       )
       .trim();
 
-    categoryGroups.forEach((group) => {
+    // 3. Suchfeld leeren und alle Einzelprodukte wieder einblenden (Reset der Suche)
+    if (searchInput) {
+      searchInput.value = "";
+    }
+    document
+      .querySelectorAll(".product-card")
+      .forEach((card) => (card.style.display = ""));
+
+    // 4. Kategorie-Gruppen über das HTML-Attribut "data-category" filtern
+    const localMenuGroups = document.querySelectorAll(".menu-category-group");
+    localMenuGroups.forEach((group) => {
       const groupCategory = group.getAttribute("data-category");
-      if (groupCategory === selectedCategory) {
+
+      // Wenn "alle" geklickt wurde oder die Kategorie exakt übereinstimmt -> zeigen, sonst verstecken
+      if (
+        selectedCategory.toLowerCase() === "alle" ||
+        groupCategory === selectedCategory
+      ) {
         group.classList.remove("hidden-group");
       } else {
         group.classList.add("hidden-group");
@@ -338,6 +408,33 @@ if (cartSidebar) {
   cartSidebar.addEventListener("click", (event) => {
     if (event.target === cartSidebar) {
       cartSidebar.classList.add("hidden");
+    }
+  });
+}
+
+// ==========================================================================
+// 6. IMPRESSUM POP-UP (MODAL) STEUERUNG
+// ==========================================================================
+const linkImpressum = document.getElementById("link-impressum");
+const impressumModal = document.getElementById("impressum-modal");
+
+if (linkImpressum && impressumModal) {
+  // Pop-up öffnen bei Klick auf den Link im Footer
+  linkImpressum.addEventListener("click", (event) => {
+    event.preventDefault();
+    impressumModal.classList.remove("hidden");
+  });
+}
+
+// Schließen-Logik (Kreuz und Hintergrund-Klick)
+if (impressumModal) {
+  impressumModal.addEventListener("click", (event) => {
+    // Falls auf das X geklickt wird ODER direkt auf den dunklen Hintergrund
+    if (
+      event.target.classList.contains("close-impressum-btn") ||
+      event.target === impressumModal
+    ) {
+      impressumModal.classList.add("hidden");
     }
   });
 }

@@ -92,6 +92,7 @@
           >
           <input
             type="text"
+            id="search-input"
             class="search-input"
             placeholder="Durchsuche unsere Karte..."
           />
@@ -2019,7 +2020,10 @@
 
           <div class="footer-col">
             <h4>Folgen Sie uns</h4>
-            <a href="#" class="fb-button">
+            <a
+              href="https://www.facebook.com/PizzaMilanoLeverkusen/"
+              class="fb-button"
+            >
               <span class="fb-icon">🌐</span> Facebook
             </a>
           </div>
@@ -2027,7 +2031,7 @@
           <div class="footer-col">
             <h4>Schnelllinks</h4>
             <ul class="links-list">
-              <li><a href="#">Impressum & Datenschutz</a></li>
+              <li><a href="#" id="link-impressum">Impressum & Datenschutz</a></li>
             </ul>
           </div>
         </div>
@@ -2199,6 +2203,184 @@
             <button id="btn-add-to-cart" class="btn-modal-confirm">
               In den Warenkorb
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="impressum-modal" class="impressum-overlay hidden">
+      <div class="impressum-modal-box">
+        <div class="impressum-modal-header">
+          <h2>Impressum</h2>
+          <span class="close-impressum-btn">&times;</span>
+        </div>
+
+        <div class="impressum-modal-body">
+          <div class="impressum-block">
+            <h3>Name und Anschrift</h3>
+            <p>Pizza Milano</p>
+            <p>Ginsterweg 2</p>
+            <p>51375 Leverkusen</p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Inhaber</h3>
+            <p>Rajwinder Kaur Pawar</p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Kontakt</h3>
+            <p>Tel.: 0214 / 70790010</p>
+            <p>Fax: 0214 / 70790012</p>
+            <p>
+              E-Mail:
+              <a
+                href="mailto:info@pizza-milano-leverkusen.de"
+                class="impressum-link"
+                >info(at)pizza-milano-leverkusen.de</a
+              >
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Zuständige Aufsichtsbehörde</h3>
+            <p>Stadt Leverkusen</p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Online-Streitbeilegung</h3>
+            <p>
+              Plattform der EU-Kommission zur Online-Streitbeilegung:
+              <a
+                href="https://webgate.ec.europa.eu/odr/"
+                target="_blank"
+                class="impressum-link"
+                >https://webgate.ec.europa.eu/odr/</a
+              >
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Verbraucherstreitbeilegung</h3>
+            <p>
+              Wir nehmen nicht an einem Streitbeilegungsverfahren vor einer
+              Verbraucherschlichtungsstelle teil.
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Haftung für Inhalte</h3>
+            <p class="impressum-text">
+              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene
+              Inhalte verantwortlich. Eine generelle Kontrolle fremder Inhalte
+              findet nicht statt; bei Kenntnis rechtswidriger Inhalte entfernen
+              wir diese unverzüglich. Nach §§ 8 bis 10 DDG sind wir jedoch nicht
+              verpflichtet, übermittelte oder gespeicherte fremde Informationen
+              zu überwachen.
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Datenschutz</h3>
+            <p class="impressum-text">
+              Wir verarbeiten personenbezogene Daten ausschließlich im Rahmen
+              der gesetzlichen Bestimmungen der Datenschutz-Grundverordnung
+              (DSGVO) und des Bundesdatenschutzgesetzes (BDSG). Personenbezogene
+              Daten (z.B. Name, Adresse, E-Mail, Telefonnummer,
+              Zahlungsinformationen) werden im Rahmen der Bestellabwicklung
+              erhoben, gespeichert und verarbeitet.
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Drittanbieter-Dienste</h3>
+            <p class="impressum-text">
+              Zur Abwicklung von Zahlungen und zur Analyse der Website-Nutzung
+              verwenden wir folgende datenschutzkonforme Drittanbieter:
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Stripe (Zahlungsdienstleister)</h3>
+            <p class="impressum-text">
+              Zur Durchführung und Sicherheit von Online-Zahlungen nutzen wir
+              den Zahlungsdienstleister Stripe. Dabei werden Cookies gesetzt,
+              die für die Betrugsprävention sowie zur Sitzungsverwaltung
+              erforderlich sind. Diese Cookies gelten als technisch notwendig
+              und erfordern daher keine gesonderte Einwilligung. Stripe kann im
+              Rahmen der Zahlungsabwicklung personenbezogene Daten (z.B.
+              Zahlungsinformationen) erhalten. Die Verarbeitung erfolgt gemäß
+              den Bestimmungen der DSGVO. Weitere Informationen finden Sie in
+              der Datenschutzerklärung von Stripe:
+              <a
+                href="https://stripe.com/de/privacy"
+                target="_blank"
+                class="impressum-link"
+                >https://stripe.com/de/privacy</a
+              >
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Plausible Analytics (Webanalyse)</h3>
+            <p class="impressum-text">
+              Wir verwenden Plausible Analytics, einen datenschutzfreundlichen
+              Webanalysedienst ohne Cookies. Es werden keine personenbezogenen
+              Daten gespeichert oder weitergegeben. Weitere Informationen:
+              <a
+                href="https://plausible.io/data-policy"
+                target="_blank"
+                class="impressum-link"
+                >https://plausible.io/data-policy</a
+              >
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Cookies & Tracking</h3>
+            <p class="impressum-text">
+              Wir verwenden ausschließlich technisch notwendige Cookies, die für
+              den Betrieb der Seite erforderlich sind. Ein Cookie-Banner ist
+              daher nicht erforderlich.
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Local Storage</h3>
+            <p class="impressum-text">
+              Local Storage stellt persistenten Speicher in Ihrem Browser zur
+              Verfügung, um Informationen direkt im Browser zu speichern. Dies
+              bietet den Vorteil, dass Nutzerinformationen nicht auf unseren
+              Systemen gespeichert werden muss. Die vom Benutzer, im Rahmen des
+              Bestellvorgangs angegebenen Daten, werden im Local Storage
+              gespeichert. Dies ermöglicht ein Abruf von bereits angegeben
+              Daten, sodass ein hohes Maß an Benutzerfreundlichkeit
+              gewährleistet werden kann. Sie können die im Local Storage
+              gespeicherten Daten auch jederzeit über die Einstellungen Ihres
+              Browsers löschen.
+            </p>
+          </div>
+
+          <div class="impressum-block">
+            <h3>Haftungsausschluss</h3>
+            <p class="impressum-text">
+              Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine
+              Haftung für die Inhalte externer Links. Für den Inhalt der
+              verlinkten Seiten sind ausschließlich deren Betreiber
+              verantwortlich.
+            </p>
+          </div>
+
+          <div class="impressum-modal-footer-brand">
+            <div class="impressum-logo-box">
+              <span class="impressum-logo-main">Milano</span>
+              <div class="impressum-logo-sub">Pizzeria</div>
+            </div>
+            <p class="impressum-slogan">
+              Erleben Sie authentische italienische Küche mit unseren
+              handgefertigten Pizzen und traditionellen Rezepten, frisch zu
+              Ihnen nach Hause geliefert.
+            </p>
           </div>
         </div>
       </div>
