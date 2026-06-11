@@ -19,7 +19,7 @@ body {
 /* ==========================================
    2. NAVBAR MILANO
    ========================================== */
-.navbar-milano {
+.pml-navbar-milano {
   width: 100%;
   background-color: #ffffff;
   height: 60px;
@@ -31,7 +31,7 @@ body {
   border-bottom: 1px solid #f3f4f6;
 }
 
-.nav-container {
+.pml-nav-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -42,7 +42,7 @@ body {
 }
 
 /* --- LOGO --- */
-.logo-box {
+.pml-logo-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,7 +51,7 @@ body {
   margin-left: -50px;
 }
 
-.logo-top {
+.pml-logo-top {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 34px;
   font-weight: 700;
@@ -61,7 +61,7 @@ body {
   -webkit-text-stroke: 0.5px #1c2434;
 }
 
-.logo-bottom {
+.pml-logo-bottom {
   font-family: "Montserrat", sans-serif;
   font-size: 11px;
   font-weight: 900;
@@ -75,7 +75,7 @@ body {
 }
 
 /* --- LIEFERGEBIET --- */
-.delivery-area {
+.pml-delivery-area {
   background: none;
   border: none;
   font-family: inherit;
@@ -86,7 +86,7 @@ body {
   font-size: 13.5px;
 }
 
-.pin-icon {
+.pml-pin-icon {
   color: #a81c1c;
   font-size: 18px;
   margin-right: 4px;
@@ -98,30 +98,30 @@ body {
     "opsz" 24;
 }
 
-.delivery-text {
+.pml-delivery-text {
   font-weight: 500;
   color: #000102;
 }
 
-.delivery-text strong {
+.pml-delivery-text strong {
   font-weight: 800;
   color: #000000;
   margin-left: 3px;
 }
 
-.change-link {
+.pml-change-link {
   color: #a81c1c;
   font-size: 10.5px;
   margin-left: 5px;
   font-weight: 700;
 }
 
-.change-link:hover {
+.pml-change-link:hover {
   text-decoration: underline;
 }
 
 /* --- WARENKORB --- */
-.cart-box {
+.pml-cart-box {
   background: none;
   border: none;
   font-family: inherit;
@@ -133,7 +133,7 @@ body {
   margin-right: -20px;
 }
 
-.cart-icon {
+.pml-cart-icon {
   font-size: 20px;
   font-variation-settings:
     "FILL" 0,
@@ -142,20 +142,20 @@ body {
     "opsz" 24;
 }
 
-.cart-badge {
+.pml-cart-badge {
   font-weight: 900 !important; /* Macht die Schrift maximal fett */
   font-size: 16px;
 }
 
 /* NEU: Versteckt die Zahl, wenn der Warenkorb leer ist */
-.cart-count.hidden {
+.pml-cart-badge.pml-hidden {
   display: none;
 }
 
 /* ==========================================
    3. HERO SECTION
    ========================================== */
-.hero-section {
+.pml-hero-section {
   width: 100%;
   min-height: 842px; /* Hier die korrekte Gesamthöhe aus deinem ersten Screenshot */
   background:
@@ -167,7 +167,7 @@ body {
   padding: 50px 0;
 }
 
-.hero-container {
+.pml-hero-container {
   width: 100%;
   max-width: 1200px; /* Passt sich perfekt an die Breite deiner Navbar an */
   margin: 0 auto;
@@ -175,7 +175,7 @@ body {
 }
 
 /* --- BADGE --- */
-.hero-badge {
+.pml-hero-badge {
   display: inline-flex;
   align-items: center;
   background-color: rgba(168, 28, 28, 0.2);
@@ -188,7 +188,7 @@ body {
   margin-bottom: 30px;
 }
 
-.badge-dot {
+.pml-badge-dot {
   width: 8px;
   height: 8px;
   background-color: #a81c1c;
@@ -197,7 +197,7 @@ body {
 }
 
 /* --- TITEL & TEXT --- */
-.hero-title {
+.pml-hero-title {
   font-size: 54px;
   font-weight: 900;
   color: #ffffff;
@@ -206,11 +206,11 @@ body {
   margin-bottom: 25px;
 }
 
-.hero-title .highlight-red {
+.pml-hero-title .pml-highlight-red {
   color: #a81c1c; /* Das exakte Milano-Rot aus deinem Logo */
 }
 
-.hero-description {
+.pml-hero-description {
   color: #cbd5e0;
   font-size: 16px;
   line-height: 1.6;
@@ -219,13 +219,13 @@ body {
 }
 
 /* --- BUTTON & ADVANTAGES ROW --- */
-.hero-bottom-row {
+.pml-hero-bottom-row {
   display: flex;
   align-items: center;
   gap: 40px;
 }
 
-.btn-order {
+.pml-btn-order {
   background-color: #a81c1c;
   color: #ffffff;
   text-decoration: none;
@@ -236,39 +236,39 @@ body {
   transition: background-color 0.2s ease;
 }
 
-.btn-order:hover {
+.pml-btn-order:hover {
   background-color: #871414;
 }
 
 /* --- FEATURES --- */
-.hero-features {
+.pml-hero-features {
   display: flex;
   gap: 35px;
 }
 
-.feature-item {
+.pml-feature-item {
   display: flex;
   align-items: flex-start;
   gap: 10px;
 }
 
-.feature-icon {
+.pml-feature-icon {
   font-size: 18px;
   margin-top: 2px;
 }
 
-.feature-text {
+.pml-feature-text {
   display: flex;
   flex-direction: column;
 }
 
-.feature-text strong {
+.pml-feature-text strong {
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
 }
 
-.feature-text span {
+.pml-feature-text span {
   color: #a0aec0;
   font-size: 12.5px;
   margin-top: 2px;
@@ -277,7 +277,7 @@ body {
 /* ==========================================
    4. SEARCH & CATEGORIES SECTION (1:1 FIGMA)
    ========================================== */
-.search-section {
+.pml-search-section {
   width: 100%;
   height: 280px; /* Exakte Höhe aus Figma (1920x280) */
   background-color: #1a222d; /* Das dunkle Anthrazit/Blau aus dem Screenshot */
@@ -286,7 +286,7 @@ body {
   justify-content: center;
 }
 
-.search-container {
+.pml-search-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -296,7 +296,7 @@ body {
   align-items: center;
 }
 
-.search-title {
+.pml-search-title {
   color: #ffffff;
   font-size: 22px;
   font-weight: 500;
@@ -304,7 +304,7 @@ body {
 }
 
 /* --- SUCHFELD (899px x 60px) --- */
-.search-box-wrapper {
+.pml-search-box-wrapper {
   position: relative;
   width: 100%;
   max-width: 899px; /* Exakte Breite aus Figma */
@@ -312,7 +312,7 @@ body {
   margin-bottom: 25px;
 }
 
-.search-field-icon {
+.pml-search-field-icon {
   position: absolute;
   left: 20px;
   top: 50%;
@@ -321,7 +321,7 @@ body {
   font-size: 22px;
 }
 
-.search-input {
+.pml-search-input {
   width: 100%;
   height: 100%;
   background-color: #2d3748;
@@ -334,25 +334,25 @@ body {
   outline: none;
 }
 
-.search-input::placeholder {
+.pml-search-input::placeholder {
   color: #a0aec0;
 }
 
 /* --- SCROLLBARE KATEGORIEN --- */
-.categories-scroll-wrapper {
+.pml-categories-scroll-wrapper {
   width: 100%;
   max-width: 899px; /* Bleift bündig mit dem Suchfeld */
   overflow-x: auto; /* Aktiviert das horizontale Scrollen */
   padding-bottom: 12px; /* Platz für die Scrollbar */
 }
 
-.categories-list {
+.pml-categories-list {
   display: flex;
   gap: 12px;
   white-space: nowrap; /* Verhindert Zeilenumbruch der Buttons */
 }
 
-.category-item {
+.pml-category-item {
   background-color: #2d3748;
   border: 2px solid transparent; /* Platzhalter für den aktiven weißen Rahmen */
   color: #ffffff;
@@ -367,68 +367,68 @@ body {
   transition: all 0.15s ease;
 }
 
-.category-item:hover {
+.pml-category-item:hover {
   background-color: #3a475c;
 }
 
 /* --- DER AKTIVE ZUSTAND (Weißer Rahmen aus Figma) --- */
-.category-item.active {
+.pml-category-item.pml-active {
   border-color: #ffffff; /* Der dicke weiße Außenstrich */
   background-color: #2d3748; /* Bleibt dunkel gepresst */
 }
 
 /* --- SCROLLBAR STYLING --- */
-.categories-scroll-wrapper::-webkit-scrollbar {
+.pml-categories-scroll-wrapper::-webkit-scrollbar {
   height: 6px;
 }
 
-.categories-scroll-wrapper::-webkit-scrollbar-track {
+.pml-categories-scroll-wrapper::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
 }
 
-.categories-scroll-wrapper::-webkit-scrollbar-thumb {
+.pml-categories-scroll-wrapper::-webkit-scrollbar-thumb {
   background: #cbd5e0; /* Das helle Grau für den Balken */
   border-radius: 10px;
 }
 
-.categories-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+.pml-categories-scroll-wrapper::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
 }
 
 /* ==========================================
    5. SPEISEKARTE SECTION (1:1 FIGMA RASTER)
    ========================================== */
-.menu-section {
+.pml-menu-section {
   width: 100%;
   background-color: #f4f5f7; /* Das ganz helle Grau aus dem Hintergrund der Speisekarte */
   padding: 60px 0;
 }
 
-.menu-container {
+.pml-menu-container {
   width: 100%;
   max-width: 1200px; /* Bündig mit Navbar und Hero */
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.menu-main-title {
+.pml-menu-main-title {
   font-size: 28px;
   font-weight: 800;
   color: #1a222d;
   margin-bottom: 30px;
 }
 
-.menu-category-group {
+.pml-menu-category-group {
   margin-bottom: 50px;
 }
 
-.menu-category-group.hidden-group {
+.pml-menu-category-group.pml-hidden-group {
   display: none !important;
 }
 
 /* --- KATEGORIE BANNER (Das dunkle Band) --- */
-.category-banner {
+.pml-category-banner {
   width: 100%;
   background-color: #1a222d; /* Gleiches Dunkelblau/Anthrazit wie die Suche */
   color: #ffffff;
@@ -440,14 +440,14 @@ body {
 }
 
 /* --- PRODUCTS GRID (3 Spalten nebeneinander) --- */
-.products-grid {
+.pml-products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Erzwingt genau 3 Spalten */
   gap: 20px; /* Abstand zwischen den Blöcken */
 }
 
 /* --- SINGLE PRODUCT CARD (Exakt 394.33px x 185px aus Figma) --- */
-.product-card {
+.pml-product-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
@@ -462,19 +462,19 @@ body {
     box-shadow 0.2s ease;
 }
 
-.product-card:hover {
+.pml-product-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.product-title {
+.pml-product-title {
   font-size: 15px;
   font-weight: 700;
   color: #000000;
   margin-bottom: 6px;
 }
 
-.product-description {
+.pml-product-description {
   font-size: 12.5px;
   color: #718096;
   line-height: 1.4;
@@ -482,7 +482,7 @@ body {
 }
 
 /* --- CARD BOTTOM ROW --- */
-.product-bottom {
+.pml-product-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -490,13 +490,13 @@ body {
   padding-top: 12px;
 }
 
-.product-price {
+.pml-product-price {
   font-size: 15px;
   font-weight: 800;
   color: #a81c1c; /* Das Milano-Rot für die Preise */
 }
 
-.btn-add-cart {
+.pml-btn-add-cart {
   background: none;
   border: none;
   color: #a81c1c;
@@ -510,16 +510,16 @@ body {
   transition: color 0.15s ease;
 }
 
-.btn-add-cart span {
+.pml-btn-add-cart span {
   font-size: 18px; /* Icon-Größe */
 }
 
-.btn-add-cart:hover {
+.pml-btn-add-cart:hover {
   color: #871414;
 }
 
 /* ================= PIZZERIA MILANO FOOTER ================= */
-.milano-footer {
+.pml-milano-footer {
   background-color: #222b31; /* Das originale dunkle Anthrazit */
   color: #ffffff;
   padding: 70px 20px 40px 20px;
@@ -527,19 +527,19 @@ body {
   font-size: 16px; /* Allgemein größere Schriftgröße */
 }
 
-.footer-inner {
+.pml-footer-inner {
   max-width: 1200px;
   margin: 0 auto;
 }
 
 /* OBERER BEREICH: LOGO & TEXT */
-.footer-top-brand {
+.pml-footer-top-brand {
   text-align: center;
   margin-bottom: 55px;
 }
 
 /* Logo-Badge deutlich größer und auffälliger */
-.milano-logo-badge {
+.pml-milano-logo-badge {
   background-color: #ffffff;
   color: #222b31;
   display: inline-flex;
@@ -552,14 +552,14 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.milano-logo-badge .logo-main {
+.pml-milano-logo-badge .pml-logo-main {
   font-size: 46px; /* Viel größeres Logo */
   font-weight: 900; /* Extra fett */
   font-family: "Georgia", serif;
   line-height: 1;
 }
 
-.milano-logo-badge .logo-sub {
+.pml-milano-logo-badge .pml-logo-sub {
   font-size: 14px; /* Größerer Untertext */
   font-weight: 900; /* Extra fett */
   letter-spacing: 5px;
@@ -568,7 +568,7 @@ body {
 }
 
 /* Einleitungstext unter dem Logo komplett in Rot und dicker */
-.footer-intro {
+.pml-footer-intro {
   max-width: 750px;
   margin: 0 auto;
   color: #aea5a4; /* Textfarbe auf Rot geändert */
@@ -578,7 +578,7 @@ body {
 }
 
 /* RASTER FÜR DIE SPALTEN */
-.footer-columns-grid {
+.pml-footer-columns-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 35px;
@@ -586,7 +586,7 @@ body {
   align-items: start;
 }
 
-.footer-col h4 {
+.pml-footer-col h4 {
   color: #d33722; /* Das Figma-Rot für die Überschriften */
   font-size: 18px; /* Größere Überschriften */
   font-weight: bold;
@@ -595,13 +595,13 @@ body {
 }
 
 /* SPALTE 1: KONTAKT */
-.contact-list {
+.pml-contact-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.contact-list li {
+.pml-contact-list li {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -610,31 +610,31 @@ body {
   line-height: 1.5;
 }
 
-.contact-icon {
+.pml-contact-icon {
   font-size: 18px;
   margin-top: 2px;
 }
 
 /* SPALTE 2: ÖFFNUNGSZEITEN */
-.hours-table {
+.pml-hours-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.hours-table td {
+.pml-hours-table td {
   padding: 8px 0;
   vertical-align: top;
   color: #ffffff;
 }
 
-.hours-table td:last-child {
+.pml-hours-table td:last-child {
   text-align: right;
   color: #ffffff;
   padding-left: 15px;
 }
 
 /* SPALTE 3: FACEBOOK */
-.fb-button {
+.pml-fb-button {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -648,34 +648,34 @@ body {
   transition: background 0.2s;
 }
 
-.fb-button:hover {
+.pml-fb-button:hover {
   background-color: #384652;
 }
 
 /* SPALTE 4: LINKS */
-.links-list {
+.pml-links-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.links-list a {
+.pml-links-list a {
   color: #ffffff;
   text-decoration: none;
 }
 
-.links-list a:hover {
+.pml-links-list a:hover {
   text-decoration: underline;
 }
 
 /* TRENNLINIE & COPYRIGHT */
-.footer-divider {
+.pml-footer-divider {
   border: 0;
   border-top: 1px solid #2f3b45;
   margin-bottom: 30px;
 }
 
-.footer-copyright {
+.pml-footer-copyright {
   text-align: center;
   color: #72818d;
   font-size: 14px;
@@ -683,7 +683,7 @@ body {
 }
 
 /* ================= 1:1 PLZ MODAL STYLES ================= */
-.modal-overlay {
+.pml-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -702,12 +702,12 @@ body {
 }
 
 /* Blendet das Modal aus */
-.modal-overlay.hidden {
+.pml-modal-overlay.pml-hidden {
   display: none !important;
 }
 
 /* Die weiße Karte aus dem Screenshot */
-.modal-content-card {
+.pml-modal-content-card {
   background-color: #ffffff;
   width: 90%;
   max-width: 540px; /* Perfekte Breite laut Screenshot-Verhältnis */
@@ -720,14 +720,14 @@ body {
 }
 
 /* Milano-Schriftzug im Pop-up */
-.modal-logo-area {
+.pml-modal-logo-area {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 35px;
 }
 
-.modal-logo-area .logo-main {
+.pml-modal-logo-area .pml-logo-main {
   font-size: 54px;
   font-weight: 900;
   font-family: "Georgia", serif;
@@ -735,7 +735,7 @@ body {
   line-height: 1;
 }
 
-.modal-logo-area .logo-sub {
+.pml-modal-logo-area .pml-logo-sub {
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 5px;
@@ -744,7 +744,7 @@ body {
 }
 
 /* Überschrift (fett und dunkel) */
-.modal-main-title {
+.pml-modal-main-title {
   font-size: 26px;
   font-weight: bold;
   color: #0b1a30; /* Dunkles Navy/Schwarz */
@@ -753,7 +753,7 @@ body {
 }
 
 /* Beschreibungstext */
-.modal-sub-text {
+.pml-modal-sub-text {
   font-size: 14.5px;
   color: #4a5568; /* Angenehmes Grau */
   line-height: 1.5;
@@ -762,7 +762,7 @@ body {
 }
 
 /* Das Eingabefeld */
-.modal-input-container {
+.pml-modal-input-container {
   margin-bottom: 35px;
 }
 
@@ -787,7 +787,7 @@ body {
 }
 
 /* Der "Speichern"-Button */
-.btn-modal-save {
+.pml-btn-modal-save {
   background-color: #8a1c1c; /* Exakter Rot-Ton aus der Figma-Vorlage */
   color: #ffffff;
   border: none;
@@ -801,11 +801,11 @@ body {
   min-width: 150px;
 }
 
-.btn-modal-save:hover {
+.pml-btn-modal-save:hover {
   background-color: #6f1414;
 }
 
-.plz-error-msg {
+.pml-plz-error-msg {
   color: #bc4747;
   font-size: 17px;
   margin-top: 2px;
@@ -816,12 +816,12 @@ body {
 }
 
 /* Falls noch nicht global definiert, sorgt das für das Verstecken */
-.plz-error-msg.hidden {
+.pml-plz-error-msg.pml-hidden {
   display: none;
 }
 
 /* ================= SIDEBAR WARENKORB STYLES ================= */
-.cart-overlay {
+.pml-cart-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -833,11 +833,11 @@ body {
   z-index: 25000;
 }
 
-.cart-overlay.hidden {
+.pml-cart-overlay.pml-hidden {
   display: none !important;
 }
 
-.cart-drawer {
+.pml-cart-drawer {
   background-color: #f4f6f8;
   width: 100%;
   max-width: 480px;
@@ -850,7 +850,7 @@ body {
 }
 
 /* HEADER */
-.cart-header {
+.pml-cart-header {
   background-color: #222b31;
   color: #ffffff;
   padding: 20px;
@@ -859,24 +859,24 @@ body {
   align-items: center;
 }
 
-.cart-header h2 {
+.pml-cart-header h2 {
   margin: 0;
   font-size: 20px;
   font-weight: bold;
 }
 
-.close-cart-btn {
+.pml-close-cart-btn {
   font-size: 28px;
   cursor: pointer; /* Macht den Mauszeiger zum Zeigefinger */
   transition: opacity 0.2s;
 }
 
-.close-cart-btn:hover {
+.pml-close-cart-btn:hover {
   opacity: 0.7; /* Wird beim Drüberfahren leicht heller */
 }
 
 /* BODY UND LEER-ZUSTAND */
-.cart-body {
+.pml-cart-body {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
@@ -884,7 +884,7 @@ body {
   flex-direction: column;
 }
 
-.cart-empty-section {
+.pml-cart-empty-section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -893,28 +893,28 @@ body {
   box-sizing: border-box;
 }
 
-.empty-msg-container {
+.pml-empty-msg-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
 }
 
-.empty-msg-container p {
+.pml-empty-msg-container p {
   color: #718096;
   font-size: 18px;
   margin: 0;
 }
 
 /* DYNAMISCHER CONTAINER FÜR JS ITEMS */
-.cart-items-wrapper {
+.pml-cart-items-wrapper {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 /* BUTTON BEREICH */
-.cart-action-area {
+.pml-cart-action-area {
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -923,7 +923,7 @@ body {
   margin-bottom: 400px; /* Schiebt den Knopf 40px nach unten */
 }
 /* 1. Der normale, aktive Button (wenn Items da sind) */
-.btn-address-submit {
+.pml-btn-address-submit {
   background-color: #bc4747;
   color: #ffffff;
   border: none;
@@ -935,13 +935,13 @@ body {
   transition: background-color 0.2s;
 }
 
-.btn-address-submit:hover {
+.pml-btn-address-submit:hover {
   background-color: #a53b3b;
 }
 
 /* 2. Der matte, deaktivierte Button (wenn leer) */
-.btn-address-submit.disabled,
-.btn-address-submit:disabled {
+.pml-btn-address-submit.pml-disabled,
+.pml-btn-address-submit:disabled {
   background-color: #c58585;
   color: #ffffff;
   font-weight: normal;
@@ -951,14 +951,14 @@ body {
 }
 
 /* FOOTER UND PREISE */
-.cart-footer {
+.pml-cart-footer {
   background-color: #222b31;
   padding: 20px;
   color: #ffffff;
   margin-bottom: 300px;
 }
 
-.min-order-warning {
+.pml-min-order-warning {
   background-color: #fff5f5;
   color: #bc4747;
   border: 1px solid #fed7d7;
@@ -970,18 +970,18 @@ body {
   font-weight: 500;
 }
 
-.price-summary-row {
+.pml-price-summary-row {
   display: flex;
   justify-content: space-between;
   font-size: 15px;
   margin-bottom: 8px;
 }
 
-.discount-row {
+.pml-discount-row {
   color: #2f9e67;
 }
 
-.total-row {
+.pml-total-row {
   margin-top: 15px;
   padding-top: 12px;
   border-top: 1px solid #3d4a56;
@@ -989,7 +989,7 @@ body {
   font-weight: bold;
 }
 
-.total-price-badge {
+.pml-total-price-badge {
   font-size: 20px;
   text-decoration: underline;
 }
@@ -997,7 +997,7 @@ body {
 /* ================= ERGÄNZUNG FÜR EXTRAS & ANMERKUNGEN IM WARENKORB ================= */
 
 /* Die Produktkarte, die per JS im Warenkorb erzeugt wird */
-.cart-item-card {
+.pml-cart-item-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -1005,27 +1005,27 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-.cart-item-header {
+.pml-cart-item-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4px;
 }
 
-.item-title {
+.pml-item-title {
   font-size: 18px;
   font-weight: bold;
   color: #000000;
 }
 
-.item-delete {
+.pml-item-delete {
   font-size: 20px;
   color: #a0aec0;
   cursor: pointer;
 }
 
 /* Der Bereich für deine Extras, entfernten Zutaten und Notizen */
-.cart-item-details {
+.pml-cart-item-details {
   margin-top: 5px;
   margin-bottom: 12px;
   font-size: 13px;
@@ -1033,37 +1033,37 @@ body {
 }
 
 /* Styling für hinzugefügte Extras (z.B. + Extra Gyros) */
-.item-extra-line {
+.pml-item-extra-line {
   color: #2f9e67; /* Schönes Grün aus dem Screenshot */
 }
 
 /* Styling für entfernte Zutaten (z.B. - ohne Zwiebeln) */
-.item-remove-line {
+.pml-item-remove-line {
   color: #bc4747; /* Rötlicher Ton */
 }
 
 /* Styling für Freitext-Anmerkungen */
-.item-note-line {
+.pml-item-note-line {
   color: #64748b; /* Dezentere graue Schrift */
   font-style: italic;
   margin-top: 3px;
 }
 
 /* Footer der einzelnen Produktkarte (Anzahl & Preis) */
-.cart-item-footer {
+.pml-cart-item-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.quantity-control {
+.pml-quantity-control {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
 }
 
-.qty-input {
+.pml-qty-input {
   width: 50px;
   padding: 5px;
   border: 1px solid #cbd5e1;
@@ -1071,14 +1071,14 @@ body {
   text-align: center;
 }
 
-.item-price {
+.pml-item-price {
   font-size: 18px;
   font-weight: bold;
   color: #8a1c1c; /* Das Milano-Dunkelrot */
 }
 
 /* ================= PRODUKT-DETAIL MODAL STYLES ================= */
-.product-modal-card {
+.pml-product-modal-card {
   background-color: #ffffff;
   width: 90%;
   max-width: 580px; /* Perfekte Breite laut Screenshot */
@@ -1093,7 +1093,7 @@ body {
 }
 
 /* Schließen Kreuz oben rechts */
-.close-product-modal {
+.pml-close-product-modal {
   position: absolute;
   top: 15px;
   right: 20px;
@@ -1105,58 +1105,58 @@ body {
 }
 
 /* Header */
-.product-modal-header {
+.pml-product-modal-header {
   padding: 30px 30px 15px 30px;
   border-bottom: 1px solid #f1f5f9;
   text-align: left;
 }
 
-.product-modal-header h2 {
+.pml-product-modal-header h2 {
   font-size: 26px;
   color: #222b31;
   margin: 0 0 5px 0;
   font-weight: bold;
 }
 
-.product-modal-header p {
+.pml-product-modal-header p {
   font-size: 15px;
   color: #64748b;
   margin: 0;
 }
 
 /* Scrollbarer Body */
-.product-modal-body {
+.pml-product-modal-body {
   padding: 20px 30px;
   overflow-y: auto;
   flex: 1;
   text-align: left;
 }
 
-.options-section {
+.pml-options-section {
   margin-bottom: 25px;
 }
 
-.options-section h3 {
+.pml-options-section h3 {
   font-size: 16px;
   font-weight: bold;
   color: #000000;
   margin: 0 0 15px 0;
 }
 
-.price-note {
+.pml-price-note {
   font-size: 14px;
   color: #64748b;
   font-weight: normal;
 }
 
 /* Checkbox Gruppenanordnung */
-.checkbox-group {
+.pml-checkbox-group {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 Spalten wie auf dem Screen */
   gap: 12px;
 }
 
-.checkbox-label {
+.pml-checkbox-label {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1165,7 +1165,7 @@ body {
   cursor: pointer;
 }
 
-.checkbox-label input[type="checkbox"] {
+.pml-checkbox-label input[type="checkbox"] {
   width: 18px;
   height: 18px;
   cursor: pointer;
@@ -1191,7 +1191,7 @@ body {
 }
 
 /* Footer Bereich */
-.product-modal-footer {
+.pml-product-modal-footer {
   padding: 20px 30px 30px 30px;
   border-top: 1px solid #f1f5f9;
   display: flex;
@@ -1200,19 +1200,19 @@ body {
   text-align: left;
 }
 
-.modal-price-display {
+.pml-modal-price-display {
   font-size: 22px;
   font-weight: bold;
   color: #8a1c1c; /* Milano Dunkelrot */
 }
 
 /* Button-Leiste */
-.modal-action-buttons {
+.pml-modal-action-buttons {
   display: flex;
   gap: 15px;
 }
 
-.btn-modal-abort {
+.pml-btn-modal-abort {
   flex: 1;
   background-color: #ffffff;
   color: #222b31;
@@ -1226,11 +1226,11 @@ body {
   transition: background 0.2s;
 }
 
-.btn-modal-abort:hover {
+.pml-btn-modal-abort:hover {
   background-color: #f8fafc;
 }
 
-.btn-modal-confirm {
+.pml-btn-modal-confirm {
   flex: 1;
   background-color: #8a1c1c; /* Exaktes Milano-Rot */
   color: #ffffff;
@@ -1244,22 +1244,22 @@ body {
   transition: background-color 0.2s;
 }
 
-.btn-modal-confirm:hover {
+.pml-btn-modal-confirm:hover {
   background-color: #6f1414;
 }
 
 /* Responsive Anpassung für kleinere Screens */
 @media (max-width: 480px) {
-  .checkbox-group {
+  .pml-checkbox-group {
     grid-template-columns: 1fr; /* 1 Spalte auf Handys */
   }
-  .modal-action-buttons {
+  .pml-modal-action-buttons {
     flex-direction: column-reverse; /* Abbrechen wandert unten hin */
   }
 }
 
 /* Pop-up Hintergrund verdunkeln */
-.impressum-overlay {
+.pml-impressum-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -1272,12 +1272,12 @@ body {
   z-index: 2000; /* Ganz oben über allem */
 }
 
-.impressum-overlay:not(.hidden) {
+.pml-impressum-overlay:not(.pml-hidden) {
   display: flex !important;
 }
 
 /* Die weiße Pop-up Box */
-.impressum-modal-box {
+.pml-impressum-modal-box {
   background-color: #ffffff;
   width: 90%;
   max-width: 800px;
@@ -1290,7 +1290,7 @@ body {
 }
 
 /* Fester Header im Pop-up */
-.impressum-modal-header {
+.pml-impressum-modal-header {
   padding: 20px 25px;
   border-bottom: 1px solid #e2e8f0;
   display: flex;
@@ -1298,7 +1298,7 @@ body {
   align-items: center;
 }
 
-.impressum-modal-header h2 {
+.pml-impressum-modal-header h2 {
   margin: 0;
   font-size: 24px;
   font-weight: 800;
@@ -1306,58 +1306,58 @@ body {
 }
 
 /* Das Schließen-X */
-.close-impressum-btn {
+.pml-close-impressum-btn {
   font-size: 30px;
   color: #64748b;
   cursor: pointer;
   line-height: 1;
 }
-.close-impressum-btn:hover {
+.pml-close-impressum-btn:hover {
   color: #000000;
 }
 
 /* Scrollbarer Textbereich */
-.impressum-modal-body {
+.pml-impressum-modal-body {
   padding: 25px;
   overflow-y: auto; /* Aktiviert das Scrollen nur innerhalb der Box */
 }
 
 /* Text-Blöcke */
-.impressum-block {
+.pml-impressum-block {
   margin-bottom: 20px;
 }
-.impressum-block h3 {
+.pml-impressum-block h3 {
   font-size: 16px;
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 4px;
   color: #000000;
 }
-.impressum-block p {
+.pml-impressum-block p {
   margin: 0 0 2px 0;
 }
-.impressum-text {
+.pml-impressum-text {
   font-size: 13.5px;
   color: #334155;
   margin: 0;
   text-align: justify;
 }
-.impressum-link {
+.pml-impressum-link {
   color: #bc4747;
   text-decoration: none;
 }
-.impressum-link:hover {
+.pml-impressum-link:hover {
   text-decoration: underline;
 }
 
 /* Branding im Footer */
-.impressum-modal-footer-brand {
+.pml-impressum-modal-footer-brand {
   text-align: center;
   margin-top: 40px;
   border-top: 1px solid #e2e8f0;
   padding-top: 30px;
 }
-.impressum-logo-box {
+.pml-impressum-logo-box {
   display: inline-block;
   background-color: #ffffff;
   padding: 8px 20px;
@@ -1365,14 +1365,14 @@ body {
   border-radius: 6px;
   margin-bottom: 12px;
 }
-.impressum-logo-main {
+.pml-impressum-logo-main {
   font-family: "Arial Black", sans-serif;
   font-size: 26px;
   font-weight: 900;
   letter-spacing: 2px;
   color: #000000;
 }
-.impressum-logo-sub {
+.pml-impressum-logo-sub {
   font-size: 10px;
   font-weight: bold;
   color: #8a1c1c;
@@ -1380,7 +1380,7 @@ body {
   text-transform: uppercase;
   margin-top: -4px;
 }
-.impressum-slogan {
+.pml-impressum-slogan {
   font-size: 12.5px;
   color: #64748b;
   max-width: 450px;
@@ -1389,17 +1389,17 @@ body {
 }
 
 /* --- SCHRITT-UMSCHALTUNG --- */
-.hidden-step {
+.pml-hidden-step {
   display: none !important;
 }
 
 /* --- FORMULAR STYLING --- */
-.address-form-body {
+.pml-address-form-body {
   padding: 20px;
   overflow-y: auto;
 }
 
-.form-section-title {
+.pml-form-section-title {
   font-size: 16px;
   font-weight: 800;
   color: #000000;
@@ -1407,21 +1407,21 @@ body {
   margin-bottom: 15px;
 }
 
-.form-group {
+.pml-form-group {
   margin-bottom: 14px;
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.pml-form-group label {
   font-size: 13px;
   color: #4a5568;
   font-weight: 600;
   margin-bottom: 4px;
 }
 
-.form-group input,
-.form-group textarea {
+.pml-form-group input,
+.pml-form-group textarea {
   width: 100%;
   padding: 10px 12px;
   font-size: 14px;
@@ -1432,17 +1432,17 @@ body {
   font-family: inherit;
 }
 
-.form-group textarea {
+.pml-form-group textarea {
   height: 70px;
   resize: none;
 }
 
 /* Fehlerzustand laut Screenshot */
-.form-group.has-error input {
+.pml-form-group.pml-has-error input {
   border-color: #e53e3e;
 }
 
-.form-error-msg {
+.pml-form-error-msg {
   color: #d32f2f;
   font-size: 11px;
   margin-top: 8px;
@@ -1450,28 +1450,28 @@ body {
   display: none;
 }
 
-.form-error-msg:not(.hidden) {
+.pml-form-error-msg:not(.pml-hidden) {
   display: block !important;
 }
 
-.input-error {
+.pml-input-error {
   border: 1px solid #d32f2f !important;
   background-color: #ffebee !important;
 }
 
-.form-error-msg.hidden {
+.pml-form-error-msg.pml-hidden {
   display: none;
 }
 
 /* Button-Anordnung für den Adress-Schritt */
-.address-action-buttons {
+.pml-address-action-buttons {
   display: flex;
   gap: 12px;
   margin-top: 25px;
   margin-bottom: 15px;
 }
 
-.btn-address-back {
+.pml-btn-address-back {
   flex: 1;
   background-color: #e2e8f0;
   color: #1a222d;
@@ -1484,7 +1484,7 @@ body {
   transition: background 0.2s;
 }
 
-.btn-address-back:hover {
+.pml-btn-address-back:hover {
   background-color: #cbd5e0;
 }
 
@@ -1492,7 +1492,7 @@ body {
   flex: 1.3;
 }
 
-.hidden-step {
+.pml-hidden-step {
   display: none !important;
 }
 
@@ -1505,7 +1505,7 @@ body {
 }
 
 /* Macht die Formular-Ansicht scrollbar, falls sie zu lang wird */
-#address-view-step .cart-body {
+#address-view-step .pml-cart-body {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
@@ -1523,9 +1523,9 @@ body {
   }
 
   /* 1. HEADER: Volle Platznutzung, bündig an den Rändern */
-  .navbar,
+  .pml-navbar,
   header,
-  .header-container {
+  .pml-header-container {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
@@ -1541,8 +1541,8 @@ body {
   }
 
   /* Logo-Bereich sicher positionieren */
-  .logo-area,
-  .brand-logo-container {
+  .pml-logo-area,
+  .pml-brand-logo-container {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -1555,8 +1555,8 @@ body {
   }
 
   /* Schützt die Logo-Grafik vor dem Abschneiden */
-  .logo-area img,
-  .brand-logo-container img {
+  .pml-logo-area img,
+  .pml-brand-logo-container img {
     max-width: 100% !important;
     height: auto !important;
     display: block !important;
@@ -1564,32 +1564,32 @@ body {
   }
 
   /* Falls das Logo Text ist */
-  .logo-main {
+  .pml-logo-main {
     font-size: 18px !important;
     font-weight: 800 !important;
     line-height: 1.1 !important;
     text-align: left !important;
   }
 
-  .logo-sub {
+  .pml-logo-sub {
     font-size: 9px !important;
     text-align: left !important;
   }
 
   /* Eigene Anpassung für die Logo-Zeilen (verhindert Abschneiden links) */
-  .logo-top {
+  .pml-logo-top {
     margin-left: 20px !important;
     display: block !important;
   }
 
-  .logo-bottom {
+  .pml-logo-bottom {
     margin-left: 20px !important;
     display: block !important;
   }
 
   /* Rechte Seite (Liefergebiet & Warenkorb) flach halten */
-  .header-right-side,
-  .nav-right {
+  .pml-header-right-side,
+  .pml-nav-right {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
@@ -1603,7 +1603,7 @@ body {
   }
 
   /* Liefertext ordentlich formatieren */
-  .delivery-text {
+  .pml-delivery-text {
     font-size: 10px !important;
     text-align: right !important;
     line-height: 1.2 !important;
@@ -1611,7 +1611,7 @@ body {
   }
 
   /* Warenkorb-Button */
-  .cart-box {
+  .pml-cart-box {
     display: flex !important;
     align-items: center !important;
     gap: 6px !important;
@@ -1623,8 +1623,8 @@ body {
   }
 
   /* 2. MAIN SEITE / HERO SECTION */
-  .hero-section,
-  .main-content {
+  .pml-hero-section,
+  .pml-main-content {
     margin-top: 0 !important;
     padding: 35px 20px !important;
     text-align: center !important;
@@ -1634,17 +1634,17 @@ body {
   }
 
   /* Deine Wunsch-Abstände für die Text-Elemente im Hero-Bereich */
-  .hero-title {
+  .pml-hero-title {
     margin-top: 100px !important;
   }
 
-  .hero-description {
+  .pml-hero-description {
     margin-top: 50px !important;
   }
 
   /* Features untereinander anordnen */
-  .hero-features,
-  .features-container {
+  .pml-hero-features,
+  .pml-features-container {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -1653,15 +1653,15 @@ body {
   }
 
   /* Die rote Pill-Anzeige "Jetzt Pizza bestellen..." */
-  .hero-section .badge,
-  .hero-section span {
+  .pml-hero-section .pml-badge,
+  .pml-hero-section span {
     display: inline-block !important;
     margin: 0 auto 15px auto !important;
   }
 
   /* "Jetzt bestellen" Button zentrieren */
-  .hero-section .btn-main,
-  .hero-section button {
+  .pml-hero-section .pml-btn-main,
+  .pml-hero-section button {
     display: block !important;
     margin: 20px auto 0 auto !important;
     width: 85% !important;
@@ -1669,9 +1669,9 @@ body {
   }
 
   /* 3. RABATT-BANNER / PROMO-TEXTS unter der Lieferung */
-  .discount-banner,
-  .promo-text,
-  .rabatt-info {
+  .pml-discount-banner,
+  .pml-promo-text,
+  .pml-rabatt-info {
     font-size: 12px !important;
     padding: 6px 12px !important;
     margin: 8px auto 0 auto !important;
@@ -1681,8 +1681,8 @@ body {
     box-sizing: border-box;
   }
 
-  .discount-banner img,
-  .discount-banner svg {
+  .pml-discount-banner img,
+  .pml-discount-banner svg {
     max-height: 18px !important;
     width: auto !important;
   }
@@ -1692,57 +1692,57 @@ body {
     font-size: 22px !important;
   }
   h2,
-  .modal-main-title {
+  .pml-modal-main-title {
     font-size: 18px !important;
   }
   h3 {
     font-size: 15px !important;
   }
   p,
-  .modal-sub-text {
+  .pml-modal-sub-text {
     font-size: 13px !important;
   }
 
   /* 4. PRODUKT-GRID (Einfach untereinander) */
-  .products-grid,
-  .menu-grid {
+  .pml-products-grid,
+  .pml-menu-grid {
     grid-template-columns: 1fr !important;
     gap: 15px;
     padding: 10px;
   }
 
   /* 5. WARENKORB SIDEBAR (DRAWER) */
-  .cart-drawer {
+  .pml-cart-drawer {
     width: 100% !important;
     max-width: 100% !important;
   }
 
   /* 6. FORMULARE */
-  .form-group input,
-  .form-group textarea {
+  .pml-form-group input,
+  .pml-form-group textarea {
     padding: 12px;
     font-size: 16px !important;
     max-width: 100% !important;
     box-sizing: border-box;
   }
 
-  .btn-address-submit,
-  .btn-modal-save,
-  .address-action-buttons {
+  .pml-btn-address-submit,
+  .pml-btn-modal-save,
+  .pml-address-action-buttons {
     width: 100% !important;
     flex-direction: column !important;
     gap: 10px;
   }
 
-  .btn-address-back {
+  .pml-btn-address-back {
     width: 100%;
     order: 2;
   }
 
   /* 7. POP-UPS (MODALS) ANPASSUNG */
-  .modal-content-card,
-  .product-modal-card,
-  .impressum-modal-box {
+  .pml-modal-content-card,
+  .pml-product-modal-card,
+  .pml-impressum-modal-box {
     width: 92% !important;
     max-width: 95% !important;
     margin: 10px auto !important;
@@ -1751,26 +1751,26 @@ body {
     border-radius: 8px !important;
   }
 
-  .checkbox-group {
+  .pml-checkbox-group {
     display: flex !important;
     flex-direction: column !important;
     gap: 8px !important;
   }
 
-  .checkbox-label {
+  .pml-checkbox-label {
     font-size: 14px !important;
     padding: 5px 0;
   }
 
-  .modal-action-buttons {
+  .pml-modal-action-buttons {
     display: flex !important;
     flex-direction: column !important;
     gap: 8px !important;
     width: 100% !important;
   }
 
-  .btn-modal-abort,
-  .btn-modal-confirm {
+  .pml-btn-modal-abort,
+  .pml-btn-modal-confirm {
     width: 100% !important;
     margin: 0 !important;
   }

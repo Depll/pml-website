@@ -10,20 +10,20 @@ const plzModal = document.getElementById("plz-modal");
 const plzSubmitBtn = document.getElementById("btn-check-plz");
 const plzInputField = document.getElementById("plz-input");
 const plzErrorMsg = document.getElementById("plz-error");
-const plzChangeLink = document.querySelector(".change-link");
+const plzChangeLink = document.querySelector(".pml-change-link");
 
-const orderBtn = document.querySelector(".btn-order");
-const searchSection = document.querySelector(".search-section");
+const orderBtn = document.querySelector(".pml-btn-order");
+const searchSection = document.querySelector(".pml-search-section");
 
-const categoryButtons = document.querySelectorAll(".category-item");
-const categoryGroups = document.querySelectorAll(".menu-category-group");
+const categoryButtons = document.querySelectorAll(".pml-category-item");
+const categoryGroups = document.querySelectorAll(".pml-menu-category-group");
 
 const cartCountBadge = document.getElementById("cart-count-badge");
-const navCartBtn = document.querySelector(".cart-box");
+const navCartBtn = document.querySelector(".pml-cart-box");
 
 // DOM Elemente für das Produkt-Modal
 const productModal = document.getElementById("product-modal");
-const closeModalX = document.querySelector(".close-product-modal");
+const closeModalX = document.querySelector(".pml-close-product-modal");
 const btnCloseAbort = document.getElementById("btn-close-product");
 const btnAddToCart = document.getElementById("btn-add-to-cart");
 
@@ -44,7 +44,7 @@ let currentProductName = "";
 
 // DOM Elemente für die Warenkorb-Sidebar
 const cartSidebar = document.getElementById("cart-sidebar");
-const closeCartBtn = document.querySelector(".close-cart-btn");
+const closeCartBtn = document.querySelector(".pml-close-cart-btn");
 const cartEmptyView = document.getElementById("cart-empty-view");
 const cartItemsContainer = document.getElementById("cart-items-container");
 const btnToCheckout = document.getElementById("btn-to-checkout");
@@ -57,8 +57,16 @@ const cartTotalEl = document.getElementById("cart-total");
 // ==========================================================================
 // 1. PLZ-PRÜFUNG LOGIK
 // ==========================================================================
+const savedPlzOnLoad = localStorage.getItem("milano_plz");
+
 if (plzModal) {
-  plzModal.classList.remove("hidden");
+  if (savedPlzOnLoad && VALID_POSTCODES.includes(savedPlzOnLoad)) {
+    plzModal.classList.add("pml-hidden");
+    const navPlzDisplay = document.getElementById("nav-plz");
+    if (navPlzDisplay) navPlzDisplay.textContent = savedPlzOnLoad;
+  } else {
+    plzModal.classList.remove("pml-hidden");
+  }
 }
 
 function checkZipcode() {
@@ -66,14 +74,15 @@ function checkZipcode() {
   const enteredCode = plzInputField.value.trim();
 
   if (VALID_POSTCODES.includes(enteredCode)) {
-    plzModal.classList.add("hidden");
-    if (plzErrorMsg) plzErrorMsg.classList.add("hidden");
+    plzModal.classList.add("pml-hidden");
+    if (plzErrorMsg) plzErrorMsg.classList.add("pml-hidden");
 
-    // NEU: Schreibt die PLZ direkt beim Start oben in die Navbar
+    localStorage.setItem("milano_plz", enteredCode);
+
     const navPlzDisplay = document.getElementById("nav-plz");
     if (navPlzDisplay) navPlzDisplay.textContent = enteredCode;
   } else {
-    if (plzErrorMsg) plzErrorMsg.classList.remove("hidden");
+    if (plzErrorMsg) plzErrorMsg.classList.remove("pml-hidden");
     plzInputField.value = "";
   }
 }
@@ -90,7 +99,7 @@ if (plzInputField) {
 
 if (plzChangeLink) {
   plzChangeLink.addEventListener("click", () => {
-    if (plzModal) plzModal.classList.remove("hidden");
+    if (plzModal) plzModal.classList.remove("pml-hidden");
     if (plzInputField) plzInputField.value = "";
   });
 }
@@ -117,14 +126,14 @@ const searchInput = document.getElementById("search-input");
 if (searchInput) {
   searchInput.addEventListener("input", (event) => {
     const searchText = event.target.value.toLowerCase().trim();
-    const localMenuGroups = document.querySelectorAll(".menu-category-group");
+    const localMenuGroups = document.querySelectorAll(".pml-menu-category-group");
 
     localMenuGroups.forEach((group) => {
-      const cardsInGroup = group.querySelectorAll(".product-card");
+      const cardsInGroup = group.querySelectorAll(".pml-product-card");
       let hasVisibleProducts = false;
 
       cardsInGroup.forEach((card) => {
-        const productTitleEl = card.querySelector(".product-title");
+        const productTitleEl = card.querySelector(".pml-product-title");
 
         if (productTitleEl) {
           const productTitle = productTitleEl.textContent.toLowerCase();
@@ -141,9 +150,9 @@ if (searchInput) {
 
       // Leere Kategorien ausblenden, ansonsten einblenden
       if (hasVisibleProducts || searchText === "") {
-        group.classList.remove("hidden-group");
+        group.classList.remove("pml-hidden-group");
       } else {
-        group.classList.add("hidden-group");
+        group.classList.add("pml-hidden-group");
       }
     });
   });
@@ -152,13 +161,13 @@ if (searchInput) {
 // ==========================================================================
 // 3. KATEGORIE-BUTTONS (NUR NOCH DIESE EINE LOGIK FÜR KLICKS!)
 // ==========================================================================
-document.querySelectorAll(".category-item").forEach((button) => {
+document.querySelectorAll(".pml-category-item").forEach((button) => {
   button.addEventListener("click", () => {
     // 1. Klasse "active" umschalten
     document
-      .querySelectorAll(".category-item")
-      .forEach((btn) => btn.classList.remove("active"));
-    button.classList.add("active");
+      .querySelectorAll(".pml-category-item")
+      .forEach((btn) => btn.classList.remove("pml-active"));
+    button.classList.add("pml-active");
 
     // 2. Button-Text für den data-category Abgleich säubern (Emojis raus)
     const selectedCategory = button.textContent
@@ -173,11 +182,11 @@ document.querySelectorAll(".category-item").forEach((button) => {
       searchInput.value = "";
     }
     document
-      .querySelectorAll(".product-card")
+      .querySelectorAll(".pml-product-card")
       .forEach((card) => (card.style.display = ""));
 
     // 4. Kategorie-Gruppen über das HTML-Attribut "data-category" filtern
-    const localMenuGroups = document.querySelectorAll(".menu-category-group");
+    const localMenuGroups = document.querySelectorAll(".pml-menu-category-group");
     localMenuGroups.forEach((group) => {
       const groupCategory = group.getAttribute("data-category");
 
@@ -186,9 +195,9 @@ document.querySelectorAll(".category-item").forEach((button) => {
         selectedCategory.toLowerCase() === "alle" ||
         groupCategory === selectedCategory
       ) {
-        group.classList.remove("hidden-group");
+        group.classList.remove("pml-hidden-group");
       } else {
-        group.classList.add("hidden-group");
+        group.classList.add("pml-hidden-group");
       }
     });
   });
@@ -197,18 +206,18 @@ document.querySelectorAll(".category-item").forEach((button) => {
 // ==========================================================================
 // 3. PRODUKT-MODAL STEUERUNG
 // ==========================================================================
-document.querySelectorAll(".btn-add-cart").forEach((button) => {
+document.querySelectorAll(".pml-btn-add-cart").forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
 
-    const card = button.closest(".product-card");
+    const card = button.closest(".pml-product-card");
     currentProductName = card
-      .querySelector(".product-title")
+      .querySelector(".pml-product-title")
       .textContent.trim();
     const productDescText = card
-      .querySelector(".product-description")
+      .querySelector(".pml-product-description")
       .textContent.trim();
-    const priceText = card.querySelector(".product-price").textContent;
+    const priceText = card.querySelector(".pml-product-price").textContent;
 
     basePrice = parseFloat(priceText.replace(/[^\d.,]/g, "").replace(",", "."));
 
@@ -220,7 +229,7 @@ document.querySelectorAll(".btn-add-cart").forEach((button) => {
     removeCheckboxes.forEach((cb) => (cb.checked = false));
 
     updateModalPrice();
-    productModal.classList.remove("hidden");
+    productModal.classList.remove("pml-hidden");
   });
 });
 
@@ -237,7 +246,7 @@ extraCheckboxes.forEach((cb) =>
   cb.addEventListener("change", updateModalPrice),
 );
 
-const closeModal = () => productModal.classList.add("hidden");
+const closeModal = () => productModal.classList.add("pml-hidden");
 if (closeModalX) closeModalX.addEventListener("click", closeModal);
 if (btnCloseAbort) btnCloseAbort.addEventListener("click", closeModal);
 
@@ -285,9 +294,9 @@ function updateCartUI() {
     const totalItems = cart.length;
     if (totalItems === 0) {
       cartCountBadge.textContent = "0";
-      cartCountBadge.classList.add("hidden");
+      cartCountBadge.classList.add("pml-hidden");
     } else {
-      cartCountBadge.classList.remove("hidden");
+      cartCountBadge.classList.remove("pml-hidden");
       cartCountBadge.textContent = totalItems > 5 ? "5+" : totalItems;
     }
   }
@@ -295,7 +304,7 @@ function updateCartUI() {
   // Prüfen ob leer
   if (cart.length === 0) {
     cartEmptyView.style.display = "block";
-    btnToCheckout.classList.add("disabled");
+    btnToCheckout.classList.add("pml-disabled");
     btnToCheckout.disabled = true;
 
     cartSubtotalEl.textContent = "0,00 EUR";
@@ -317,7 +326,7 @@ function updateCartUI() {
         ? item.extras
             .map(
               (e) =>
-                `<div class="item-extra-line">+ Extra ${e.charAt(0).toUpperCase() + e.slice(1)}</div>`,
+                `<div class="pml-item-extra-line">+ Extra ${e.charAt(0).toUpperCase() + e.slice(1)}</div>`,
             )
             .join("")
         : "";
@@ -327,36 +336,36 @@ function updateCartUI() {
         ? item.removed
             .map(
               (r) =>
-                `<div class="item-remove-line">- Ohne ${r.charAt(0).toUpperCase() + r.slice(1)}</div>`,
+                `<div class="pml-item-remove-line">- Ohne ${r.charAt(0).toUpperCase() + r.slice(1)}</div>`,
             )
             .join("")
         : "";
 
     const notesHTML = item.notes
-      ? `<div class="item-note-line">Anmerkung: "${item.notes}"</div>`
+      ? `<div class="pml-item-note-line">Anmerkung: "${item.notes}"</div>`
       : "";
 
     const itemCard = document.createElement("div");
-    itemCard.classList.add("cart-item-card");
+    itemCard.classList.add("pml-cart-item-card");
 
     itemCard.innerHTML = `
-      <div class="cart-item-header">
-        <span class="item-title">${item.name}</span>
-        <span class="item-delete btn-remove-item" data-id="${item.id}">&times;</span>
+      <div class="pml-cart-item-header">
+        <span class="pml-item-title">${item.name}</span>
+        <span class="pml-item-delete pml-btn-remove-item" data-id="${item.id}">&times;</span>
       </div>
       
-      <div class="cart-item-details">
+      <div class="pml-cart-item-details">
         ${extrasHTML}
         ${removedHTML}
         ${notesHTML}
       </div>
       
-      <div class="cart-item-footer">
-        <div class="quantity-control">
+      <div class="pml-cart-item-footer">
+        <div class="pml-quantity-control">
   <span>Menge:</span>
-  <input type="number" class="qty-input cart-quantity-change" data-id="${item.id}" value="${item.quantity || 1}" min="1" style="width: 50px; text-align: center;" />
+  <input type="number" class="pml-qty-input pml-cart-quantity-change" data-id="${item.id}" value="${item.quantity || 1}" min="1" style="width: 50px; text-align: center;" />
 </div>
-        <span class="item-price">${item.totalPrice.toFixed(2).replace(".", ",")} EUR</span>
+        <span class="pml-item-price">${item.totalPrice.toFixed(2).replace(".", ",")} EUR</span>
       </div>
     `;
     cartItemsContainer.appendChild(itemCard);
@@ -371,15 +380,15 @@ function updateCartUI() {
 
   if (subtotal >= MIN_ORDER_VALUE) {
     minOrderAlert.style.display = "none";
-    btnToCheckout.classList.remove("disabled");
+    btnToCheckout.classList.remove("pml-disabled");
     btnToCheckout.disabled = false;
   } else {
     minOrderAlert.style.display = "block";
-    btnToCheckout.classList.add("disabled");
+    btnToCheckout.classList.add("pml-disabled");
     btnToCheckout.disabled = true;
   }
 
-  document.querySelectorAll(".btn-remove-item").forEach((btn) => {
+  document.querySelectorAll(".pml-btn-remove-item").forEach((btn) => {
     btn.addEventListener("click", () => {
       const idToRemove = parseInt(btn.getAttribute("data-id"));
       cart = cart.filter((item) => item.id !== idToRemove);
@@ -388,7 +397,7 @@ function updateCartUI() {
   });
 
   // Event-Listener für Pfeiltasten-Klicks und manuelle Mengeneingaben
-  document.querySelectorAll(".cart-quantity-change").forEach((input) => {
+  document.querySelectorAll(".pml-cart-quantity-change").forEach((input) => {
     input.addEventListener("input", (event) => {
       const idToChange = parseInt(input.getAttribute("data-id"));
       let newQty = parseInt(event.target.value) || 1;
@@ -418,20 +427,20 @@ function updateCartUI() {
 if (navCartBtn) {
   navCartBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    if (cartSidebar) cartSidebar.classList.remove("hidden");
+    if (cartSidebar) cartSidebar.classList.remove("pml-hidden");
   });
 }
 
 if (closeCartBtn) {
   closeCartBtn.addEventListener("click", () => {
-    cartSidebar.classList.add("hidden");
+    cartSidebar.classList.add("pml-hidden");
   });
 }
 
 if (cartSidebar) {
   cartSidebar.addEventListener("click", (event) => {
     if (event.target === cartSidebar) {
-      cartSidebar.classList.add("hidden");
+      cartSidebar.classList.add("pml-hidden");
     }
   });
 }
@@ -446,7 +455,7 @@ if (linkImpressum && impressumModal) {
   // Pop-up öffnen bei Klick auf den Link im Footer
   linkImpressum.addEventListener("click", (event) => {
     event.preventDefault();
-    impressumModal.classList.remove("hidden");
+    impressumModal.classList.remove("pml-hidden");
   });
 }
 
@@ -455,10 +464,10 @@ if (impressumModal) {
   impressumModal.addEventListener("click", (event) => {
     // Falls auf das X geklickt wird ODER direkt auf den dunklen Hintergrund
     if (
-      event.target.classList.contains("close-impressum-btn") ||
+      event.target.classList.contains("pml-close-impressum-btn") ||
       event.target === impressumModal
     ) {
-      impressumModal.classList.add("hidden");
+      impressumModal.classList.add("pml-hidden");
     }
   });
 }
@@ -474,8 +483,8 @@ const addressPlzField = document.getElementById("address-plz");
 if (btnToCheckoutLocal) {
   btnToCheckoutLocal.addEventListener("click", () => {
     if (cart.length > 0) {
-      cartViewStep.classList.add("hidden-step");
-      addressViewStep.classList.remove("hidden-step");
+      cartViewStep.classList.add("pml-hidden-step");
+      addressViewStep.classList.remove("pml-hidden-step");
 
       // Postleitzahl automatisch aus dem PLZ-Input des ersten Modals übernehmen
       const savedPlz = document.getElementById("plz-input")?.value.trim() || "";
@@ -489,16 +498,16 @@ if (btnToCheckoutLocal) {
 // 2. Zurück zum Warenkorb
 if (btnBackToCart) {
   btnBackToCart.addEventListener("click", () => {
-    addressViewStep.classList.add("hidden-step");
-    cartViewStep.classList.remove("hidden-step");
+    addressViewStep.classList.add("pml-hidden-step");
+    cartViewStep.classList.remove("pml-hidden-step");
   });
 }
 
 // 3. Beim vollständigen Schließen der Sidebar den Zustand SOFORT resetten
 // 3. Beim vollständigen Schließen der Sidebar den Zustand zurücksetzen
-document.querySelectorAll(".close-cart-btn").forEach((closeBtn) => {
+document.querySelectorAll(".pml-close-cart-btn").forEach((closeBtn) => {
   closeBtn.addEventListener("click", () => {
-    if (cartSidebar) cartSidebar.classList.add("hidden");
+    if (cartSidebar) cartSidebar.classList.add("pml-hidden");
     resetSidebarSteps();
   });
 });
@@ -506,7 +515,7 @@ document.querySelectorAll(".close-cart-btn").forEach((closeBtn) => {
 if (cartSidebar) {
   cartSidebar.addEventListener("click", (e) => {
     if (e.target === cartSidebar) {
-      cartSidebar.classList.add("hidden");
+      cartSidebar.classList.add("pml-hidden");
       resetSidebarSteps();
     }
   });
@@ -523,8 +532,8 @@ function resetSidebarSteps() {
     cartViewStep.style.display = "";
 
     // Jetzt sauber nur noch die Klassen umschalten
-    addressViewStep.classList.add("hidden-step");
-    cartViewStep.classList.remove("hidden-step");
+    addressViewStep.classList.add("pml-hidden-step");
+    cartViewStep.classList.remove("pml-hidden-step");
   }
 }
 
@@ -538,18 +547,18 @@ if (deliveryForm) {
     const requiredInputs = deliveryForm.querySelectorAll("input[required]");
 
     requiredInputs.forEach((input) => {
-      const formGroup = input.closest(".form-group");
-      const errorMsg = formGroup.querySelector(".form-error-msg");
+      const formGroup = input.closest(".pml-form-group");
+      const errorMsg = formGroup.querySelector(".pml-form-error-msg");
 
       if (input.value.trim() === "") {
-        formGroup.classList.add("has-error");
+        formGroup.classList.add("pml-has-error");
         if (errorMsg) {
-          errorMsg.classList.remove("hidden");
+          errorMsg.classList.remove("pml-hidden");
         }
         isFormValid = false;
       } else {
-        formGroup.classList.remove("has-error");
-        if (errorMsg) errorMsg.classList.add("hidden");
+        formGroup.classList.remove("pml-has-error");
+        if (errorMsg) errorMsg.classList.add("pml-hidden");
       }
     });
 
@@ -644,20 +653,20 @@ function validiereBestellung(event) {
   function zeigeFehler(inputElement, istFehler, nachricht) {
     if (!inputElement) return;
     const fehlerDiv =
-      inputElement.parentElement.querySelector(".form-error-msg");
+      inputElement.parentElement.querySelector(".pml-form-error-msg");
 
     if (istFehler) {
-      inputElement.classList.add("input-error");
+      inputElement.classList.add("pml-input-error");
       if (fehlerDiv) {
         fehlerDiv.innerText = nachricht;
-        fehlerDiv.classList.remove("hidden");
+        fehlerDiv.classList.remove("pml-hidden");
         fehlerDiv.style.display = "block";
       }
       hatFehler = true; // Flagge geht hoch!
     } else {
-      inputElement.classList.remove("input-error");
+      inputElement.classList.remove("pml-input-error");
       if (fehlerDiv) {
-        fehlerDiv.classList.add("hidden");
+        fehlerDiv.classList.add("pml-hidden");
         fehlerDiv.style.display = "none";
       }
     }
