@@ -1,0 +1,816 @@
+[
+  {
+    "category": "Panini",
+    "label": "🍞 Panini",
+    "items": [
+      {
+        "name": "1 - Pizza Brötchen 🍞",
+        "description": "mit Kräuterbutter",
+        "price": "4.00",
+        "category": "Panini",
+        "label": "🍞 Panini"
+      },
+      {
+        "name": "1a - Pizza Brötchen 🍞",
+        "description": "mit Aioli",
+        "price": "4.00",
+        "category": "Panini",
+        "label": "🍞 Panini"
+      },
+      {
+        "name": "2 - Pizza-Brot 🍞",
+        "description": "mit Knoblauch, Tomatensauce",
+        "price": "4.00",
+        "category": "Panini",
+        "label": "🍞 Panini"
+      },
+      {
+        "name": "3 - Panini Schinken 🍞",
+        "description": "gefüllt mit Käse, Schinken",
+        "price": "7.00",
+        "category": "Panini",
+        "label": "🍞 Panini"
+      },
+      {
+        "name": "3a - Panini Tonno 🍞",
+        "description": "gefüllt mit Käse, Thunfisch",
+        "price": "7.00",
+        "category": "Panini",
+        "label": "🍞 Panini"
+      },
+      {
+        "name": "3b - Panini Käse 🍞",
+        "description": "gefüllt mit Käse",
+        "price": "7.00",
+        "category": "Panini",
+        "label": "🍞 Panini"
+      },
+      {
+        "name": "4 - Panini Chicken 🍞",
+        "description": "gefüllt mit Geflügelfleisch",
+        "price": "7.50",
+        "category": "Panini",
+        "label": "🍞 Panini"
+      },
+      {
+        "name": "4a - Panini Spinaci 🍞",
+        "description": "gefüllt mit Spinat, Schafskäse",
+        "price": "7.50",
+        "category": "Panini",
+        "label": "🍞 Panini"
+      }
+    ]
+  },
+  {
+    "category": "Salate",
+    "label": "🥗 Salate",
+    "items": [
+      {
+        "name": "12 - Portion Tomaten & Mozzarella 🥗",
+        "description": "frische Tomaten, Mozzarella, Basilikum",
+        "price": "8.00",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "21 - Beilagensalat 🥗",
+        "description": "gemischter Salat der Saison",
+        "price": "4.50",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "31 - Käse Salat 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Ei, Käse, Peperoni, Oliven",
+        "price": "9.00",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "32 - Hirtensalat 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Zwiebeln, Weichkäse,\n                  Oliven, Peperoni",
+        "price": "9.00",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "33 - Mista 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Zwiebeln, Paprika, Mais,\n                  Oliven, Peperoni",
+        "price": "8.50",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "34 - Capricciosa 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Vorderschinken, Käse,\n                  Thunfisch, Zwiebeln, Ei, Oliven, Peperoni",
+        "price": "9.50",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "35 - Italia 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Thunfisch, Vorderschinken,\n                  Ei, Käse, Oliven, Zwiebeln",
+        "price": "9.50",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "36 - Chicken Salat 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Hähnchenbruststreifen,\n                  Zwiebeln, Paprika, Mais, Oliven, Peperoni",
+        "price": "9.50",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "36a - Salat Schnitzel 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Hähnchenschnitzelstreifen,\n                  Zwiebeln, Paprika, Mais, Oliven, Peperoni",
+        "price": "10.50",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "37 - Mexican-Salat 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Paprika, Mais,\n                  Kidneybohnen, Zwiebeln, Oliven, Peperoni",
+        "price": "8.50",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      },
+      {
+        "name": "37a - Milano 🥗",
+        "description": "mit grünem Salat, Tomaten, Gurken, Thunfisch, Käse, Ei,\n                  Krabben, Zwiebeln, Oliven, Peperoni",
+        "price": "9.50",
+        "category": "Salate",
+        "label": "🥗 Salate"
+      }
+    ]
+  },
+  {
+    "category": "Pizza",
+    "label": "🍕 Pizza",
+    "items": [
+      {
+        "name": "38 - Margherita 🍕",
+        "description": "mit Tomatensauce, Käse",
+        "price": "8.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "43 - Mais 🍕",
+        "description": "mit Mais",
+        "price": "9.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "44 - Funghi 🍕",
+        "description": "mit frischen Champignons",
+        "price": "9.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "45 - Pugliese 🍕",
+        "description": "mit Zwiebeln",
+        "price": "9.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "46 - Salami 🍕",
+        "description": "mit Salami",
+        "price": "9.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "47 - Prosciutto 🍕",
+        "description": "mit Vorderschinken",
+        "price": "9.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "48 - Cipolla 🍕",
+        "description": "mit Kapern, Sardellen",
+        "price": "9.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "49 - Tonno 🍕",
+        "description": "mit Thunfisch",
+        "price": "10.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "50 - Bolognese 🍕",
+        "description": "mit Hackfleischsauce (Rind)",
+        "price": "10.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "51 - Inferno (Scharf) 🍕",
+        "description": "mit Salami, Zwiebeln, milder Peperoni, Knoblauch, scharf",
+        "price": "11.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "52 - Spinaci 🍕",
+        "description": "mit Spinat, Knoblauch",
+        "price": "9.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "53 - Napoli 🍕",
+        "description": "mit Vorderschinken, Salami",
+        "price": "10.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "54 - Regina 🍕",
+        "description": "mit Vorderschinken, frischen Champignons",
+        "price": "10.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "55 - Campagnola 🍕",
+        "description": "mit Salami, frischen Champignons",
+        "price": "10.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "56 - Hawaii 🍕",
+        "description": "mit Vorderschinken, Ananas",
+        "price": "10.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "57 - Frutti di Mare 🍕",
+        "description": "mit Meeresfrüchten, Knoblauch",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "58 - Quattro Stagioni 🍕",
+        "description": "mit Vorderschinken, Salami, frischen Champignons, Thunfisch",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "59 - Mozzarella 🍕",
+        "description": "mit frischen Tomatenscheiben, Mozzarella, Basilikum",
+        "price": "10.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "60 - Tonno Cipolla 🍕",
+        "description": "mit Thunfisch, Zwiebeln",
+        "price": "11.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "61 - Vegetaria 🍕",
+        "description": "mit Spinat, frischen Champignons, Paprika, Zwiebeln, milder\n                  Peperoni, Knoblauch",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "62 - Calzone (Gefüllt) 🍕",
+        "description": "mit Vorderschinken, Salami, frischen Champignons",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "63 - Quattro Formaggi 🍕",
+        "description": "mit vier verschiedenen Käsesorten",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "64 - Gamberetti 🍕",
+        "description": "mit Krabben, Knoblauch",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "65 - Milano 🍕",
+        "description": "mit Vorderschinken, Salami, frischen Champignons, Zwiebeln,\n                  milder Peperoni, Ei",
+        "price": "12.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "66 - Scampi 🍕",
+        "description": "mit Scampi, Knoblauch",
+        "price": "13.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "67 - Chicken Pizza 🍕",
+        "description": "mit Hähnchenbruststreifen, Zwiebeln, Paprika",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "68 - Sucuk Pizza 🍕",
+        "description": "mit Sucuk (türkischer Knoblauchwurst), Zwiebeln, milder\n                  Peperoni",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "69 - Spaghetti Pizza 🍕",
+        "description": "mit Spaghetti, Bolognesesauce",
+        "price": "11.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "70 - Gyros Pizza 🍕",
+        "description": "mit Gyros, Zwiebeln, milder Peperoni",
+        "price": "12.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "71 - BBQ Pizza 🍕",
+        "description": "mit Barbecuesauce, Hähnchenbruststreifen, Speck, Zwiebeln",
+        "price": "12.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "72 - Pizza Westen 🍕",
+        "description": "mit Vorderschinken, Salami, Mais, Zwiebeln, Paprika",
+        "price": "11.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "73 - Pizza Lachs 🍕",
+        "description": "mit Lachs, Spinat, Knoblauch",
+        "price": "13.00",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      },
+      {
+        "name": "74 - Hollandaise Pizza 🍕",
+        "description": "mit Sauce Hollandaise, Hähnchenbruststreifen, Brokkoli",
+        "price": "12.50",
+        "category": "Pizza",
+        "label": "🍕 Pizza"
+      }
+    ]
+  },
+  {
+    "category": "Indische Gerichte",
+    "label": "🍲 Indische Gerichte",
+    "items": [
+      {
+        "name": "75 - Chicken Sabji 🍲",
+        "description": "Hähnchenbrustfilet mit verschiedenem Gemüse, frischem Ingwer,\n                  Knoblauch und indischen Gewürzen",
+        "price": "14.00",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "76 - Chicken Curry 🍲",
+        "description": "Hähnchenbrustfilet in Currysauce mit indischen Gewürzen",
+        "price": "13.50",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "77 - Chicken Palak 🍲",
+        "description": "Hähnchenbrustfilet mit Spinat, frischem Ingwer, Knoblauch nach\n                  indischer Art",
+        "price": "14.00",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "78 - Chicken Korma 🍲",
+        "description": "Hähnchenbrustfilet in milder Sauce aus Sahne, Mandeln,\n                  Kokosnuss und Rosinen",
+        "price": "14.50",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "79 - Chicken Madras (Scharf) 🍲",
+        "description": "Hähnchenbrustfilet in scharfer Currysauce mit Kokosmilch,\n                  Ingwer und Knoblauch",
+        "price": "14.00",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "80 - Chicken Chili (Scharf) 🍲",
+        "description": "Hähnchenbrustfilet mit Paprika, Zwiebeln, frischem Ingwer,\n                  Knoblauch, Chili und Gewürzen",
+        "price": "14.50",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "81 - Lamm Curry 🍲",
+        "description": "Zartes Lammfleisch in feiner indischer Currysauce",
+        "price": "15.50",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "82 - Lamm Sabji 🍲",
+        "description": "Zartes Lammfleisch mit verschiedenem Gemüse, frischem Ingwer,\n                  Knoblauch und Gewürzen",
+        "price": "16.00",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "83 - Lamm Palak 🍲",
+        "description": "Zartes Lammfleisch mit Spinat, frischem Ingwer, Knoblauch und\n                  indischen Gewürzen",
+        "price": "16.00",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "84 - Lamm Madras (Scharf) 🍲",
+        "description": "Zartes Lammfleisch in scharfer Currysauce mit Kokosmilch,\n                  Ingwer und Knoblauch",
+        "price": "16.00",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "85 - Matter Paneer (Vegetarisch) 🍲",
+        "description": "Hausgemachter indischer Frischkäse mit Erbsen in feiner\n                  Currysauce und Gewürzen",
+        "price": "13.00",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "86 - Palak Paneer (Vegetarisch) 🍲",
+        "description": "Hausgemachter indischer Frischkäse mit Spinat, Ingwer,\n                  Knoblauch und Gewürzen",
+        "price": "13.00",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "87 - Alu Gobi (Vegetarisch) 🍲",
+        "description": "Frischer Blumenkohl und Kartoffeln mit Ingwer, Knoblauch und\n                  indischen Gewürzen",
+        "price": "12.50",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      },
+      {
+        "name": "88 - Shahi Paneer (Vegetarisch) 🍲",
+        "description": "Hausgemachter indischer Frischkäse in milder Sahnesauce mit\n                  Mandeln und Gewürzen",
+        "price": "13.50",
+        "category": "Indische Gerichte",
+        "label": "🍲 Indische Gerichte"
+      }
+    ]
+  },
+  {
+    "category": "Nudelgerichte",
+    "label": "🍜 Nudelgerichte",
+    "items": [
+      {
+        "name": "89 - Pasta Napolitana 🍜",
+        "description": "mit Tomatensauce",
+        "price": "8.00",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "90 - Pasta Bolognese 🍜",
+        "description": "mit Hackfleischsauce (Rind)",
+        "price": "9.00",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "91 - Pasta Carbonara 🍜",
+        "description": "mit Vorderschinken, Ei, Sahnesauce",
+        "price": "9.50",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "92 - Pasta Tonno 🍜",
+        "description": "mit Thunfisch, Knoblauch, Tomatensauce",
+        "price": "10.00",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "93 - Pasta Quattro Formaggi 🍜",
+        "description": "mit vier verschiedenen Käsesorten, Sahnesauce",
+        "price": "10.50",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "94 - Pasta Con Krabben 🍜",
+        "description": "mit Krabben, Knoblauch, Tomatensauce",
+        "price": "11.00",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "95 - Pasta Frutti di Mare 🍜",
+        "description": "mit Meeresfrüchten, Knoblauch, Tomatensauce",
+        "price": "11.50",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "96 - Pasta Brokkoli 🍜",
+        "description": "mit Brokkoli, Knoblauch, Sahnesauce",
+        "price": "9.50",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "97 - Pasta Milano 🍜",
+        "description": "mit Vorderschinken, Champignons, Erbsen, Tomaten-Sahnesauce",
+        "price": "10.50",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "98 - Pasta Spinaci 🍜",
+        "description": "mit Spinat, Weichkäse, Knoblauch, Sahnesauce",
+        "price": "10.00",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "99 - Pasta Salmon 🍜",
+        "description": "mit Lachs, Knoblauch, Sahnesauce",
+        "price": "13.00",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "100 - Pasta Gorgonzola 🍜",
+        "description": "mit Gorgonzola, Sahnesauce",
+        "price": "11.00",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      },
+      {
+        "name": "101 - Pasta Chef 🍜",
+        "description": "mit Hähnchenbruststreifen, frischen Champignons,\n                  Curry-Sahnesauce",
+        "price": "11.50",
+        "category": "Nudelgerichte",
+        "label": "🍜 Nudelgerichte"
+      }
+    ]
+  },
+  {
+    "category": "Nudelaufläufe",
+    "label": "🍲 Nudelaufläufe",
+    "items": [
+      {
+        "name": "102 - Lasagne al Forno 🍲",
+        "description": "Schichtblattnudeln mit Hackfleischsauce (Rind) und Käse\n                  überbacken",
+        "price": "10.50",
+        "category": "Nudelaufläufe",
+        "label": "🍲 Nudelaufläufe"
+      },
+      {
+        "name": "103 - Cannelloni al Forno 🍲",
+        "description": "Röhrennudeln gefüllt mit Hackfleischsauce (Rind) und Käse\n                  überbacken",
+        "price": "10.50",
+        "category": "Nudelaufläufe",
+        "label": "🍲 Nudelaufläufe"
+      },
+      {
+        "name": "104 - Combinazione al Forno 🍲",
+        "description": "drei verschiedene Nudelsorten mit Vorderschinken, Champignons,\n                  Erbsen, Tomaten-Sahnesauce und Käse überbacken",
+        "price": "11.00",
+        "category": "Nudelaufläufe",
+        "label": "🍲 Nudelaufläufe"
+      },
+      {
+        "name": "105 - Pasta Brokkoli al Forno 🍲",
+        "description": "mit Brokkoli, Vorderschinken, Champignons, Sahnesauce und Käse\n                  überbacken",
+        "price": "11.00",
+        "category": "Nudelaufläufe",
+        "label": "🍲 Nudelaufläufe"
+      },
+      {
+        "name": "106 - Potato Casserole 🍲",
+        "description": "mit Bratkartoffeln, Speck, Zwiebeln, Ei, Sahnesauce und Käse\n                  überbacken",
+        "price": "11.50",
+        "category": "Nudelaufläufe",
+        "label": "🍲 Nudelaufläufe"
+      }
+    ]
+  },
+  {
+    "category": "Gyros",
+    "label": "🍖 Gyros Gerichte",
+    "items": [
+      {
+        "name": "107 - Gyros Teller 🍖",
+        "description": "mit Pommes frites, Zwiebeln, Tzatziki und Beilagensalat",
+        "price": "13.50",
+        "category": "Gyros",
+        "label": "🍖 Gyros Gerichte"
+      },
+      {
+        "name": "108 - Gyros überbacken 🍖",
+        "description": "mit Metaxasauce, Zwiebeln und Käse überbacken, dazu Pommes\n                  frites und Beilagensalat",
+        "price": "14.50",
+        "category": "Gyros",
+        "label": "🍖 Gyros Gerichte"
+      }
+    ]
+  },
+  {
+    "category": "Schnitzel",
+    "label": "🥩 Schnitzel Gerichte",
+    "items": [
+      {
+        "name": "109 - Schnitzel Wiener Art 🥩",
+        "description": "Hähnchenschnitzel mit Pommes frites, Zitronenecke und\n                  Beilagensalat",
+        "price": "11.50",
+        "category": "Schnitzel",
+        "label": "🥩 Schnitzel Gerichte"
+      },
+      {
+        "name": "110 - Jägerschnitzel 🥩",
+        "description": "Hähnchenschnitzel mit Jägersauce, Pommes frites und\n                  Beilagensalat",
+        "price": "13.00",
+        "category": "Schnitzel",
+        "label": "🥩 Schnitzel Gerichte"
+      },
+      {
+        "name": "111 - Zigeunerschnitzel 🥩",
+        "description": "Hähnchenschnitzel mit Zigeunersauce, Pommes frites und\n                  Beilagensalat",
+        "price": "13.00",
+        "category": "Schnitzel",
+        "label": "🥩 Schnitzel Gerichte"
+      },
+      {
+        "name": "112 - Rahmschnitzel 🥩",
+        "description": "Hähnchenschnitzel mit Rahmsauce, Pommes frites und\n                  Beilagensalat",
+        "price": "13.00",
+        "category": "Schnitzel",
+        "label": "🥩 Schnitzel Gerichte"
+      },
+      {
+        "name": "113 - Schnitzel Hawaii 🥩",
+        "description": "Hähnchenschnitzel mit Vorderschinken, Ananas, Sahnesauce und\n                  Käse überbacken, dazu Pommes frites und Beilagensalat",
+        "price": "14.00",
+        "category": "Schnitzel",
+        "label": "🥩 Schnitzel Gerichte"
+      }
+    ]
+  },
+  {
+    "category": "Baguettes",
+    "label": "🥖 Baguettes",
+    "items": [
+      {
+        "name": "114 - Baguette Schinken 🥖",
+        "description": "mit Vorderschinken, Remoulade, Salat, Tomaten, Gurken und Käse",
+        "price": "7.50",
+        "category": "Baguettes",
+        "label": "🥖 Baguettes"
+      },
+      {
+        "name": "115 - Baguette Salami 🥖",
+        "description": "mit Salami, Remoulade, Salat, Tomaten, Gurken und Käse",
+        "price": "7.50",
+        "category": "Baguettes",
+        "label": "🥖 Baguettes"
+      },
+      {
+        "name": "116 - Baguette Tonno 🥖",
+        "description": "mit Thunfisch, Remoulade, Salat, Tomaten, Gurken, Zwiebeln und\n                  Käse",
+        "price": "8.00",
+        "category": "Baguettes",
+        "label": "🥖 Baguettes"
+      },
+      {
+        "name": "117 - Baguette Chicken 🥖",
+        "description": "mit Hähnchenbruststreifen, Remoulade, Salat, Tomaten, Gurken\n                  und Käse",
+        "price": "8.50",
+        "category": "Baguettes",
+        "label": "🥖 Baguettes"
+      }
+    ]
+  },
+  {
+    "category": "Beilagen",
+    "label": "🍟 Beilagen",
+    "items": [
+      {
+        "name": "118 - Pommes frites klein 🍟",
+        "description": "knusprige Pommes frites",
+        "price": "3.50",
+        "category": "Beilagen",
+        "label": "🍟 Beilagen"
+      },
+      {
+        "name": "119 - Pommes frites groß 🍟",
+        "description": "knusprige Pommes frites",
+        "price": "4.50",
+        "category": "Beilagen",
+        "label": "🍟 Beilagen"
+      },
+      {
+        "name": "120 - Kroketten (10 Stück) 🍟",
+        "description": "goldbraune Kartoffelkroketten",
+        "price": "4.00",
+        "category": "Beilagen",
+        "label": "🍟 Beilagen"
+      },
+      {
+        "name": "121 - Mayonnaise / Ketchup 🥫",
+        "description": "Portion Sauce nach Wahl",
+        "price": "0.70",
+        "category": "Beilagen",
+        "label": "🍟 Beilagen"
+      },
+      {
+        "name": "122 - Tzatziki / Joghurt-Dressing 🥛",
+        "description": "hausgemachter Dip",
+        "price": "2.00",
+        "category": "Beilagen",
+        "label": "🍟 Beilagen"
+      }
+    ]
+  },
+  {
+    "category": "Desserts",
+    "label": "🍦 Desserts",
+    "items": [
+      {
+        "name": "123 - Tiramisu 🍦",
+        "description": "italienischer Dessertklassiker mit Mascarpone und Kaffee",
+        "price": "5.50",
+        "category": "Desserts",
+        "label": "🍦 Desserts"
+      },
+      {
+        "name": "124 - Spaghetti Eis 🍦",
+        "description": "Vanilleeis, Erdbeersauce und weiße Schokoraspeln",
+        "price": "5.50",
+        "category": "Desserts",
+        "label": "🍦 Desserts"
+      }
+    ]
+  },
+  {
+    "category": "Getränke",
+    "label": "🥤 Getränke",
+    "items": [
+      {
+        "name": "Coca-Cola 0,33l 🥤",
+        "description": "koffeinhaltiges Erfrischungsgetränk (zzgl. Pfand)",
+        "price": "2.50",
+        "category": "Getränke",
+        "label": "🥤 Getränke"
+      },
+      {
+        "name": "Fanta 0,33l 🥤",
+        "description": "Erfrischungsgetränk mit Orangengeschmack (zzgl. Pfand)",
+        "price": "2.50",
+        "category": "Getränke",
+        "label": "🥤 Getränke"
+      },
+      {
+        "name": "Mezzo Mix 0,33l 🥤",
+        "description": "koffeinhaltiges Erfrischungsgetränk (zzgl. Pfand)",
+        "price": "2.50",
+        "category": "Getränke",
+        "label": "🥤 Getränke"
+      },
+      {
+        "name": "Wasser 0,33l 💧",
+        "description": "Erfrischendes Mineralwasser (zzgl. Pfand)",
+        "price": "2.20",
+        "category": "Getränke",
+        "label": "🥤 Getränke"
+      }
+    ]
+  }
+]

@@ -20,6 +20,7 @@ const categoryGroups = document.querySelectorAll(".pml-menu-category-group");
 
 const cartCountBadge = document.getElementById("cart-count-badge");
 const navCartBtn = document.querySelector(".pml-cart-box");
+const menuRenderTarget = document.getElementById("menu-render-target");
 
 // **DOM Elements for the Product Modal**
 
@@ -172,7 +173,9 @@ const searchInput = document.getElementById("search-input");
 if (searchInput) {
   searchInput.addEventListener("input", (event) => {
     const searchText = event.target.value.toLowerCase().trim();
-    const localMenuGroups = document.querySelectorAll(".pml-menu-category-group");
+    const localMenuGroups = document.querySelectorAll(
+      ".pml-menu-category-group",
+    );
 
     localMenuGroups.forEach((group) => {
       const cardsInGroup = group.querySelectorAll(".pml-product-card");
@@ -232,7 +235,9 @@ document.querySelectorAll(".pml-category-item").forEach((button) => {
       .forEach((card) => (card.style.display = ""));
 
     // 4. Kategorie-Gruppen über das HTML-Attribut "data-category" filtern
-    const localMenuGroups = document.querySelectorAll(".pml-menu-category-group");
+    const localMenuGroups = document.querySelectorAll(
+      ".pml-menu-category-group",
+    );
     localMenuGroups.forEach((group) => {
       const groupCategory = group.getAttribute("data-category");
 
@@ -249,35 +254,84 @@ document.querySelectorAll(".pml-category-item").forEach((button) => {
   });
 });
 
-// ==========================================================================
-// 3. PRODUKT-MODAL STEUERUNG
-// ==========================================================================
-document.querySelectorAll(".pml-btn-add-cart").forEach((button) => {
-  button.addEventListener("click", (event) => {
+function renderMenuFromJson(menuGroups) {
+  if (!menuRenderTarget) return;
+
+  menuRenderTarget.innerHTML = menuGroups
+    .map(
+      (group) => `
+        <div class="pml-menu-category-group" data-category="${group.category}">
+          <div class="pml-category-banner">${group.label}</div>
+          <div class="pml-products-grid">
+            ${group.items
+              .map(
+                (item) => `
+                  <div class="pml-product-card" data-product-name="${item.name}" data-product-description="${item.description}" data-product-price="${item.price}">
+                    <div class="pml-product-info">
+                      <h3 class="pml-product-title">${item.name}</h3>
+                      <p class="pml-product-description">${item.description}</p>
+                    </div>
+                    <div class="pml-product-bottom">
+                      <span class="pml-product-price">ab ${Number(item.price).toFixed(2).replace(".", ",")} EUR</span>
+                      <button class="pml-btn-add-cart" type="button">
+                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                        In den Warenkorb
+                      </button>
+                    </div>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+        </div>
+      `,
+    )
+    .join("");
+}
+
+function openProductModalFromCard(card) {
+  currentProductName = card.dataset.productName || "";
+  const productDescText = card.dataset.productDescription || "";
+  const priceText = card.dataset.productPrice || "0";
+
+  basePrice = parseFloat(priceText.replace(",", "."));
+
+  modalTitle.textContent = currentProductName;
+  modalDescription.textContent = productDescText;
+  modalNotes.value = "";
+
+  extraCheckboxes.forEach((cb) => (cb.checked = false));
+  removeCheckboxes.forEach((cb) => (cb.checked = false));
+
+  updateModalPrice();
+  productModal.classList.remove("pml-hidden");
+}
+
+if (menuRenderTarget) {
+  menuRenderTarget.addEventListener("click", (event) => {
+    const button = event.target.closest(".pml-btn-add-cart");
+    if (!button) return;
+
     event.preventDefault();
-
     const card = button.closest(".pml-product-card");
-    currentProductName = card
-      .querySelector(".pml-product-title")
-      .textContent.trim();
-    const productDescText = card
-      .querySelector(".pml-product-description")
-      .textContent.trim();
-    const priceText = card.querySelector(".pml-product-price").textContent;
-
-    basePrice = parseFloat(priceText.replace(/[^\d.,]/g, "").replace(",", "."));
-
-    modalTitle.textContent = currentProductName;
-    modalDescription.textContent = productDescText;
-    modalNotes.value = "";
-
-    extraCheckboxes.forEach((cb) => (cb.checked = false));
-    removeCheckboxes.forEach((cb) => (cb.checked = false));
-
-    updateModalPrice();
-    productModal.classList.remove("pml-hidden");
+    if (card) openProductModalFromCard(card);
   });
-});
+}
+
+fetch("products.json")
+  .then((response) => {
+    if (!response.ok)
+      throw new Error("products.json konnte nicht geladen werden");
+    return response.json();
+  })
+  .then((data) => renderMenuFromJson(data))
+  .catch((error) => {
+    console.error(error);
+    if (menuRenderTarget) {
+      menuRenderTarget.innerHTML =
+        '<p class="pml-product-description">Die Speisekarte konnte nicht geladen werden.</p>';
+    }
+  });
 
 function updateModalPrice() {
   let extraCost = 0;
@@ -367,7 +421,6 @@ function updateCartUI() {
 
   // Jedes Produkt mit deinen Kartenelement-Styles rendern
   cart.forEach((item) => {
-
     const extrasHTML =
       item.extras.length > 0
         ? item.extras
@@ -700,8 +753,9 @@ function validiereBestellung(event) {
   // Fehler-Anzeige-Funktion
   function zeigeFehler(inputElement, istFehler, nachricht) {
     if (!inputElement) return;
-    const fehlerDiv =
-      inputElement.parentElement.querySelector(".pml-form-error-msg");
+    const fehlerDiv = inputElement.parentElement.querySelector(
+      ".pml-form-error-msg",
+    );
 
     if (istFehler) {
       inputElement.classList.add("pml-input-error");
