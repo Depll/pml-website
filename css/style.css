@@ -9,6 +9,12 @@
   padding: 0;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #ffffff;
@@ -29,16 +35,18 @@ body {
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid #f3f4f6;
+  overflow-x: hidden;
 }
 
 .pml-nav-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 /* --- LOGO --- */
@@ -48,7 +56,7 @@ body {
   align-items: center;
   user-select: none;
   cursor: pointer;
-  margin-left: -50px;
+  margin-left: 0;
 }
 
 .pml-logo-top {
@@ -84,6 +92,9 @@ body {
   cursor: pointer;
   color: #1c2434;
   font-size: 13.5px;
+  min-width: 0;
+  flex: 1 1 auto;
+  justify-content: flex-end;
 }
 
 .pml-pin-icon {
@@ -101,6 +112,10 @@ body {
 .pml-delivery-text {
   font-weight: 500;
   color: #000102;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 
 .pml-delivery-text strong {
@@ -130,7 +145,7 @@ body {
   cursor: pointer;
   color: #000000;
   gap: 12px;
-  margin-right: -20px;
+  margin-right: 0;
 }
 
 .pml-cart-icon {
@@ -143,7 +158,7 @@ body {
 }
 
 .pml-cart-badge {
-  font-weight: 900 !important; /* Macht die Schrift maximal fett */
+  font-weight: 900;
   font-size: 16px;
 }
 
@@ -424,7 +439,7 @@ body {
 }
 
 .pml-menu-category-group.pml-hidden-group {
-  display: none !important;
+  display: none;
 }
 
 /* --- KATEGORIE BANNER (Das dunkle Band) --- */
@@ -452,7 +467,8 @@ body {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 20px;
-  height: 185px; /* Exakte feste Höhe aus Figma */
+  min-height: 185px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Drückt Info nach oben, Preis/Button nach unten */
@@ -516,6 +532,40 @@ body {
 
 .pml-btn-add-cart:hover {
   color: #871414;
+}
+
+/* Mobile-first defaults for small screens */
+.pml-hero-bottom-row,
+.pml-hero-features,
+.pml-modal-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pml-products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.pml-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pml-btn-address-submit,
+.pml-btn-modal-save,
+.pml-address-action-buttons {
+  width: 100%;
+  flex-direction: column;
+}
+
+.pml-btn-modal-abort,
+.pml-btn-modal-confirm {
+  width: 100%;
+  margin: 0;
 }
 
 /* ================= PIZZERIA MILANO FOOTER ================= */
@@ -703,7 +753,7 @@ body {
 
 /* Blendet das Modal aus */
 .pml-modal-overlay.pml-hidden {
-  display: none !important;
+  display: none;
 }
 
 /* Die weiße Karte aus dem Screenshot */
@@ -834,7 +884,7 @@ body {
 }
 
 .pml-cart-overlay.pml-hidden {
-  display: none !important;
+  display: none;
 }
 
 .pml-cart-drawer {
@@ -842,6 +892,7 @@ body {
   width: 100%;
   max-width: 480px;
   height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
@@ -857,6 +908,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .pml-cart-header h2 {
@@ -877,19 +929,21 @@ body {
 
 /* BODY UND LEER-ZUSTAND */
 .pml-cart-body {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 20px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .pml-cart-empty-section {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 250px;
-  padding: 40px 0 10px 0;
+  justify-content: center;
+  min-height: 180px;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -919,8 +973,7 @@ body {
   justify-content: flex-end;
   width: 100%;
   margin-top: auto;
-  padding: 15px 0 10px 0;
-  margin-bottom: 400px; /* Schiebt den Knopf 40px nach unten */
+  padding-top: 12px;
 }
 /* 1. Der normale, aktive Button (wenn Items da sind) */
 .pml-btn-address-submit {
@@ -955,7 +1008,7 @@ body {
   background-color: #222b31;
   padding: 20px;
   color: #ffffff;
-  margin-bottom: 300px;
+  flex-shrink: 0;
 }
 
 .pml-min-order-warning {
@@ -1248,13 +1301,21 @@ body {
   background-color: #6f1414;
 }
 
-/* Responsive Anpassung für kleinere Screens */
-@media (max-width: 480px) {
+/* Desktop-Overrides für breitere Bildschirme */
+@media (min-width: 481px) {
   .pml-checkbox-group {
-    grid-template-columns: 1fr; /* 1 Spalte auf Handys */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
+
   .pml-modal-action-buttons {
-    flex-direction: column-reverse; /* Abbrechen wandert unten hin */
+    flex-direction: row;
+  }
+
+  .pml-btn-modal-abort,
+  .pml-btn-modal-confirm {
+    width: auto;
   }
 }
 
@@ -1273,7 +1334,7 @@ body {
 }
 
 .pml-impressum-overlay:not(.pml-hidden) {
-  display: flex !important;
+  display: flex;
 }
 
 /* Die weiße Pop-up Box */
@@ -1389,8 +1450,9 @@ body {
 }
 
 /* --- SCHRITT-UMSCHALTUNG --- */
-.pml-hidden-step {
-  display: none !important;
+#cart-view-step.pml-hidden-step,
+#address-view-step.pml-hidden-step {
+  display: none;
 }
 
 /* --- FORMULAR STYLING --- */
@@ -1451,12 +1513,12 @@ body {
 }
 
 .pml-form-error-msg:not(.pml-hidden) {
-  display: block !important;
+  display: block;
 }
 
 .pml-input-error {
-  border: 1px solid #d32f2f !important;
-  background-color: #ffebee !important;
+  border: 1px solid #d32f2f;
+  background-color: #ffebee;
 }
 
 .pml-form-error-msg.pml-hidden {
@@ -1492,8 +1554,9 @@ body {
   flex: 1.3;
 }
 
-.pml-hidden-step {
-  display: none !important;
+#cart-view-step.pml-hidden-step,
+#address-view-step.pml-hidden-step {
+  display: none;
 }
 
 /* Sorgt dafür, dass die Inhalte innerhalb des Drawers richtig fließen */
@@ -1501,7 +1564,8 @@ body {
 #address-view-step {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 150px); /* Platz für den Footer lassen */
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 /* Macht die Formular-Ansicht scrollbar, falls sie zu lang wird */
@@ -1511,267 +1575,88 @@ body {
   padding: 20px;
 }
 
-/* ==========================================================================
-   MOBILE OPTIMIERUNG (Für Handys und kleine Tablets)
-   ========================================================================== */
-@media (max-width: 768px) {
-  /* 0. BUGFIX: Verhindert das lästige Links-Rechts-Scrollen auf der ganzen Seite */
-  html,
-  body {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
+/* Desktop-Overrides für breite Bildschirme */
+@media (min-width: 769px) {
+  .pml-hero-section {
+    min-height: clamp(700px, 92vh, 940px);
+    padding: 72px 0;
   }
 
-  /* 1. HEADER: Volle Platznutzung, bündig an den Rändern */
-  .pml-navbar,
-  header,
-  .pml-header-container {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 12px 16px !important;
-    margin: 0 !important;
-    box-sizing: border-box !important;
-    background-color: #ffffff !important;
-    position: relative !important;
-    z-index: 100;
+  .pml-hero-container,
+  .pml-search-container,
+  .pml-menu-container,
+  .pml-footer-inner {
+    max-width: 1320px;
+    padding-inline: 32px;
   }
 
-  /* Logo-Bereich sicher positionieren */
-  .pml-logo-area,
-  .pml-brand-logo-container {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    width: auto !important;
-    max-width: 45% !important;
-    margin: 0 !important;
-    padding-left: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Schützt die Logo-Grafik vor dem Abschneiden */
-  .pml-logo-area img,
-  .pml-brand-logo-container img {
-    max-width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    object-fit: contain !important;
-  }
-
-  /* Falls das Logo Text ist */
-  .pml-logo-main {
-    font-size: 18px !important;
-    font-weight: 800 !important;
-    line-height: 1.1 !important;
-    text-align: left !important;
-  }
-
-  .pml-logo-sub {
-    font-size: 9px !important;
-    text-align: left !important;
-  }
-
-  /* Eigene Anpassung für die Logo-Zeilen (verhindert Abschneiden links) */
-  .pml-logo-top {
-    margin-left: 20px !important;
-    display: block !important;
-  }
-
-  .pml-logo-bottom {
-    margin-left: 20px !important;
-    display: block !important;
-  }
-
-  /* Rechte Seite (Liefergebiet & Warenkorb) flach halten */
-  .pml-header-right-side,
-  .pml-nav-right {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    width: auto !important;
-    max-width: 55% !important;
-    gap: 12px !important;
-    margin: 0 !important;
-    padding-right: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Liefertext ordentlich formatieren */
-  .pml-delivery-text {
-    font-size: 10px !important;
-    text-align: right !important;
-    line-height: 1.2 !important;
-    white-space: nowrap !important;
-  }
-
-  /* Warenkorb-Button */
-  .pml-cart-box {
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    background-color: #f5f5f5 !important;
-    padding: 6px 12px !important;
-    border-radius: 20px !important;
-    font-weight: bold !important;
-    font-size: 12px !important;
-  }
-
-  /* 2. MAIN SEITE / HERO SECTION */
-  .pml-hero-section,
-  .pml-main-content {
-    margin-top: 0 !important;
-    padding: 35px 20px !important;
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-
-  /* Deine Wunsch-Abstände für die Text-Elemente im Hero-Bereich */
   .pml-hero-title {
-    margin-top: 100px !important;
+    font-size: clamp(46px, 5vw, 72px);
   }
 
   .pml-hero-description {
-    margin-top: 50px !important;
+    font-size: 18px;
+    max-width: 700px;
   }
 
-  /* Features untereinander anordnen */
+  .pml-hero-bottom-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+
   .pml-hero-features,
   .pml-features-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 12px !important;
-    margin-top: 20px !important;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 35px;
+    margin-top: 0;
   }
 
-  /* Die rote Pill-Anzeige "Jetzt Pizza bestellen..." */
-  .pml-hero-section .pml-badge,
-  .pml-hero-section span {
-    display: inline-block !important;
-    margin: 0 auto 15px auto !important;
-  }
-
-  /* "Jetzt bestellen" Button zentrieren */
-  .pml-hero-section .pml-btn-main,
-  .pml-hero-section button {
-    display: block !important;
-    margin: 20px auto 0 auto !important;
-    width: 85% !important;
-    max-width: 280px;
-  }
-
-  /* 3. RABATT-BANNER / PROMO-TEXTS unter der Lieferung */
-  .pml-discount-banner,
-  .pml-promo-text,
-  .pml-rabatt-info {
-    font-size: 12px !important;
-    padding: 6px 12px !important;
-    margin: 8px auto 0 auto !important;
-    text-align: center;
-    width: auto !important;
-    display: inline-block !important;
-    box-sizing: border-box;
-  }
-
-  .pml-discount-banner img,
-  .pml-discount-banner svg {
-    max-height: 18px !important;
-    width: auto !important;
-  }
-
-  /* Schriftgrößen global für mobile */
-  h1 {
-    font-size: 22px !important;
-  }
-  h2,
-  .pml-modal-main-title {
-    font-size: 18px !important;
-  }
-  h3 {
-    font-size: 15px !important;
-  }
-  p,
-  .pml-modal-sub-text {
-    font-size: 13px !important;
-  }
-
-  /* 4. PRODUKT-GRID (Einfach untereinander) */
   .pml-products-grid,
   .pml-menu-grid {
-    grid-template-columns: 1fr !important;
-    gap: 15px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 0;
   }
 
-  /* 5. WARENKORB SIDEBAR (DRAWER) */
+  .pml-menu-main-title {
+    font-size: 34px;
+    margin-bottom: 36px;
+  }
+
+  .pml-category-banner {
+    font-size: 17px;
+    padding: 16px 22px;
+  }
+
   .pml-cart-drawer {
-    width: 100% !important;
-    max-width: 100% !important;
+    max-width: 480px;
   }
 
-  /* 6. FORMULARE */
-  .pml-form-group input,
-  .pml-form-group textarea {
-    padding: 12px;
-    font-size: 16px !important;
-    max-width: 100% !important;
-    box-sizing: border-box;
+  .pml-search-title {
+    font-size: 28px;
   }
 
   .pml-btn-address-submit,
   .pml-btn-modal-save,
   .pml-address-action-buttons {
-    width: 100% !important;
-    flex-direction: column !important;
-    gap: 10px;
+    width: auto;
+    flex-direction: row;
+    gap: 12px;
   }
 
   .pml-btn-address-back {
-    width: 100%;
-    order: 2;
+    width: auto;
+    order: 0;
   }
 
-  /* 7. POP-UPS (MODALS) ANPASSUNG */
   .pml-modal-content-card,
   .pml-product-modal-card,
   .pml-impressum-modal-box {
-    width: 92% !important;
-    max-width: 95% !important;
-    margin: 10px auto !important;
-    padding: 15px !important;
-    box-sizing: border-box !important;
-    border-radius: 8px !important;
-  }
-
-  .pml-checkbox-group {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-
-  .pml-checkbox-label {
-    font-size: 14px !important;
-    padding: 5px 0;
-  }
-
-  .pml-modal-action-buttons {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-    width: 100% !important;
-  }
-
-  .pml-btn-modal-abort,
-  .pml-btn-modal-confirm {
-    width: 100% !important;
-    margin: 0 !important;
+    width: 90%;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 40px 35px;
   }
 }

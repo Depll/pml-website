@@ -1,11 +1,11 @@
 // ==========================================================================
-// GLOBALE PRÜFUNGEN & VARIABLEN
+// **GLOBAL CHECKS & VARIABLES**
 // ==========================================================================
 const VALID_POSTCODES = ["51371", "51373", "51375", "51377", "51379", "51381"];
 let cart = [];
-const MIN_ORDER_VALUE = 20.0; // Mindestbestellwert 20 Euro
+const MIN_ORDER_VALUE = 20.0; // Minimum order value: €20
 
-// DOM Elemente Allgemein / PLZ / Navbar
+// DOM Elements (General) / Postal Code / Navbar
 const plzModal = document.getElementById("plz-modal");
 const plzSubmitBtn = document.getElementById("btn-check-plz");
 const plzInputField = document.getElementById("plz-input");
@@ -21,7 +21,8 @@ const categoryGroups = document.querySelectorAll(".pml-menu-category-group");
 const cartCountBadge = document.getElementById("cart-count-badge");
 const navCartBtn = document.querySelector(".pml-cart-box");
 
-// DOM Elemente für das Produkt-Modal
+// **DOM Elements for the Product Modal**
+
 const productModal = document.getElementById("product-modal");
 const closeModalX = document.querySelector(".pml-close-product-modal");
 const btnCloseAbort = document.getElementById("btn-close-product");
