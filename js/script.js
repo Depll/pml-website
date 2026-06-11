@@ -42,6 +42,39 @@ const removeCheckboxes = document.querySelectorAll(
 let basePrice = 0;
 let currentProductName = "";
 
+function loadCartFromStorage() {
+  try {
+    const storedCart = localStorage.getItem("milano_warenkorb");
+    if (!storedCart) return;
+
+    const parsedCart = JSON.parse(storedCart);
+    if (Array.isArray(parsedCart)) {
+      cart = parsedCart.map((item) => ({
+        ...item,
+        quantity: Number.isFinite(item.quantity) ? item.quantity : 1,
+        totalPrice: Number.isFinite(item.totalPrice)
+          ? item.totalPrice
+          : Number(item.singlePrice || 0),
+      }));
+    }
+  } catch (error) {
+    console.warn("Warenkorb konnte nicht geladen werden:", error);
+    cart = [];
+  }
+}
+
+function saveCartToStorage() {
+  localStorage.setItem("milano_warenkorb", JSON.stringify(cart));
+}
+
+function getCartTotals(items) {
+  const subtotal = items.reduce((sum, item) => sum + (item.totalPrice || 0), 0);
+  const discount = subtotal * 0.1;
+  const total = subtotal - discount;
+
+  return { subtotal, discount, total };
+}
+
 // DOM Elemente für die Warenkorb-Sidebar
 const cartSidebar = document.getElementById("cart-sidebar");
 const closeCartBtn = document.querySelector(".pml-close-cart-btn");
@@ -69,6 +102,20 @@ if (plzModal) {
   }
 }
 
+function syncAddressPlzField() {
+  const storedPlz = localStorage.getItem("milano_plz") || "";
+  const navPlzDisplay = document.getElementById("nav-plz");
+  const addressPlzFieldLocal = document.getElementById("address-plz");
+
+  if (navPlzDisplay && VALID_POSTCODES.includes(storedPlz)) {
+    navPlzDisplay.textContent = storedPlz;
+  }
+
+  if (addressPlzFieldLocal) {
+    addressPlzFieldLocal.value = storedPlz;
+  }
+}
+
 function checkZipcode() {
   if (!plzInputField) return;
   const enteredCode = plzInputField.value.trim();
@@ -78,9 +125,7 @@ function checkZipcode() {
     if (plzErrorMsg) plzErrorMsg.classList.add("pml-hidden");
 
     localStorage.setItem("milano_plz", enteredCode);
-
-    const navPlzDisplay = document.getElementById("nav-plz");
-    if (navPlzDisplay) navPlzDisplay.textContent = enteredCode;
+    syncAddressPlzField();
   } else {
     if (plzErrorMsg) plzErrorMsg.classList.remove("pml-hidden");
     plzInputField.value = "";
@@ -281,6 +326,7 @@ if (btnAddToCart) {
     };
 
     cart.push(cartItem);
+    saveCartToStorage();
     closeModal();
     updateCartUI();
   });
@@ -315,11 +361,11 @@ function updateCartUI() {
   }
 
   cartEmptyView.style.display = "none";
-  let subtotal = 0;
+
+  const { subtotal, discount, total } = getCartTotals(cart);
 
   // Jedes Produkt mit deinen Kartenelement-Styles rendern
   cart.forEach((item) => {
-    subtotal += item.totalPrice;
 
     const extrasHTML =
       item.extras.length > 0
@@ -371,9 +417,6 @@ function updateCartUI() {
     cartItemsContainer.appendChild(itemCard);
   });
 
-  const discount = subtotal * 0.1;
-  const total = subtotal - discount;
-
   cartSubtotalEl.textContent = `${subtotal.toFixed(2).replace(".", ",")} EUR`;
   cartDiscountEl.textContent = `-${discount.toFixed(2).replace(".", ",")} EUR`;
   cartTotalEl.textContent = `${total.toFixed(2).replace(".", ",")} EUR`;
@@ -392,6 +435,7 @@ function updateCartUI() {
     btn.addEventListener("click", () => {
       const idToRemove = parseInt(btn.getAttribute("data-id"));
       cart = cart.filter((item) => item.id !== idToRemove);
+      saveCartToStorage();
       updateCartUI();
     });
   });
@@ -414,6 +458,8 @@ function updateCartUI() {
         targetItem.quantity = newQty;
         targetItem.totalPrice = targetItem.singlePrice * newQty;
       }
+
+      saveCartToStorage();
 
       // UI sofort neu rendern, um alle Preise live zu aktualisieren
       updateCartUI();
@@ -486,8 +532,9 @@ if (btnToCheckoutLocal) {
       cartViewStep.classList.add("pml-hidden-step");
       addressViewStep.classList.remove("pml-hidden-step");
 
-      // Postleitzahl automatisch aus dem PLZ-Input des ersten Modals übernehmen
-      const savedPlz = document.getElementById("plz-input")?.value.trim() || "";
+      // Postleitzahl immer aus dem persistierten Speicher übernehmen,
+      // nicht aus dem versteckten Modal-Feld.
+      const savedPlz = localStorage.getItem("milano_plz") || "";
       if (addressPlzField) {
         addressPlzField.value = savedPlz;
       }
@@ -727,6 +774,9 @@ function validiereBestellung(event) {
 // 3. EVENT-LISTENER (NUR EIN EINZIGER, SAUBERER AUFRUF)
 // =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
+  loadCartFromStorage();
+  updateCartUI();
+
   const form = document.getElementById("delivery-form");
   if (form) {
     // Verbindet das Abschicken direkt mit unserer Absperrung
@@ -742,4 +792,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (gespeichertePlz && plzFeld) {
     plzFeld.value = gespeichertePlz;
   }
+
+  syncAddressPlzField();
 });
