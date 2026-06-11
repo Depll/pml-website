@@ -24,7 +24,7 @@ body {
 }
 
 /* ==========================================================================
-   2. NAVBAR MILANO HEADER LAYOUT
+   2. NAVBAR MILANO HEADER LAYOUT (MOBILE FIRST)
    ========================================================================== */
 
 .pml-navbar-milano {
@@ -90,13 +90,13 @@ body {
   border: none;
   font-family: inherit;
   display: flex;
-  align-items: center;
   cursor: pointer;
   color: #1c2434;
   font-size: 13.5px;
   min-width: 0;
   flex: 1 1 auto;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .pml-pin-icon {
@@ -113,10 +113,11 @@ body {
 .pml-delivery-text {
   font-weight: 500;
   color: #000102;
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: nowrap;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
 }
 
 .pml-delivery-text strong {
@@ -128,8 +129,8 @@ body {
 .pml-change-link {
   color: #a81c1c;
   font-size: 10.5px;
-  margin-left: 5px;
   font-weight: 700;
+  margin-left: 0;
 }
 
 .pml-change-link:hover {
@@ -163,37 +164,17 @@ body {
   font-size: 16px;
 }
 
-/* Dynamic State Modifier: Hides tracking badge numbers if cart is unhydrated */
 .pml-cart-badge.pml-hidden {
   display: none;
 }
 
-/* --- MOBILE NAVIGATION BREAKPOINT --- */
-@media (max-width: 767px) {
-  .pml-delivery-area {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .pml-delivery-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-  }
-
-  .pml-change-link {
-    margin-left: 0;
-  }
-}
-
 /* ==========================================================================
-   3. HERO LANDING WRAPPER
+   3. HERO LANDING WRAPPER (MOBILE FIRST)
    ========================================================================== */
 
 .pml-hero-section {
   width: 100%;
-  min-height: 842px; /* Target architectural blueprint height match */
+  min-height: 842px;
   background:
     linear-gradient(rgba(20, 24, 33, 0.85), rgba(20, 24, 33, 0.85)),
     url("../images/hero-bg.jpg") no-repeat center center;
@@ -243,7 +224,7 @@ body {
 }
 
 .pml-hero-title .pml-highlight-red {
-  color: #a81c1c; /* Brand identity primary crimson color palette */
+  color: #a81c1c;
 }
 
 .pml-hero-description {
@@ -257,8 +238,8 @@ body {
 /* --- INTERACTIVE ACTION BUTTON LAYOUTS --- */
 .pml-hero-bottom-row {
   display: flex;
-  align-items: center;
-  gap: 40px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .pml-btn-order {
@@ -270,6 +251,7 @@ body {
   padding: 14px 32px;
   border-radius: 25px;
   transition: background-color 0.2s ease;
+  text-align: center;
 }
 
 .pml-btn-order:hover {
@@ -279,7 +261,8 @@ body {
 /* --- VALUE PROPOSITION ARCHITECTURE --- */
 .pml-hero-features {
   display: flex;
-  gap: 35px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .pml-feature-item {
@@ -311,13 +294,13 @@ body {
 }
 
 /* ==========================================================================
-   4. SEARCH ARCHITECTURE & CATEGORY ENGINE (1:1 FIGMA SPEC)
+   4. SEARCH ARCHITECTURE & CATEGORY ENGINE (MOBILE FIRST)
    ========================================================================== */
 
 .pml-search-section {
   width: 100%;
-  height: 280px; /* Precise design footprint layout parameter */
-  background-color: #1a222d; /* Primary deep dark slate identity tone */
+  height: 280px;
+  background-color: #1a222d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -364,7 +347,7 @@ body {
   background-color: #2d3748;
   border: 1px solid #4a5568;
   border-radius: 30px;
-  padding: 0 20px 0 55px; /* Offset spacing accommodates decoration magnifying glass */
+  padding: 0 20px 0 55px;
   color: #ffffff;
   font-size: 16px;
   font-family: inherit;
@@ -378,7 +361,7 @@ body {
 /* --- HORIZONTAL SCROLLABLE CATEGORY NAVIGATION CONTROLS --- */
 .pml-categories-scroll-wrapper {
   width: 100%;
-  max-width: 899px; /* Maintains unified architectural alignment bounding fields */
+  max-width: 899px;
   overflow-x: auto;
   padding-bottom: 12px;
 }
@@ -391,7 +374,7 @@ body {
 
 .pml-category-item {
   background-color: #2d3748;
-  border: 2px solid transparent; /* Structural margin allocation preventing runtime layout shifts */
+  border: 2px solid transparent;
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 12px;
@@ -408,7 +391,6 @@ body {
   background-color: #3a475c;
 }
 
-/* Focus State Modifier: Projects standard solid white borders across selected menu classes */
 .pml-category-item.pml-active {
   border-color: #ffffff;
   background-color: #2d3748;
@@ -434,12 +416,12 @@ body {
 }
 
 /* ==========================================================================
-   5. PRODUCT MENU SHOWCASE LAYOUT (3-COLUMN GRID CONFIGURATION)
+   5. PRODUCT MENU SHOWCASE LAYOUT (MOBILE FIRST)
    ========================================================================== */
 
 .pml-menu-section {
   width: 100%;
-  background-color: #f4f5f7; /* Off-white backing layer tint highlighting individual cards */
+  background-color: #f4f5f7;
   padding: 60px 0;
 }
 
@@ -477,14 +459,11 @@ body {
   margin-bottom: 25px;
 }
 
-/* --- MAIN MULTI-COLUMN PRESENTATION MATRIX --- */
+/* --- MAIN INTERFACE GRID MATRIX --- */
 .pml-products-grid {
   display: grid;
-  grid-template-columns: repeat(
-    3,
-    1fr
-  ); /* Locks processing footprint inside a 3-column frame */
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 15px;
 }
 
 /* --- SYSTEM ITEM PRODUCT DISPLAY LAYOUTS --- */
@@ -497,7 +476,7 @@ body {
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Pin informational headings to peak, financial tools to base */
+  justify-content: space-between;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
   transition:
     transform 0.2s ease,
@@ -561,46 +540,7 @@ body {
 }
 
 /* ==========================================================================
-   6. MOBILE-FIRST ARCHITECTURE LOWER WINDOW BOUNDS
-   ========================================================================== */
-
-@media (max-width: 768px) {
-  .pml-hero-bottom-row,
-  .pml-hero-features,
-  .pml-modal-action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .pml-products-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .pml-checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .pml-btn-address-submit,
-  .pml-btn-modal-save,
-  .pml-address-action-buttons {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .pml-btn-modal-abort,
-  .pml-btn-modal-confirm {
-    width: 100%;
-    margin: 0;
-  }
-}
-
-/* ==========================================================================
-   7. MAIN APPLICATION FOOTER LAYOUT
+   6. MAIN APPLICATION FOOTER LAYOUT
    ========================================================================== */
 
 .pml-milano-footer {
@@ -765,7 +705,7 @@ body {
 }
 
 /* ==========================================================================
-   8. GEOLOCATION POSTAL CODE VERIFICATION OVERLAY CARD
+   7. GEOLOCATION POSTAL CODE VERIFICATION OVERLAY CARD
    ========================================================================== */
 
 .pml-modal-overlay {
@@ -774,19 +714,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.6
-  ); /* Soft focus backdrop opacity veil mask */
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 20000; /* Bypasses alternative screen layering systems */
+  z-index: 20000;
 }
 
-/* Hidden Modifier: Toggles standard runtime visibility nodes */
 .pml-modal-overlay.pml-hidden {
   display: none;
 }
@@ -878,6 +812,7 @@ body {
   transition: background-color 0.2s;
   display: inline-block;
   min-width: 150px;
+  width: 100%;
 }
 
 .pml-btn-modal-save:hover {
@@ -899,7 +834,7 @@ body {
 }
 
 /* ==========================================================================
-   9. SHOPPING CART CONTEXT DESIGN DRAWER PANELS
+   8. SHOPPING CART CONTEXT DESIGN DRAWER PANELS
    ========================================================================== */
 
 .pml-cart-overlay {
@@ -1017,13 +952,13 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s;
+  width: 100%;
 }
 
 .pml-btn-address-submit:hover {
   background-color: #a53b3b;
 }
 
-/* Disabled State Modifier: Handles styling blocks for checkout steps when cart totals are missing */
 .pml-btn-address-submit.pml-disabled,
 .pml-btn-address-submit:disabled {
   background-color: #c58585;
@@ -1079,7 +1014,7 @@ body {
 }
 
 /* ==========================================================================
-   10. INJECTED ITEM CARD DECORATIONS (SHOPPING CART EXTENSIONS)
+   9. INJECTED ITEM CARD DECORATIONS (SHOPPING CART EXTENSIONS)
    ========================================================================== */
 
 .pml-cart-item-card {
@@ -1116,17 +1051,14 @@ body {
   line-height: 1.4;
 }
 
-/* Positively valued additive modifications indicators (e.g. Extra Cheese) */
 .pml-item-extra-line {
   color: #2f9e67;
 }
 
-/* Negatively valued destructive modifications indicators (e.g. Remove Onions) */
 .pml-item-remove-line {
   color: #bc4747;
 }
 
-/* Custom plaintext instructional user annotations notes formatting lines */
 .pml-item-note-line {
   color: #64748b;
   font-style: italic;
@@ -1161,14 +1093,14 @@ body {
 }
 
 /* ==========================================================================
-   11. DYNAMIC MODAL BOX CONFIGURATION SYSTEM FOR RECIPIENT RECIPES
+   10. DYNAMIC MODAL BOX CONFIGURATION SYSTEM FOR RECIPIENT RECIPES
    ========================================================================== */
 
 .pml-product-modal-card {
   background-color: #ffffff;
   width: 90%;
   max-width: 580px;
-  max-height: 90vh; /* Blocks structural element overflow profiles out of viewport margins */
+  max-height: 90vh;
   border-radius: 12px;
   position: relative;
   display: flex;
@@ -1233,12 +1165,9 @@ body {
 }
 
 .pml-checkbox-group {
-  display: grid;
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); /* Splits element matrix evenly across dual column panels */
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .pml-checkbox-label {
@@ -1291,11 +1220,13 @@ body {
 
 .pml-modal-action-buttons {
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .pml-btn-modal-abort {
-  flex: 1;
+  width: 100%;
+  margin: 0;
   background-color: #ffffff;
   color: #222b31;
   border: 1px solid #cbd5e1;
@@ -1313,7 +1244,8 @@ body {
 }
 
 .pml-btn-modal-confirm {
-  flex: 1;
+  width: 100%;
+  margin: 0;
   background-color: #8a1c1c;
   color: #ffffff;
   border: none;
@@ -1330,26 +1262,8 @@ body {
   background-color: #6f1414;
 }
 
-/* --- OVERRIDE CONFIGURATION FOR WIDER MONITORS --- */
-@media (min-width: 481px) {
-  .pml-checkbox-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .pml-modal-action-buttons {
-    flex-direction: row;
-  }
-
-  .pml-btn-modal-abort,
-  .pml-btn-modal-confirm {
-    width: auto;
-  }
-}
-
 /* ==========================================================================
-   12. LEGAL IMPRESSUM OVERLAY BOXES
+   11. LEGAL IMPRESSUM OVERLAY BOXES
    ========================================================================== */
 
 .pml-impressum-overlay {
@@ -1475,7 +1389,7 @@ body {
 }
 
 /* ==========================================================================
-   13. ASYNCHRONOUS CHECKOUT ROADMAP WIZARD ANIMATION HANDLERS
+   12. ASYNCHRONOUS CHECKOUT ROADMAP WIZARD ANIMATION HANDLERS
    ========================================================================== */
 
 #cart-view-step.pml-hidden-step,
@@ -1483,7 +1397,7 @@ body {
   display: none;
 }
 
-/* --- SHIPPING ADRESSES FORM DATA ENTRY BOUNDS --- */
+/* --- SHIPPING ADDRESSES FORM DATA ENTRY BOUNDS --- */
 .pml-address-form-body {
   padding: 20px;
   overflow-y: auto;
@@ -1527,7 +1441,6 @@ body {
   resize: none;
 }
 
-/* Validation Modifier: Updates borders when real-time parsing loops locate errors */
 .pml-form-group.pml-has-error input {
   border-color: #e53e3e;
 }
@@ -1556,9 +1469,11 @@ body {
 /* --- INTERACTIVE ACTION BUTTON LAYOUTS FOR SHIPPING PROTOCOLS --- */
 .pml-address-action-buttons {
   display: flex;
-  gap: 12px;
   margin-top: 25px;
   margin-bottom: 15px;
+  width: 100%;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .pml-btn-address-back {
@@ -1572,6 +1487,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s;
+  text-align: center;
 }
 
 .pml-btn-address-back:hover {
@@ -1601,11 +1517,54 @@ body {
   padding: 20px;
 }
 
+.pml-btn-address-submit,
+.pml-btn-modal-save {
+  width: 100%;
+  flex-direction: column;
+}
+
 /* ==========================================================================
-   14. SYSTEM MASTER MEDIA BREAKPOINT ARCHITECTURE OVERRIDES
+   13. MASTER MEDIA BREAKPOINT LAYER SCALING ARCHITECTURE (MOBILE FIRST UPGRADE)
    ========================================================================== */
 
-@media (min-width: 769px) {
+/* --- TABLETS & DESKTOPS SCALING LAYOUT RULES (min-width: 481px) --- */
+@media (min-width: 481px) {
+  .pml-checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .pml-modal-action-buttons {
+    flex-direction: row;
+  }
+
+  .pml-btn-modal-abort,
+  .pml-btn-modal-confirm {
+    width: auto;
+  }
+}
+
+/* --- LARGE MONITORS ARCHITECTURAL OVERRIDES (Unified 768px Breakpoint) --- */
+@media (min-width: 768px) {
+  /* --- Navigation & Delivery Area --- */
+  .pml-delivery-area {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .pml-delivery-text {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .pml-change-link {
+    margin-left: 5px;
+  }
+
+  /* --- Hero Section & Components --- */
   .pml-hero-section {
     min-height: clamp(700px, 92vh, 940px);
     padding: 72px 0;
@@ -1642,11 +1601,9 @@ body {
     margin-top: 0;
   }
 
-  .pml-products-grid,
-  .pml-menu-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-    padding: 0;
+  /* --- Search & Grid Systems --- */
+  .pml-search-title {
+    font-size: 28px;
   }
 
   .pml-menu-main-title {
@@ -1659,12 +1616,16 @@ body {
     padding: 16px 22px;
   }
 
-  .pml-cart-drawer {
-    max-width: 480px;
+  .pml-products-grid,
+  .pml-menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 0;
   }
 
-  .pml-search-title {
-    font-size: 28px;
+  /* --- Cart Drawer & Forms --- */
+  .pml-cart-drawer {
+    max-width: 480px;
   }
 
   .pml-btn-address-submit,
@@ -1680,6 +1641,7 @@ body {
     order: 0;
   }
 
+  /* --- Modals & Overlays --- */
   .pml-modal-content-card,
   .pml-product-modal-card,
   .pml-impressum-modal-box {
