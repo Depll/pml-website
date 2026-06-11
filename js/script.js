@@ -95,10 +95,6 @@ if (plzChangeLink) {
   });
 }
 
-// ==========================================================================
-// 2. SMOOTH SCROLLING & KATEGORIEN-FILTER
-// ==========================================================================
-// ==========================================================================
 // 1. SMOOTH SCROLLING (Bestell-Button)
 // ==========================================================================
 if (
@@ -547,7 +543,9 @@ if (deliveryForm) {
 
       if (input.value.trim() === "") {
         formGroup.classList.add("has-error");
-        if (errorMsg) errorMsg.classList.remove("hidden");
+        if (errorMsg) {
+          errorMsg.classList.remove("hidden");
+        }
         isFormValid = false;
       } else {
         formGroup.classList.remove("has-error");
@@ -599,110 +597,140 @@ if (addressPlzField) {
 // 1. LOCAL STORAGE MANAGER (NUR WARENKORB & PLZ)
 // =========================================================================
 function speichereWarenkorb(warenkorbArray) {
-    localStorage.setItem('milano_warenkorb', JSON.stringify(warenkorbArray));
+  localStorage.setItem("milano_warenkorb", JSON.stringify(warenkorbArray));
 }
 
 function ladeWarenkorb() {
-    const daten = localStorage.getItem('milano_warenkorb');
-    return daten ? JSON.parse(daten) : [];
+  const daten = localStorage.getItem("milano_warenkorb");
+  return daten ? JSON.parse(daten) : [];
 }
 
 function speicherePLZ(plz) {
-    localStorage.setItem('milano_plz', plz);
+  localStorage.setItem("milano_plz", plz);
 }
 
 function ladePLZ() {
-    return localStorage.getItem('milano_plz') || "";
+  return localStorage.getItem("milano_plz") || "";
 }
 
 // =========================================================================
 // 2. FORMULAR-VALIDIERUNG MIT DEINEN ECHTEN HTML-IDs
 // =========================================================================
 function validiereBestellung(event) {
-    // 1. KNALLHARTE SPERRE: Stoppt JEDE automatische Aktion des Browsers sofort
-    if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation(); 
-    }
+  // 1. KNALLHARTE SPERRE: Stoppt JEDE automatische Aktion des Browsers sofort
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+  }
 
-    const emailMuster = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const nameMuster = /^[a-zA-ZäöüÄÖÜß\s\-]{2,}$/; 
-    const telefonMuster = /^[0-9\s\+\-\/]{5,}$/;
+  const emailMuster = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const nameMuster = /^[a-zA-ZäöüÄÖÜß\s\-]{2,}$/;
+  const telefonMuster = /^[0-9\s\+\-\/]{5,}$/;
 
-    let hatFehler = false;
+  let hatFehler = false;
 
-    // Inputs holen
-    const vornameInput = document.getElementById('address-firstname');
-    const nachnameInput = document.getElementById('address-lastname');
-    const telefonInput = document.getElementById('address-phone');
-    const emailInput = document.getElementById('address-email');
-    const strasseInput = document.getElementById('address-street');
-    const hausnummerInput = document.getElementById('address-housenumber');
-    const plzInput = document.getElementById('address-plz');
-    const stadtInput = document.getElementById('address-city');
+  // Inputs holen
+  const vornameInput = document.getElementById("address-firstname");
+  const nachnameInput = document.getElementById("address-lastname");
+  const telefonInput = document.getElementById("address-phone");
+  const emailInput = document.getElementById("address-email");
+  const strasseInput = document.getElementById("address-street");
+  const hausnummerInput = document.getElementById("address-housenumber");
+  const plzInput = document.getElementById("address-plz");
+  const stadtInput = document.getElementById("address-city");
 
-    // Fehler-Anzeige-Funktion
-    function zeigeFehler(inputElement, istFehler, nachricht) {
-        if (!inputElement) return;
-        const fehlerDiv = inputElement.parentElement.querySelector('.form-error-msg');
-        
-        if (istFehler) {
-            inputElement.classList.add('input-error');
-            if (fehlerDiv) {
-                fehlerDiv.innerText = nachricht;
-                fehlerDiv.classList.remove('hidden');
-                fehlerDiv.style.display = 'block';
-            }
-            hatFehler = true; // Flagge geht hoch!
-        } else {
-            inputElement.classList.remove('input-error');
-            if (fehlerDiv) {
-                fehlerDiv.classList.add('hidden');
-                fehlerDiv.style.display = 'none';
-            }
-        }
-    }
+  // Fehler-Anzeige-Funktion
+  function zeigeFehler(inputElement, istFehler, nachricht) {
+    if (!inputElement) return;
+    const fehlerDiv =
+      inputElement.parentElement.querySelector(".form-error-msg");
 
-    // --- DIE PRÜFUNGEN ---
-    zeigeFehler(vornameInput, !nameMuster.test(vornameInput.value.trim()), "Bitte gib einen echten Vornamen ohne Zahlen ein (z.B. Max).");
-    zeigeFehler(nachnameInput, !nameMuster.test(nachnameInput.value.trim()), "Bitte gib einen echten Nachnamen ohne Zahlen ein (z.B. Müller).");
-    zeigeFehler(telefonInput, !telefonMuster.test(telefonInput.value.trim()), "Bitte gib eine echte Telefonnummer mit mindestens 5 Zahlen ein (z.B. 0176123456).");
-    zeigeFehler(emailInput, !emailMuster.test(emailInput.value.trim()), "Ungültiges Format. Eine richtige E-Mail benötigt ein '@' und eine Endung (z.B. max@beispiel.de).");
-    zeigeFehler(strasseInput, strasseInput.value.trim().length < 3 || /^\d+$/.test(strasseInput.value.trim()), "Bitte gib einen echten Straßennamen ein (z.B. Hauptstraße).");
-    zeigeFehler(hausnummerInput, hausnummerInput.value.trim().length === 0, "Bitte gib deine Hausnummer an (z.B. 12a).");
-    zeigeFehler(stadtInput, !nameMuster.test(stadtInput.value.trim()), "Bitte gib einen echten Stadtnamen ein (z.B. Köln).");
-
-    // --- DIE ABSOLUTE WEICHENTRENNUNG ---
-    if (hatFehler) {
-        console.log("Validierung fehlgeschlagen. Alert blockiert.");
-        return false; // Hier ist FEIERABEND. Der Code bricht ab.
+    if (istFehler) {
+      inputElement.classList.add("input-error");
+      if (fehlerDiv) {
+        fehlerDiv.innerText = nachricht;
+        fehlerDiv.classList.remove("hidden");
+        fehlerDiv.style.display = "block";
+      }
+      hatFehler = true; // Flagge geht hoch!
     } else {
-        // DAS ALERT DARF NUR HIER DRIN STEHEN!
-        speicherePLZ(plzInput.value);
-        alert("Weiterleitung zur Zahlung...");
-        // starteStripeCheckout(); 
-        return true;
+      inputElement.classList.remove("input-error");
+      if (fehlerDiv) {
+        fehlerDiv.classList.add("hidden");
+        fehlerDiv.style.display = "none";
+      }
     }
+  }
+
+  // --- DIE PRÜFUNGEN ---
+  zeigeFehler(
+    vornameInput,
+    !nameMuster.test(vornameInput.value.trim()),
+    "Bitte gib einen echten Vornamen ohne Zahlen ein (z.B. Max).",
+  );
+  zeigeFehler(
+    nachnameInput,
+    !nameMuster.test(nachnameInput.value.trim()),
+    "Bitte gib einen echten Nachnamen ohne Zahlen ein (z.B. Müller).",
+  );
+  zeigeFehler(
+    telefonInput,
+    !telefonMuster.test(telefonInput.value.trim()),
+    "Bitte gib eine echte Telefonnummer mit mindestens 5 Zahlen ein (z.B. 0176123456).",
+  );
+  zeigeFehler(
+    emailInput,
+    !emailMuster.test(emailInput.value.trim()),
+    "Ungültiges Format. Eine richtige E-Mail benötigt ein '@' und eine Endung (z.B. max@beispiel.de).",
+  );
+  zeigeFehler(
+    strasseInput,
+    strasseInput.value.trim().length < 3 ||
+      /^\d+$/.test(strasseInput.value.trim()),
+    "Bitte gib einen echten Straßennamen ein (z.B. Hauptstraße).",
+  );
+  zeigeFehler(
+    hausnummerInput,
+    hausnummerInput.value.trim().length === 0,
+    "Bitte gib deine Hausnummer an (z.B. 12a).",
+  );
+  zeigeFehler(
+    stadtInput,
+    !nameMuster.test(stadtInput.value.trim()),
+    "Bitte gib einen echten Stadtnamen ein (z.B. Köln).",
+  );
+
+  // --- DIE ABSOLUTE WEICHENTRENNUNG ---
+  if (hatFehler) {
+    console.log("Validierung fehlgeschlagen. Alert blockiert.");
+    return false; // Hier ist FEIERABEND. Der Code bricht ab.
+  } else {
+    // DAS ALERT DARF NUR HIER DRIN STEHEN!
+    speicherePLZ(plzInput.value);
+    alert("Weiterleitung zur Zahlung...");
+    // starteStripeCheckout();
+    return true;
+  }
 }
 
 // =========================================================================
 // 3. EVENT-LISTENER (NUR EIN EINZIGER, SAUBERER AUFRUF)
 // =========================================================================
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('delivery-form');
-    if (form) {
-        // Verbindet das Abschicken direkt mit unserer Absperrung
-        form.addEventListener('submit', validiereBestellung);
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("delivery-form");
+  if (form) {
+    // Verbindet das Abschicken direkt mit unserer Absperrung
+    form.addEventListener("submit", validiereBestellung);
+  }
 
-    // =========================================================================
-    // 4. BEIM LADEN DER SEITE: PLZ AUTOMATISCH EINTRAGEN
-    // =========================================================================
-    const gespeichertePlz = ladePLZ();
-    const plzFeld = document.getElementById('address-plz');
-    
-    if (gespeichertePlz && plzFeld) {
-        plzFeld.value = gespeichertePlz;
-    }
+  // =========================================================================
+  // 4. BEIM LADEN DER SEITE: PLZ AUTOMATISCH EINTRAGEN
+  // =========================================================================
+  const gespeichertePlz = ladePLZ();
+  const plzFeld = document.getElementById("address-plz");
+
+  if (gespeichertePlz && plzFeld) {
+    plzFeld.value = gespeichertePlz;
+  }
 });
