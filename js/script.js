@@ -1,29 +1,37 @@
 // ==========================================================================
-// **GLOBAL CHECKS & VARIABLES**
+// GLOBAL CONFIGURATION, CONFIG STATE & CONSTANTS
 // ==========================================================================
-const VALID_POSTCODES = ["51371", "51373", "51375", "51377", "51379", "51381"];
-let cart = [];
-const MIN_ORDER_VALUE = 20.0; // Minimum order value: €20
 
-// DOM Elements (General) / Postal Code / Navbar
+/** @type {string[]} Supported operational delivery postal codes */
+const VALID_POSTCODES = ["51371", "51373", "51375", "51377", "51379", "51381"];
+
+/** @type {Array<Object>} Global runtime shopping cart storage */
+let cart = [];
+
+/** @type {number} Minimum financial threshold required to dispatch an order */
+const MIN_ORDER_VALUE = 20.0;
+
+// ==========================================================================
+// DOM ELEMENT INITIALIZATION & SELECTORS
+// ==========================================================================
+
+// Postal Code Verification & Navigation Header Elements
 const plzModal = document.getElementById("plz-modal");
 const plzSubmitBtn = document.getElementById("btn-check-plz");
 const plzInputField = document.getElementById("plz-input");
 const plzErrorMsg = document.getElementById("plz-error");
 const plzChangeLink = document.querySelector(".pml-change-link");
 
+// Navigation & Global Interaction Targets
 const orderBtn = document.querySelector(".pml-btn-order");
 const searchSection = document.querySelector(".pml-search-section");
-
 const categoryButtons = document.querySelectorAll(".pml-category-item");
 const categoryGroups = document.querySelectorAll(".pml-menu-category-group");
-
 const cartCountBadge = document.getElementById("cart-count-badge");
 const navCartBtn = document.querySelector(".pml-cart-box");
 const menuRenderTarget = document.getElementById("menu-render-target");
 
-// **DOM Elements for the Product Modal**
-
+// Configurable Product Customization Modal UI Nodes
 const productModal = document.getElementById("product-modal");
 const closeModalX = document.querySelector(".pml-close-product-modal");
 const btnCloseAbort = document.getElementById("btn-close-product");
@@ -41,9 +49,18 @@ const removeCheckboxes = document.querySelectorAll(
   '#remove-ingredients-container input[type="checkbox"]',
 );
 
+// Contextual Tracking States for Product Customization Window
 let basePrice = 0;
 let currentProductName = "";
 
+// ==========================================================================
+// SHOPPING CART CORE DATA SYNC & PERSISTENCE
+// ==========================================================================
+
+/**
+ * Retrieves and normalizes cart line-items stored in local browser state.
+ * Gracefully defaults to an empty layout structure upon detection of corrupt payloads.
+ */
 function loadCartFromStorage() {
   try {
     const storedCart = localStorage.getItem("milano_warenkorb");
@@ -60,24 +77,33 @@ function loadCartFromStorage() {
       }));
     }
   } catch (error) {
-    console.warn("Warenkorb konnte nicht geladen werden:", error);
+    console.warn("Shopping cart state hydration failed:", error);
     cart = [];
   }
 }
 
+/**
+ * Persists the current collection state of active line items into local storage cache.
+ */
 function saveCartToStorage() {
   localStorage.setItem("milano_warenkorb", JSON.stringify(cart));
 }
 
+/**
+ * Aggregates financials for line items inside the active transaction footprint.
+ * Applies a global promotional 10% discount profile over calculated subtotals.
+ * * @param {Array<Object>} items - Array of active line items in the cart.
+ * @returns {{subtotal: number, discount: number, total: number}} Financial calculation aggregates.
+ */
 function getCartTotals(items) {
   const subtotal = items.reduce((sum, item) => sum + (item.totalPrice || 0), 0);
-  const discount = subtotal * 0.1;
+  const discount = subtotal * 0.1; // 10% global incentive markdown
   const total = subtotal - discount;
 
   return { subtotal, discount, total };
 }
 
-// DOM Elemente für die Warenkorb-Sidebar
+// Shopping Cart Sidebar Container & Summary UI Components
 const cartSidebar = document.getElementById("cart-sidebar");
 const closeCartBtn = document.querySelector(".pml-close-cart-btn");
 const cartEmptyView = document.getElementById("cart-empty-view");
@@ -90,10 +116,12 @@ const cartDiscountEl = document.getElementById("cart-discount");
 const cartTotalEl = document.getElementById("cart-total");
 
 // ==========================================================================
-// 1. PLZ-PRÜFUNG LOGIK
+// 1. POSTAL CODE (PLZ) VERIFICATION ENGINE
 // ==========================================================================
+
 const savedPlzOnLoad = localStorage.getItem("milano_plz");
 
+// Initialize execution flow checks against saved geo-restrictions on boot
 if (plzModal) {
   if (savedPlzOnLoad && VALID_POSTCODES.includes(savedPlzOnLoad)) {
     plzModal.classList.add("pml-hidden");
@@ -104,6 +132,10 @@ if (plzModal) {
   }
 }
 
+/**
+ * Synchronizes the postal code context string across the Navigation UI display state
+ * and active Shipping Checkout Input modules.
+ */
 function syncAddressPlzField() {
   const storedPlz = localStorage.getItem("milano_plz") || "";
   const navPlzDisplay = document.getElementById("nav-plz");
@@ -118,6 +150,10 @@ function syncAddressPlzField() {
   }
 }
 
+/**
+ * Evaluates text inputs against delivery region guidelines.
+ * Rejects invalid profiles and updates validation messaging nodes accordingly.
+ */
 function checkZipcode() {
   if (!plzInputField) return;
   const enteredCode = plzInputField.value.trim();
@@ -134,6 +170,7 @@ function checkZipcode() {
   }
 }
 
+// Bind verification trigger points for postal data operations
 if (plzSubmitBtn) {
   plzSubmitBtn.addEventListener("click", checkZipcode);
 }
@@ -151,8 +188,7 @@ if (plzChangeLink) {
   });
 }
 
-// 1. SMOOTH SCROLLING (Bestell-Button)
-// ==========================================================================
+// SMOOTH SCROLL ANCHOR NAVIGATION INTERACTION
 if (
   typeof orderBtn !== "undefined" &&
   typeof searchSection !== "undefined" &&
@@ -166,7 +202,7 @@ if (
 }
 
 // ==========================================================================
-// 2. LIVE-SUCHE FÜR GERICHTE (Sucht im Text der Gerichte)
+// 2. LIVE ASYNCHRONOUS ITEM SEARCH FILTER
 // ==========================================================================
 const searchInput = document.getElementById("search-input");
 
@@ -187,7 +223,7 @@ if (searchInput) {
         if (productTitleEl) {
           const productTitle = productTitleEl.textContent.toLowerCase();
 
-          // Wenn der Text übereinstimmt, zeigen, sonst verstecken
+          // Evaluate text visibility bounds matching dynamic search query patterns
           if (productTitle.includes(searchText)) {
             card.style.display = "";
             hasVisibleProducts = true;
@@ -197,7 +233,7 @@ if (searchInput) {
         }
       });
 
-      // Leere Kategorien ausblenden, ansonsten einblenden
+      // Clear layout nodes representing catalog segments stripped of active variants
       if (hasVisibleProducts || searchText === "") {
         group.classList.remove("pml-hidden-group");
       } else {
@@ -208,17 +244,17 @@ if (searchInput) {
 }
 
 // ==========================================================================
-// 3. KATEGORIE-BUTTONS (NUR NOCH DIESE EINE LOGIK FÜR KLICKS!)
+// 3. MENU CATEGORY ARCHITECTURE & SELECTION FLOW
 // ==========================================================================
 document.querySelectorAll(".pml-category-item").forEach((button) => {
   button.addEventListener("click", () => {
-    // 1. Klasse "active" umschalten
+    // Tweak local visualization state flags across interaction buttons
     document
       .querySelectorAll(".pml-category-item")
       .forEach((btn) => btn.classList.remove("pml-active"));
     button.classList.add("pml-active");
 
-    // 2. Button-Text für den data-category Abgleich säubern (Emojis raus)
+    // Cleanse structural category data criteria strings (Strips compound Emojis)
     const selectedCategory = button.textContent
       .replace(
         /[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDC00-\uDFFF]/g,
@@ -226,7 +262,7 @@ document.querySelectorAll(".pml-category-item").forEach((button) => {
       )
       .trim();
 
-    // 3. Suchfeld leeren und alle Einzelprodukte wieder einblenden (Reset der Suche)
+    // Reset search inputs on category switch to ensure full catalog re-evaluation
     if (searchInput) {
       searchInput.value = "";
     }
@@ -234,14 +270,13 @@ document.querySelectorAll(".pml-category-item").forEach((button) => {
       .querySelectorAll(".pml-product-card")
       .forEach((card) => (card.style.display = ""));
 
-    // 4. Kategorie-Gruppen über das HTML-Attribut "data-category" filtern
+    // Evaluate global layout boundaries against selection data attributes
     const localMenuGroups = document.querySelectorAll(
       ".pml-menu-category-group",
     );
     localMenuGroups.forEach((group) => {
       const groupCategory = group.getAttribute("data-category");
 
-      // Wenn "alle" geklickt wurde oder die Kategorie exakt übereinstimmt -> zeigen, sonst verstecken
       if (
         selectedCategory.toLowerCase() === "alle" ||
         groupCategory === selectedCategory
@@ -254,6 +289,10 @@ document.querySelectorAll(".pml-category-item").forEach((button) => {
   });
 });
 
+/**
+ * Dynamically renders product nodes inside the application markup view layer using incoming JSON collections.
+ * * @param {Array<Object>} menuGroups - Dynamic data structures defining categories and inner item configurations.
+ */
 function renderMenuFromJson(menuGroups) {
   if (!menuRenderTarget) return;
 
@@ -289,6 +328,10 @@ function renderMenuFromJson(menuGroups) {
     .join("");
 }
 
+/**
+ * Hydrates, formats, and opens the customization modal window using data-attributes from the selected item card.
+ * * @param {HTMLElement} card - The DOM element block of the clicked menu item.
+ */
 function openProductModalFromCard(card) {
   currentProductName = card.dataset.productName || "";
   const productDescText = card.dataset.productDescription || "";
@@ -307,6 +350,7 @@ function openProductModalFromCard(card) {
   productModal.classList.remove("pml-hidden");
 }
 
+// Delegation hook tracking dynamic interface clicks within product rendering layouts
 if (menuRenderTarget) {
   menuRenderTarget.addEventListener("click", (event) => {
     const button = event.target.closest(".pml-btn-add-cart");
@@ -318,10 +362,13 @@ if (menuRenderTarget) {
   });
 }
 
+// Fetch structural menu data schema configuration objects from storage endpoint
 fetch("products.json")
   .then((response) => {
     if (!response.ok)
-      throw new Error("products.json konnte nicht geladen werden");
+      throw new Error(
+        "Failed to resolve application products dataset manifest structure.",
+      );
     return response.json();
   })
   .then((data) => renderMenuFromJson(data))
@@ -333,10 +380,13 @@ fetch("products.json")
     }
   });
 
+/**
+ * Computes modification costs based on user selections and updates the configuration window markup.
+ */
 function updateModalPrice() {
   let extraCost = 0;
   extraCheckboxes.forEach((cb) => {
-    if (cb.checked) extraCost += 1.5;
+    if (cb.checked) extraCost += 1.5; // Constant upcharge fee per item modification
   });
   const totalPrice = basePrice + extraCost;
   modalCurrentPrice.textContent = `${totalPrice.toFixed(2).replace(".", ",")} EUR`;
@@ -346,6 +396,7 @@ extraCheckboxes.forEach((cb) =>
   cb.addEventListener("change", updateModalPrice),
 );
 
+// Configuration handlers controlling active visibility structures across item modals
 const closeModal = () => productModal.classList.add("pml-hidden");
 if (closeModalX) closeModalX.addEventListener("click", closeModal);
 if (btnCloseAbort) btnCloseAbort.addEventListener("click", closeModal);
@@ -355,7 +406,7 @@ productModal.addEventListener("click", (event) => {
 });
 
 // ==========================================================================
-// 4. WARENKORB LOGIK (SPEICHERN & UPDATEN)
+// 4. SHOPPING CART LOGIC (STATE UPDATES & RENDER ENGINE)
 // ==========================================================================
 if (btnAddToCart) {
   btnAddToCart.addEventListener("click", () => {
@@ -370,7 +421,7 @@ if (btnAddToCart) {
     });
 
     const cartItem = {
-      id: Date.now(),
+      id: Date.now(), // High-entropy internal tracking key assignment
       name: currentProductName,
       totalPrice: parseFloat(
         modalCurrentPrice.textContent.replace(/[^\d.,]/g, "").replace(",", "."),
@@ -387,10 +438,14 @@ if (btnAddToCart) {
   });
 }
 
+/**
+ * Synchronizes runtime item parameters with DOM rendering.
+ * Re-evaluates order limits, applies discounts, and configures event bindings for line components.
+ */
 function updateCartUI() {
   cartItemsContainer.innerHTML = "";
 
-  // Badge-Ziffer aktualisieren
+  // Synchronize cart counter indicators based on items length
   if (cartCountBadge) {
     const totalItems = cart.length;
     if (totalItems === 0) {
@@ -402,7 +457,7 @@ function updateCartUI() {
     }
   }
 
-  // Prüfen ob leer
+  // Handle UX rendering structures for empty shopping cart containers
   if (cart.length === 0) {
     cartEmptyView.style.display = "block";
     btnToCheckout.classList.add("pml-disabled");
@@ -419,7 +474,7 @@ function updateCartUI() {
 
   const { subtotal, discount, total } = getCartTotals(cart);
 
-  // Jedes Produkt mit deinen Kartenelement-Styles rendern
+  // Render configured product selections with appropriate dynamic modifiers
   cart.forEach((item) => {
     const extrasHTML =
       item.extras.length > 0
@@ -462,19 +517,21 @@ function updateCartUI() {
       
       <div class="pml-cart-item-footer">
         <div class="pml-quantity-control">
-  <span>Menge:</span>
-  <input type="number" class="pml-qty-input pml-cart-quantity-change" data-id="${item.id}" value="${item.quantity || 1}" min="1" style="width: 50px; text-align: center;" />
-</div>
+          <span>Menge:</span>
+          <input type="number" class="pml-qty-input pml-cart-quantity-change" data-id="${item.id}" value="${item.quantity || 1}" min="1" style="width: 50px; text-align: center;" />
+        </div>
         <span class="pml-item-price">${item.totalPrice.toFixed(2).replace(".", ",")} EUR</span>
       </div>
     `;
     cartItemsContainer.appendChild(itemCard);
   });
 
+  // Display computed global financial totals across UI elements
   cartSubtotalEl.textContent = `${subtotal.toFixed(2).replace(".", ",")} EUR`;
   cartDiscountEl.textContent = `-${discount.toFixed(2).replace(".", ",")} EUR`;
   cartTotalEl.textContent = `${total.toFixed(2).replace(".", ",")} EUR`;
 
+  // Evaluate structural processing allowance against business rule limits
   if (subtotal >= MIN_ORDER_VALUE) {
     minOrderAlert.style.display = "none";
     btnToCheckout.classList.remove("pml-disabled");
@@ -485,6 +542,7 @@ function updateCartUI() {
     btnToCheckout.disabled = true;
   }
 
+  // Bind removal hooks for removing individual tracking keys out of storage arrays
   document.querySelectorAll(".pml-btn-remove-item").forEach((btn) => {
     btn.addEventListener("click", () => {
       const idToRemove = parseInt(btn.getAttribute("data-id"));
@@ -494,7 +552,7 @@ function updateCartUI() {
     });
   });
 
-  // Event-Listener für Pfeiltasten-Klicks und manuelle Mengeneingaben
+  // Dynamic input triggers updating operational product matrix pricing properties
   document.querySelectorAll(".pml-cart-quantity-change").forEach((input) => {
     input.addEventListener("input", (event) => {
       const idToChange = parseInt(input.getAttribute("data-id"));
@@ -502,10 +560,8 @@ function updateCartUI() {
 
       if (newQty < 1) newQty = 1;
 
-      // Die Menge im globalen cart-Array updaten
       const targetItem = cart.find((item) => item.id === idToChange);
       if (targetItem) {
-        // Falls singlePrice noch nicht existiert, alten totalPrice als Basis sichern
         if (!targetItem.singlePrice) {
           targetItem.singlePrice = targetItem.totalPrice;
         }
@@ -514,15 +570,13 @@ function updateCartUI() {
       }
 
       saveCartToStorage();
-
-      // UI sofort neu rendern, um alle Preise live zu aktualisieren
-      updateCartUI();
+      updateCartUI(); // Instantly update view tracking indicators
     });
   });
 }
 
 // ==========================================================================
-// 5. WARENKORB SIDEBAR ÖFFNEN / SCHLIESSEN
+// 5. SHOPPING CART SIDEBAR DISPLAY TOGGLES
 // ==========================================================================
 if (navCartBtn) {
   navCartBtn.addEventListener("click", (event) => {
@@ -546,23 +600,20 @@ if (cartSidebar) {
 }
 
 // ==========================================================================
-// 6. IMPRESSUM POP-UP (MODAL) STEUERUNG
+// 6. LEGAL NOTICE (IMPRESSUM) MODAL DISPLAY LOGIC
 // ==========================================================================
 const linkImpressum = document.getElementById("link-impressum");
 const impressumModal = document.getElementById("impressum-modal");
 
 if (linkImpressum && impressumModal) {
-  // Pop-up öffnen bei Klick auf den Link im Footer
   linkImpressum.addEventListener("click", (event) => {
     event.preventDefault();
     impressumModal.classList.remove("pml-hidden");
   });
 }
 
-// Schließen-Logik (Kreuz und Hintergrund-Klick)
 if (impressumModal) {
   impressumModal.addEventListener("click", (event) => {
-    // Falls auf das X geklickt wird ODER direkt auf den dunklen Hintergrund
     if (
       event.target.classList.contains("pml-close-impressum-btn") ||
       event.target === impressumModal
@@ -572,6 +623,9 @@ if (impressumModal) {
   });
 }
 
+// ==========================================================================
+// 7. MULTI-STEP CHECKOUT ROUTING FLOW
+// ==========================================================================
 const cartViewStep = document.getElementById("cart-view-step");
 const addressViewStep = document.getElementById("address-view-step");
 const btnToCheckoutLocal = document.getElementById("btn-to-checkout");
@@ -579,15 +633,13 @@ const btnBackToCart = document.getElementById("btn-back-to-cart");
 const deliveryForm = document.getElementById("delivery-form");
 const addressPlzField = document.getElementById("address-plz");
 
-// 1. Wechsel zum Adress-Formular
+// Forward workflow route transition initialization
 if (btnToCheckoutLocal) {
   btnToCheckoutLocal.addEventListener("click", () => {
     if (cart.length > 0) {
       cartViewStep.classList.add("pml-hidden-step");
       addressViewStep.classList.remove("pml-hidden-step");
 
-      // Postleitzahl immer aus dem persistierten Speicher übernehmen,
-      // nicht aus dem versteckten Modal-Feld.
       const savedPlz = localStorage.getItem("milano_plz") || "";
       if (addressPlzField) {
         addressPlzField.value = savedPlz;
@@ -596,7 +648,7 @@ if (btnToCheckoutLocal) {
   });
 }
 
-// 2. Zurück zum Warenkorb
+// Reversal workflow route transition initialization
 if (btnBackToCart) {
   btnBackToCart.addEventListener("click", () => {
     addressViewStep.classList.add("pml-hidden-step");
@@ -604,8 +656,7 @@ if (btnBackToCart) {
   });
 }
 
-// 3. Beim vollständigen Schließen der Sidebar den Zustand SOFORT resetten
-// 3. Beim vollständigen Schließen der Sidebar den Zustand zurücksetzen
+// Interface step resetting configuration handlers mapped on closure events
 document.querySelectorAll(".pml-close-cart-btn").forEach((closeBtn) => {
   closeBtn.addEventListener("click", () => {
     if (cartSidebar) cartSidebar.classList.add("pml-hidden");
@@ -622,29 +673,29 @@ if (cartSidebar) {
   });
 }
 
-// DIE REPARIERTE FUNKTION: Nur über Klassen steuern, KEINE festen Styles!
+/**
+ * Resets the visual presentation state of checkout wizard layers by adjusting active visibility classes.
+ */
 function resetSidebarSteps() {
   const cartViewStep = document.getElementById("cart-view-step");
   const addressViewStep = document.getElementById("address-view-step");
 
   if (cartViewStep && addressViewStep) {
-    // Entferne die harten Styles wieder, die das Layout zerschossen haben
+    // Clear residual formatting behaviors injected by direct layout modifications
     addressViewStep.style.display = "";
     cartViewStep.style.display = "";
 
-    // Jetzt sauber nur noch die Klassen umschalten
     addressViewStep.classList.add("pml-hidden-step");
     cartViewStep.classList.remove("pml-hidden-step");
   }
 }
 
-// 4. Formular-Validierung bei Klick auf "Weiter zur Zahlung"
+// Validation handler monitoring structural field inputs prior to payment dispatch
 if (deliveryForm) {
   deliveryForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let isFormValid = true;
 
-    // Alle Pflichtfelder im Formular prüfen
     const requiredInputs = deliveryForm.querySelectorAll("input[required]");
 
     requiredInputs.forEach((input) => {
@@ -664,7 +715,6 @@ if (deliveryForm) {
     });
 
     if (isFormValid) {
-      // Speicher Daten für den nächsten Schritt (z.B. Stripe Checkout)
       const customerData = {
         firstname: document.getElementById("address-firstname").value.trim(),
         lastname: document.getElementById("address-lastname").value.trim(),
@@ -679,33 +729,30 @@ if (deliveryForm) {
         comment: document.getElementById("address-comment").value.trim(),
       };
 
-      console.log("Valide Adressdaten:", customerData);
+      console.log("Validated Shipping Model Target Payload:", customerData);
 
-      // HIER KANNST DU JETZT DEINE STRIPE- / PAYMENT-FUNKTION AUFRUFEN
+      // INTEGRATION ANCHOR: Insert operational Stripe checkout gateway hooks here
       alert("Weiterleitung zur Zahlung...");
     }
   });
 }
 
-// Live-Update: Wenn der Nutzer im Adressformular die PLZ ändert, zieht die Navbar sofort mit
+// Live interactive sync tracking matching UI elements across postal updates
 if (addressPlzField) {
   addressPlzField.addEventListener("input", () => {
     const navPlzDisplay = document.getElementById("nav-plz");
     const currentCode = addressPlzField.value.trim();
 
-    // Aktualisiert die Navbar live, sobald eine gültige 5-stellige PLZ getippt wurde
     if (navPlzDisplay && currentCode.length === 5 && !isNaN(currentCode)) {
       navPlzDisplay.textContent = currentCode;
     }
   });
 }
 
-// VALIEDIERUNG FÜR DIE ADRESSE DANACH LOCAL STORAGE FÜR PLZ UND AUCH WARENKORB / ADRESSE
-// Checkout und Stripe.  // Hosting Und Brevo (email an die küche schicken)
+// =========================================================================
+// 8. STORAGE CAPABILITY MODULE DESIGN
+// =========================================================================
 
-// =========================================================================
-// 1. LOCAL STORAGE MANAGER (NUR WARENKORB & PLZ)
-// =========================================================================
 function speichereWarenkorb(warenkorbArray) {
   localStorage.setItem("milano_warenkorb", JSON.stringify(warenkorbArray));
 }
@@ -724,23 +771,31 @@ function ladePLZ() {
 }
 
 // =========================================================================
-// 2. FORMULAR-VALIDIERUNG MIT DEINEN ECHTEN HTML-IDs
+// 9. RIGID INPUT VALIDATION CONTROLLER
 // =========================================================================
+
+/**
+ * Executes evaluation logic using strong regex matching parameters.
+ * Blocks form propagation sequences if input metrics violate integrity definitions.
+ * * @param {Event} event - System submit tracking event reference object context.
+ * @returns {boolean} Validation evaluation result flag status.
+ */
 function validiereBestellung(event) {
-  // 1. KNALLHARTE SPERRE: Stoppt JEDE automatische Aktion des Browsers sofort
+  // Terminate execution lifecycles across alternative framework listeners
   if (event) {
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
   }
 
+  // Regular expression evaluation rules mapping localized standard conventions
   const emailMuster = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const nameMuster = /^[a-zA-ZäöüÄÖÜß\s\-]{2,}$/;
   const telefonMuster = /^[0-9\s\+\-\/]{5,}$/;
 
   let hatFehler = false;
 
-  // Inputs holen
+  // Retrieve functional form context module selectors
   const vornameInput = document.getElementById("address-firstname");
   const nachnameInput = document.getElementById("address-lastname");
   const telefonInput = document.getElementById("address-phone");
@@ -750,7 +805,9 @@ function validiereBestellung(event) {
   const plzInput = document.getElementById("address-plz");
   const stadtInput = document.getElementById("address-city");
 
-  // Fehler-Anzeige-Funktion
+  /**
+   * Adjusts functional evaluation interface classes based on error assertions.
+   */
   function zeigeFehler(inputElement, istFehler, nachricht) {
     if (!inputElement) return;
     const fehlerDiv = inputElement.parentElement.querySelector(
@@ -764,7 +821,7 @@ function validiereBestellung(event) {
         fehlerDiv.classList.remove("pml-hidden");
         fehlerDiv.style.display = "block";
       }
-      hatFehler = true; // Flagge geht hoch!
+      hatFehler = true; // Error assertion flag triggered
     } else {
       inputElement.classList.remove("pml-input-error");
       if (fehlerDiv) {
@@ -774,7 +831,7 @@ function validiereBestellung(event) {
     }
   }
 
-  // --- DIE PRÜFUNGEN ---
+  // --- STRICT PATTERN MATCHING VALIDATION EXECUTION ---
   zeigeFehler(
     vornameInput,
     !nameMuster.test(vornameInput.value.trim()),
@@ -812,35 +869,32 @@ function validiereBestellung(event) {
     "Bitte gib einen echten Stadtnamen ein (z.B. Köln).",
   );
 
-  // --- DIE ABSOLUTE WEICHENTRENNUNG ---
+  // --- CONDITIONAL STRATIFICATION SWITCH ---
   if (hatFehler) {
-    console.log("Validierung fehlgeschlagen. Alert blockiert.");
-    return false; // Hier ist FEIERABEND. Der Code bricht ab.
+    console.log("Validation evaluation failed. Interception triggered.");
+    return false; // Terminate submission pipeline
   } else {
-    // DAS ALERT DARF NUR HIER DRIN STEHEN!
     speicherePLZ(plzInput.value);
     alert("Weiterleitung zur Zahlung...");
-    // starteStripeCheckout();
+    // starteStripeCheckout(); // Target deployment hook
     return true;
   }
 }
 
 // =========================================================================
-// 3. EVENT-LISTENER (NUR EIN EINZIGER, SAUBERER AUFRUF)
+// 10. SYSTEM APPLICATION ROOT BOOTSTRAPPER
 // =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
+  // Hydrate states from tracking arrays
   loadCartFromStorage();
   updateCartUI();
 
   const form = document.getElementById("delivery-form");
   if (form) {
-    // Verbindet das Abschicken direkt mit unserer Absperrung
     form.addEventListener("submit", validiereBestellung);
   }
 
-  // =========================================================================
-  // 4. BEIM LADEN DER SEITE: PLZ AUTOMATISCH EINTRAGEN
-  // =========================================================================
+  // Pre-populate input fields using geolocation attributes stored inside memory
   const gespeichertePlz = ladePLZ();
   const plzFeld = document.getElementById("address-plz");
 
